@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NovaHost — Next-Gen VPS Hosting</title>
+<meta name="description" content="Blazing-fast NVMe VPS servers deployed in 55 seconds. Global edge network, DDoS protection, and 99.99% uptime." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #05060f;
+    --bg-2: #0a0c1c;
+    --panel: rgba(20, 24, 48, 0.55);
+    --panel-border: rgba(120, 140, 255, 0.14);
+    --text: #eef1ff;
+    --muted: #9aa3c7;
+    --accent: #6c8cff;
+    --accent-2: #b16cff;
+    --accent-3: #35e6d0;
+    --glow: 0 0 60px rgba(108, 140, 255, 0.35);
+    --radius: 18px;
+    --maxw: 1180px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .brand, .price-num, .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Animated background ---------- */
+  .bg-fx {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(1000px 600px at 80% -10%, rgba(108,140,255,0.20), transparent 60%),
+      radial-gradient(900px 600px at 10% 10%, rgba(177,108,255,0.16), transparent 55%),
+      radial-gradient(700px 700px at 50% 110%, rgba(53,230,208,0.12), transparent 60%),
+      linear-gradient(180deg, var(--bg), var(--bg-2));
+  }
+  .grid-fx {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(120,140,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120,140,255,0.06) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+    animation: gridDrift 40s linear infinite;
+  }
+  @keyframes gridDrift { from { background-position: 0 0; } to { background-position: 54px 54px; } }
+
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .orb.a { width: 420px; height: 420px; background: radial-gradient(circle, #6c8cff, transparent 70%); top: 4%; left: 62%; animation: float1 18s ease-in-out infinite; }
+  .orb.b { width: 360px; height: 360px; background: radial-gradient(circle, #b16cff, transparent 70%); top: 46%; left: 4%; animation: float2 22s ease-in-out infinite; }
+  @keyframes float1 { 0%,100% { transform: translate(0,0);} 50% { transform: translate(-40px, 40px);} }
+  @keyframes float2 { 0%,100% { transform: translate(0,0);} 50% { transform: translate(50px, -30px);} }
+
+  /* ---------- Layout ---------- */
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  section { position: relative; padding: 110px 0; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-3);
+    padding: 6px 14px;
+    border: 1px solid var(--panel-border);
+    border-radius: 999px;
+    background: rgba(53,230,208,0.06);
+  }
+
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+  .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); margin: 18px 0 14px; line-height: 1.1; }
+  .section-head p { color: var(--muted); font-size: 1.05rem; }
+
+  .gradient-text {
+    background: linear-gradient(100deg, #8aa2ff 0%, #b16cff 45%, #35e6d0 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(5,6,15,0.55);
+    border-bottom: 1px solid rgba(120,140,255,0.08);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-size: 1.28rem; font-weight: 700; }
+  .brand .logo {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: var(--glow);
+    display: grid; place-items: center;
+    position: relative;
+  }
+  .brand .logo::after {
+    content: ""; width: 14px; height: 14px; border-radius: 4px;
+    background: #05060f;
+    transform: rotate(45deg);
+  }
+  .nav-links { display: flex; align-items: center; gap: 34px; }
+  .nav-links a { color: var(--muted); font-size: 0.94rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { display: flex; align-items: center; gap: 14px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem;
+    padding: 12px 24px; border-radius: 12px; cursor: pointer;
+    border: 1px solid transparent; transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    color: #fff; box-shadow: 0 10px 30px rgba(108,140,255,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(108,140,255,0.5); }
+  .btn-ghost { background: rgba(255,255,255,0.03); border-color: var(--panel-border); color: var(--text); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+  .btn-lg { padding: 15px 32px; font-size: 1rem; }
+
+  .menu-toggle { display: none; background: none; border: none; color: var(--text); cursor: pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: 90px; padding-bottom: 90px; text-align: center; }
+  .hero h1 { font-size: clamp(2.6rem, 6.2vw, 5rem); line-height: 1.02; margin: 26px auto 22px; max-width: 900px; }
+  .hero p.lead { font-size: clamp(1.05rem, 2vw, 1.28rem); color: var(--muted); max-width: 640px; margin: 0 auto 38px; }
+  .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .hero-note { font-size: 0.88rem; color: var(--muted); }
+  .hero-note strong { color: var(--accent-3); }
+
+  .trust {
+    margin-top: 70px; display: flex; align-items: center; justify-content: center;
+    gap: 46px; flex-wrap: wrap; opacity: 0.7;
+  }
+  .trust span { font-family: 'Space Grotesk'; font-weight: 600; font-size: 1.1rem; color: var(--muted); letter-spacing: 0.04em; }
+
+  /* ---------- Terminal mockup ---------- */
+  .terminal {
+    max-width: 720px; margin: 60px auto 0;
+    background: rgba(9,11,26,0.85); border: 1px solid var(--panel-border);
+    border-radius: 16px; overflow: hidden; text-align: left;
+    box-shadow: 0 40px 90px rgba(0,0,0,0.55), var(--glow);
+  }
+  .terminal-bar { display: flex; align-items: center; gap: 8px; padding: 13px 16px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+  .terminal-title { margin-left: 10px; font-size: 0.8rem; color: var(--muted); font-family: 'Space Grotesk'; }
+  .terminal-body { padding: 22px 24px; font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-size: 0.9rem; line-height: 1.85; }
+  .terminal-body .p { color: var(--accent-3); }
+  .terminal-body .c { color: #eef1ff; }
+  .terminal-body .o { color: var(--muted); }
+  .terminal-body .ok { color: #35e6d0; }
+  .cursor { display: inline-block; width: 9px; height: 1.05em; background: var(--accent-3); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ---------- Features ---------- */
+  .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--panel-border);
+    border-radius: var(--radius); padding: 30px 28px;
+    backdrop-filter: blur(12px);
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(400px circle at var(--mx,50%) var(--my,0%), rgba(108,140,255,0.14), transparent 40%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .card:hover { transform: translateY(-6px); border-color: rgba(120,140,255,0.35); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+  .card:hover::before { opacity: 1; }
+  .card .icon {
+    width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center;
+    margin-bottom: 20px; font-size: 1.5rem;
+    background: linear-gradient(135deg, rgba(108,140,255,0.22), rgba(177,108,255,0.18));
+    border: 1px solid var(--panel-border);
+  }
+  .card h3 { font-size: 1.22rem; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 0.96rem; }
+
+  /* ---------- Stats ---------- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .stat {
+    text-align: center; padding: 34px 18px;
+    background: var(--panel); border: 1px solid var(--panel-border);
+    border-radius: var(--radius); backdrop-filter: blur(10px);
+  }
+  .stat-num { font-size: 2.6rem; font-weight: 700; line-height: 1; }
+  .stat-label { color: var(--muted); font-size: 0.92rem; margin-top: 10px; }
+
+  /* ---------- Pricing ---------- */
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+  .plan {
+    background: var(--panel); border: 1px solid var(--panel-border);
+    border-radius: var(--radius); padding: 34px 30px; backdrop-filter: blur(12px);
+    display: flex; flex-direction: column; position: relative;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .plan:hover { transform: translateY(-6px); border-color: rgba(120,140,255,0.3); }
+  .plan.featured {
+    border-color: rgba(108,140,255,0.5);
+    background: linear-gradient(180deg, rgba(108,140,255,0.10), rgba(20,24,48,0.55));
+    box-shadow: 0 30px 70px rgba(108,140,255,0.18);
+  }
+  .plan-badge {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #fff;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 999px; box-shadow: var(--glow);
+  }
+  .plan h3 { font-size: 1.25rem; margin-bottom: 6px; }
+  .plan .plan-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 22px; min-height: 40px; }
+  .price { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+  .price-num { font-size: 3rem; font-weight: 700; }
+  .price-per { color: var(--muted); font-size: 0.95rem; }
+  .plan-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 24px 0; }
+  .plan ul { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 28px; flex: 1; }
+  .plan li { display: flex; align-items: flex-start; gap: 11px; font-size: 0.94rem; color: #d6dbf5; }
+  .plan li .check {
+    flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; margin-top: 2px;
+    background: rgba(53,230,208,0.15); color: var(--accent-3);
+    display: grid; place-items: center; font-size: 0.75rem; font-weight: 700;
+  }
+  .plan .btn { width: 100%; }
+
+  /* ---------- CTA band ---------- */
+  .cta-band {
+    text-align: center;
+    background: linear-gradient(120deg, rgba(108,140,255,0.14), rgba(177,108,255,0.12));
+    border: 1px solid var(--panel-border);
+    border-radius: 28px; padding: 70px 40px;
+    position: relative; overflow: hidden;
+  }
+  .cta-band h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 16px; }
+  .cta-band p { color: var(--muted); max-width: 520px; margin: 0 auto 32px; font-size: 1.05rem; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid rgba(120,140,255,0.08); padding: 64px 0 40px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-brand p { color: var(--muted); font-size: 0.94rem; margin-top: 16px; max-width: 280px; }
+  .footer-col h4 { font-family: 'Space Grotesk'; font-size: 0.95rem; margin-bottom: 18px; }
+  .footer-col a { display: block; color: var(--muted); font-size: 0.92rem; margin-bottom: 12px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--text); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06);
+    color: var(--muted); font-size: 0.88rem; flex-wrap: wrap; gap: 14px;
+  }
+  .socials { display: flex; gap: 14px; }
+  .socials a { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--panel-border); display: grid; place-items: center; transition: all 0.2s; }
+  .socials a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .feature-grid { grid-template-columns: 1fr 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+  }
+  @media (max-width: 560px) {
+    section { padding: 80px 0; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .nav-cta .btn-ghost { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-fx"></div>
+  <div class="grid-fx"></div>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#" class="brand"><span class="logo"></span> NovaHost</a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#network">Network</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-ghost">Sign in</a>
+        <a href="#pricing" class="btn btn-primary">Deploy now</a>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">⚡ Now with AMD EPYC &amp; NVMe Gen4</span>
+      <h1 class="reveal">Cloud servers that move<br /><span class="gradient-text">at the speed of light</span></h1>
+      <p class="lead reveal">Deploy high-performance NVMe VPS instances across 30+ global regions in under 55 seconds. Built for developers who refuse to wait.</p>
+      <div class="hero-cta reveal">
+        <a href="#pricing" class="btn btn-primary btn-lg">Launch your server →</a>
+        <a href="#features" class="btn btn-ghost btn-lg">Explore features</a>
+      </div>
+      <p class="hero-note reveal">No credit card required · <strong>$100 free credit</strong> for new accounts</p>
+
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="terminal-title">novahost — deploy</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="p">➜</span> <span class="c">nova deploy --region nyc --plan quantum</span></div>
+          <div class="o">→ Provisioning NVMe volume ......... <span class="ok">done</span></div>
+          <div class="o">→ Attaching 10 Gbps network ........ <span class="ok">done</span></div>
+          <div class="o">→ Enabling DDoS shield ............. <span class="ok">done</span></div>
+          <div class="o">→ Booting Ubuntu 24.04 LTS ......... <span class="ok">done</span></div>
+          <div class="ok">✔ Server live at 198.51.100.42 in 51s</div>
+          <div><span class="p">➜</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+
+      <div class="trust reveal">
+        <span>TechFlow</span><span>Orbital</span><span>DataForge</span><span>Nimbus</span><span>Vertex</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why NovaHost</span>
+        <h2>Infrastructure engineered<br />for the future</h2>
+        <p>Every instance ships with enterprise-grade hardware and a control plane so fast it feels instant.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="card reveal">
+          <div class="icon">🚀</div>
+          <h3>55-second deploys</h3>
+          <p>Spin up a fully-provisioned server before your coffee finishes brewing. Snapshots, clones, and rebuilds are just as fast.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">💾</div>
+          <h3>NVMe Gen4 storage</h3>
+          <p>Local NVMe delivering up to 1,000,000 IOPS. Your databases and builds have never breathed like this.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🛡️</div>
+          <h3>Always-on DDoS shield</h3>
+          <p>Multi-terabit mitigation absorbs attacks at the edge — automatically, at no extra cost, on every plan.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🌐</div>
+          <h3>30+ global regions</h3>
+          <p>Deploy close to your users on a private 10 Gbps backbone spanning six continents and growing.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">⚙️</div>
+          <h3>Full root access</h3>
+          <p>KVM virtualization with dedicated resources. Bring any OS, run any kernel, install anything you like.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">📊</div>
+          <h3>Real-time metrics</h3>
+          <p>Second-by-second CPU, memory, disk and bandwidth graphs, plus a REST API and Terraform provider.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / NETWORK -->
+  <section id="network">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The network</span>
+        <h2>A backbone built to scale</h2>
+        <p>Numbers our engineers are proud of — and our uptime SLA is backed in writing.</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><div class="stat-num gradient-text" data-target="99.99" data-suffix="%">0%</div><div class="stat-label">Uptime SLA</div></div>
+        <div class="stat reveal"><div class="stat-num gradient-text" data-target="30" data-suffix="+">0</div><div class="stat-label">Global regions</div></div>
+        <div class="stat reveal"><div class="stat-num gradient-text" data-target="55" data-suffix="s">0s</div><div class="stat-label">Avg. deploy time</div></div>
+        <div class="stat reveal"><div class="stat-num gradient-text" data-target="240" data-suffix="k+">0</div><div class="stat-label">Servers running</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Simple pricing</span>
+        <h2>Pay for power, not overhead</h2>
+        <p>Flat monthly rates, per-second billing, and zero hidden fees. Scale up or down anytime.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="plan reveal">
+          <h3>Nebula</h3>
+          <p class="plan-desc">Perfect for side projects, staging, and personal apps.</p>
+          <div class="price"><span class="price-num">$6</span><span class="price-per">/mo</span></div>
+          <div class="plan-divider"></div>
+          <ul>
+            <li><span class="check">✓</span> 2 vCPU cores</li>
+            <li><span class="check">✓</span> 4 GB RAM</li>
+            <li><span class="check">✓</span> 80 GB NVMe storage</li>
+            <li><span class="check">✓</span> 4 TB bandwidth</li>
+            <li><span class="check">✓</span> DDoS protection included</li>
+          </ul>
+          <a href="#" class="btn btn-ghost">Choose Nebula</a>
+        </div>
+        <div class="plan featured reveal">
+          <span class="plan-badge">Most popular</span>
+          <h3>Quantum</h3>
+          <p class="plan-desc">The sweet spot for production apps and busy teams.</p>
+          <div class="price"><span class="price-num">$18</span><span class="price-per">/mo</span></div>
+          <div class="plan-divider"></div>
+          <ul>
+            <li><span class="check">✓</span> 4 vCPU cores</li>
+            <li><span class="check">✓</span> 16 GB RAM</li>
+            <li><span class="check">✓</span> 200 GB NVMe storage</li>
+            <li><span class="check">✓</span> 8 TB bandwidth</li>
+            <li><span class="check">✓</span> Free daily snapshots</li>
+            <li><span class="check">✓</span> Priority 24/7 support</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Choose Quantum</a>
+        </div>
+        <div class="plan reveal">
+          <h3>Singularity</h3>
+          <p class="plan-desc">Maximum horsepower for demanding, high-traffic workloads.</p>
+          <div class="price"><span class="price-num">$48</span><span class="price-per">/mo</span></div>
+          <div class="plan-divider"></div>
+          <ul>
+            <li><span class="check">✓</span> 8 vCPU cores</li>
+            <li><span class="check">✓</span> 32 GB RAM</li>
+            <li><span class="check">✓</span> 500 GB NVMe storage</li>
+            <li><span class="check">✓</span> 16 TB bandwidth</li>
+            <li><span class="check">✓</span> Dedicated CPU option</li>
+            <li><span class="check">✓</span> 99.99% uptime SLA</li>
+          </ul>
+          <a href="#" class="btn btn-ghost">Choose Singularity</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2>Ready to launch in <span class="gradient-text">55 seconds</span>?</h2>
+        <p>Join 40,000+ developers building on NovaHost. Get $100 in free credit and deploy your first server today.</p>
+        <a href="#pricing" class="btn btn-primary btn-lg">Start free — no card needed</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand"><span class="logo"></span> NovaHost</a>
+          <p>Next-generation cloud infrastructure for developers who build fast and ship faster.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#network">Network</a>
+          <a href="#">API docs</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Status</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">SLA</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 NovaHost, Inc. All rights reserved.</span>
+        <div class="socials">
+          <a href="#" aria-label="X / Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⌥</a>
+          <a href="#" aria-label="Discord">◈</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i % 6) * 0.06 + 's';
+      io.observe(el);
+    });
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stat-num');
+    const cObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const decimals = (el.dataset.target.split('.')[1] || '').length;
+        const dur = 1400; const start = performance.now();
+        function tick(now) {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = (target * eased).toFixed(decimals);
+          el.textContent = val + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        cObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach((c) => cObserver.observe(c));
+
+    // Card spotlight follow
+    document.querySelectorAll('.card').forEach((card) => {
+      card.addEventListener('mousemove', (ev) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+      });
+    });
+
+    // Mobile menu (simple scroll-to)
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

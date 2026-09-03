@@ -3,589 +3,1178 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>青云万里 · 云端基础设施</title>
-<meta name="description" content="青云 QingYun —— 于山河之上，安放你的每一次计算。三十余处全球节点，NVMe 全闪存储，BGP 多线直连，55 秒扶摇直上。" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;500;700;900&display=swap" rel="stylesheet" />
+<title>丽萨主机 LisaHost · 优质网络，专业服务</title>
+<meta name="description" content="丽萨主机 LisaHost —— 总部位于香港，全球多机房自有机柜与带宽。美国 CN2 GIA、双ISP 家宽住宅原生 IP、香港 CMI、新加坡 / 台湾 / 日本 / 韩国 / 英国 / 德国 / 越南 原生 IP VPS。即时自动开通，48 小时不满意无条件退款。" />
+<meta name="theme-color" content="#fcfaf6" />
 <style>
-  :root{
-    --night-0:#04070d; --night-1:#070c16; --night-2:#0b1220; --night-3:#101828;
-    --m1:#46597a; --m2:#38496a; --m3:#2a3a56; --m4:#1d2942; --m5:#121b2d; --m6:#080d18;
-    --gold:#cfa456; --gold-b:#f4dca6; --gold-d:#8a6a2f; --ember:#e2b05c;
-    --jade:#3f9583; --cinnabar:#c0392b;
-    --moon:#f4f0e4; --text:#c2c8d4; --muted:#848d9e; --faint:#5a6373;
-    --hair:rgba(207,164,86,.24); --hair2:rgba(244,240,228,.08);
-    --maxw:1200px;
-    --serif:'Noto Serif SC','Songti SC',serif;
-    --sans:'Noto Sans SC',system-ui,sans-serif;
-    --num:'Cormorant Garamond','Noto Serif SC',serif;
-    --brush:'Ma Shan Zheng',var(--serif);
+/* ============================================================
+   丽萨主机 · 月洞门 / 冰裂窗棂
+   明亮中国风 —— 宣纸月白 · 黛紫 · 石青 · 朱砂 · 描金
+   ============================================================ */
+
+:root{
+  /* —— 纸与墨 —— */
+  --paper:      #fcfaf6;   /* 宣纸 */
+  --paper-2:    #f6f2ea;   /* 素笺 */
+  --paper-3:    #f0ece2;   /* 藏经 */
+  --white:      #ffffff;
+
+  /* —— 黛紫（承 LisaHost 品牌色 #48486b）—— */
+  --ink:        #23233a;   /* 浓墨 */
+  --dai:        #3b3b5c;   /* 黛 */
+  --dai-2:      #48486b;   /* 品牌黛紫 */
+  --dai-soft:   #6c6c90;
+  --muted:      #83839c;
+  --faint:      #a6a6bb;
+
+  /* —— 点睛 —— */
+  --azure:      #2f5d8c;   /* 石青 */
+  --azure-l:    #4d84b9;   /* 天青 */
+  --azure-w:    #e7eef6;   /* 青灰底 */
+  --cinnabar:   #b4392b;   /* 朱砂 */
+  --cinnabar-l: #d4553f;
+  --gold:       #b08d57;   /* 赤金 */
+  --gold-l:     #d8b87e;
+  --celadon:    #6f9c8e;   /* 青瓷 */
+
+  /* —— 线 —— */
+  --hair:       rgba(35,35,58,.10);
+  --hair-2:     rgba(35,35,58,.06);
+  --hair-gold:  rgba(176,141,87,.38);
+  --shadow-s:   0 1px 2px rgba(35,35,58,.04), 0 6px 18px rgba(35,35,58,.045);
+  --shadow-m:   0 2px 6px rgba(35,35,58,.05), 0 18px 48px rgba(35,35,58,.09);
+  --shadow-l:   0 30px 80px rgba(35,35,58,.13);
+
+  --maxw: 1220px;
+  --serif: "Source Han Serif SC","Noto Serif SC","Songti SC",STSong,"SimSun",Georgia,serif;
+  --sans:  "PingFang SC","Hiragino Sans GB","Source Han Sans SC","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --num:   Georgia,"Times New Roman","Source Han Serif SC","Songti SC",serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  color:var(--dai);
+  background:var(--paper);
+  line-height:1.9;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+::selection{background:rgba(180,57,43,.14);color:var(--ink)}
+
+/* 宣纸纹理 */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(176,141,87,.06), transparent 42%),
+    radial-gradient(circle at 82% 8%,  rgba(47,93,140,.055), transparent 46%),
+    radial-gradient(circle at 50% 96%, rgba(72,72,107,.05),  transparent 52%);
+}
+
+/* ============ 通用 ============ */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.section{padding:118px 0;position:relative}
+.section--paper{background:var(--paper-2)}
+.section--paper::before,.section--paper::after{
+  content:"";position:absolute;left:0;right:0;height:1px;background:var(--hair-2)
+}
+.section--paper::before{top:0}.section--paper::after{bottom:0}
+
+.sec-head{text-align:center;margin-bottom:62px;position:relative}
+.sec-eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:11px;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--gold);font-family:var(--num);margin-bottom:20px;
+}
+.sec-eyebrow::before,.sec-eyebrow::after{
+  content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--hair-gold))
+}
+.sec-eyebrow::after{background:linear-gradient(270deg,transparent,var(--hair-gold))}
+.sec-head h2{
+  font-family:var(--serif);font-weight:600;color:var(--ink);
+  font-size:clamp(28px,3.6vw,42px);letter-spacing:.16em;line-height:1.4;
+}
+.sec-head h2 em{font-style:normal;color:var(--cinnabar)}
+.sec-head p{
+  margin:18px auto 0;max-width:660px;color:var(--muted);
+  font-size:14.5px;letter-spacing:.06em;font-weight:300;
+}
+.sec-rule{
+  width:56px;height:1px;margin:26px auto 0;
+  background:linear-gradient(90deg,transparent,var(--hair-gold),transparent);position:relative;
+}
+.sec-rule::after{
+  content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;
+  transform:translate(-50%,-50%) rotate(45deg);
+  border:1px solid var(--gold);background:var(--paper);
+}
+
+/* 按钮 */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  height:52px;padding:0 34px;font-size:14.5px;letter-spacing:.16em;
+  border:1px solid transparent;cursor:pointer;position:relative;
+  transition:all .38s cubic-bezier(.2,.7,.3,1);white-space:nowrap;
+}
+.btn i{font-style:normal;font-size:12px;transition:transform .38s ease}
+.btn:hover i{transform:translateX(5px)}
+.btn--primary{
+  background:linear-gradient(135deg,var(--cinnabar),#9c2e22);
+  color:#fff8f2;box-shadow:0 10px 26px rgba(180,57,43,.24);
+}
+.btn--primary::after{
+  content:"";position:absolute;inset:4px;border:1px solid rgba(255,246,238,.26);pointer-events:none;
+}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(180,57,43,.3)}
+.btn--ghost{border-color:var(--hair);color:var(--dai);background:rgba(255,255,255,.6)}
+.btn--ghost:hover{border-color:var(--gold);color:var(--ink);background:#fff;transform:translateY(-2px)}
+
+/* 印章 */
+.seal{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:46px;height:46px;border:1.5px solid var(--cinnabar);border-radius:3px;
+  color:var(--cinnabar);font-family:var(--serif);font-size:15px;font-weight:600;
+  line-height:1.05;letter-spacing:0;text-align:center;flex-shrink:0;
+  background:rgba(180,57,43,.045);
+}
+.seal span{display:block}
+
+/* ============ 顶部公告 ============ */
+.ticker{
+  background:linear-gradient(90deg,#2c2c48,#3b3b5c 45%,#48486b);
+  color:rgba(255,252,246,.8);font-size:12.5px;letter-spacing:.05em;
+  height:38px;display:flex;align-items:center;overflow:hidden;position:relative;z-index:60;
+}
+.ticker__tag{
+  flex-shrink:0;padding:0 16px;height:100%;display:flex;align-items:center;gap:7px;
+  background:var(--cinnabar);color:#fff;font-size:11.5px;letter-spacing:.22em;
+}
+.ticker__view{flex:1;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 92%,transparent)}
+.ticker__track{display:flex;gap:56px;width:max-content;animation:tick 46s linear infinite;padding-left:32px}
+.ticker:hover .ticker__track{animation-play-state:paused}
+.ticker__item{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.ticker__item b{color:var(--gold-l);font-weight:400}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ 导航 ============ */
+.nav{
+  position:sticky;top:0;z-index:50;background:rgba(252,250,246,.86);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--hair-2);transition:box-shadow .4s ease,background .4s ease;
+}
+.nav.is-stuck{box-shadow:0 1px 24px rgba(35,35,58,.07);background:rgba(252,250,246,.94)}
+.nav__in{display:flex;align-items:center;gap:40px;height:82px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand__seal{
+  width:38px;height:38px;border:1.4px solid var(--cinnabar);border-radius:2px;
+  display:grid;place-items:center;color:var(--cinnabar);
+  font-family:var(--serif);font-size:16px;font-weight:600;letter-spacing:0;
+  background:rgba(180,57,43,.05);
+}
+.brand__txt strong{
+  display:block;font-family:var(--serif);font-size:19px;font-weight:600;
+  color:var(--ink);letter-spacing:.24em;line-height:1.25;
+}
+.brand__txt span{
+  display:block;font-family:var(--num);font-size:9.5px;letter-spacing:.4em;
+  color:var(--faint);text-transform:uppercase;
+}
+.nav__links{display:flex;align-items:center;gap:34px;margin-left:auto}
+.nav__links a{
+  font-size:14px;letter-spacing:.1em;color:var(--dai);position:relative;padding:6px 0;
+  transition:color .3s ease;
+}
+.nav__links a::after{
+  content:"";position:absolute;left:50%;bottom:0;width:0;height:1px;
+  background:var(--cinnabar);transition:all .34s ease;transform:translateX(-50%);
+}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a:hover::after{width:100%}
+.nav__cta{display:flex;align-items:center;gap:14px}
+.nav__lang{
+  font-size:12.5px;color:var(--muted);letter-spacing:.08em;padding:8px 12px;
+  border:1px solid var(--hair);transition:all .3s ease;
+}
+.nav__lang:hover{border-color:var(--gold);color:var(--ink)}
+.nav__btn{
+  height:42px;padding:0 24px;display:inline-flex;align-items:center;gap:8px;
+  background:var(--dai);color:#fbf9f5;font-size:13.5px;letter-spacing:.14em;
+  transition:all .34s ease;
+}
+.nav__btn:hover{background:var(--ink);transform:translateY(-1px);box-shadow:0 10px 24px rgba(59,59,92,.24)}
+.nav__burger{display:none;width:40px;height:40px;border:1px solid var(--hair);background:none;cursor:pointer;position:relative}
+.nav__burger span{position:absolute;left:11px;width:18px;height:1px;background:var(--dai);transition:.3s}
+.nav__burger span:nth-child(1){top:15px}
+.nav__burger span:nth-child(2){top:20px}
+.nav__burger span:nth-child(3){top:25px}
+.nav.is-open .nav__burger span:nth-child(1){top:20px;transform:rotate(45deg)}
+.nav.is-open .nav__burger span:nth-child(2){opacity:0}
+.nav.is-open .nav__burger span:nth-child(3){top:20px;transform:rotate(-45deg)}
+
+/* ============ 主视觉 · 月洞门 ============ */
+.hero{position:relative;overflow:hidden;padding:96px 0 104px}
+.hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero__wash{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(1100px 620px at 78% 22%, rgba(231,238,246,.95), transparent 62%),
+    radial-gradient(760px 520px at 12% 78%, rgba(246,240,231,.9), transparent 60%),
+    linear-gradient(180deg,#fdfcf9 0%,var(--paper) 55%,#f7f3ec 100%);
+}
+.hero__lattice{
+  position:absolute;inset:0;width:100%;height:100%;opacity:.55;
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 42%, transparent 26%, #000 78%);
+  mask-image:radial-gradient(120% 90% at 50% 42%, transparent 26%, #000 78%);
+}
+.hero__in{display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center;position:relative;z-index:2}
+
+.hero__vert{
+  position:absolute;left:-58px;top:40px;bottom:40px;width:28px;z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:18px;
+}
+.hero__vert p{
+  writing-mode:vertical-rl;font-family:var(--serif);font-size:12.5px;letter-spacing:.36em;
+  color:var(--faint);white-space:nowrap;line-height:1;flex:0 0 auto;
+}
+@media (max-width:1390px){.hero__vert{display:none}}
+.hero__vert::before{content:"";width:1px;flex:0 0 44px;background:linear-gradient(180deg,transparent,var(--hair-gold))}
+.hero__vert::after{content:"";width:1px;flex:1 1 20px;min-height:20px;background:linear-gradient(0deg,transparent,var(--hair-gold))}
+
+.hero__label{
+  display:inline-flex;align-items:center;gap:12px;padding:7px 16px 7px 8px;
+  border:1px solid var(--hair-gold);background:rgba(255,255,255,.72);
+  font-size:12px;letter-spacing:.2em;color:var(--gold);margin-bottom:30px;
+}
+.hero__label b{
+  background:var(--cinnabar);color:#fff;font-weight:400;padding:3px 9px;
+  font-size:11px;letter-spacing:.16em;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:600;color:var(--ink);
+  font-size:clamp(38px,4.9vw,60px);line-height:1.24;letter-spacing:.14em;
+}
+.hero h1 span{display:block;white-space:nowrap}
+.hero h1 .l2{
+  background:linear-gradient(102deg,var(--dai-2) 0%,var(--azure) 52%,var(--celadon) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-top:6px;padding-left:.9em;position:relative;
+}
+.hero h1 .l2::before{
+  content:"";position:absolute;left:0;top:50%;width:.55em;height:1px;
+  background:linear-gradient(90deg,var(--cinnabar),rgba(180,57,43,.15));
+}
+.hero h1 .l2::after{
+  content:"";position:absolute;left:.06em;top:50%;width:6px;height:6px;
+  transform:translateY(-50%) rotate(45deg);background:var(--cinnabar);
+}
+.hero__sub{
+  margin-top:26px;max-width:520px;color:var(--dai-soft);font-size:16px;
+  font-weight:300;letter-spacing:.06em;line-height:2.05;
+}
+.hero__sub em{font-style:normal;color:var(--ink);border-bottom:1px solid var(--hair-gold);padding-bottom:2px}
+.hero__acts{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.hero__meta{
+  display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:0;
+  margin-top:46px;padding-top:28px;border-top:1px solid var(--hair-2);
+}
+.hero__meta div{
+  display:flex;flex-direction:column;gap:2px;padding:0 26px;position:relative;
+}
+.hero__meta div:first-child{padding-left:0}
+.hero__meta div + div::before{
+  content:"";position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--hair-2)
+}
+.hero__meta b{font-family:var(--num);font-size:24px;color:var(--ink);font-weight:400;letter-spacing:.02em;line-height:1.2}
+.hero__meta b i{font-style:normal;font-size:14px;color:var(--gold);margin-left:2px}
+.hero__meta span{font-size:11.5px;color:var(--muted);letter-spacing:.12em;white-space:nowrap}
+
+/* 月洞门 */
+.moon{position:relative;aspect-ratio:1/1;max-width:520px;margin-left:auto;width:100%}
+.moon__ring{
+  position:absolute;inset:0;border-radius:50%;
+  border:1px solid var(--hair-gold);
+  box-shadow:0 0 0 1px rgba(255,255,255,.9) inset, var(--shadow-l);
+  background:
+    radial-gradient(circle at 34% 26%, #ffffff 0%, #f8fbfe 34%, #eef4fa 62%, #e6eef7 100%);
+  overflow:hidden;
+}
+.moon__ring::after{
+  content:"";position:absolute;inset:14px;border-radius:50%;
+  border:1px solid rgba(176,141,87,.2);pointer-events:none;
+}
+.moon svg{position:absolute;inset:0;width:100%;height:100%}
+.moon__halo{
+  position:absolute;inset:-9%;border-radius:50%;z-index:-1;
+  background:radial-gradient(circle,rgba(77,132,185,.13),transparent 66%);
+  filter:blur(6px);
+}
+.moon__tick{position:absolute;inset:-26px;border-radius:50%;border:1px dashed rgba(176,141,87,.26);animation:spin 68s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 3.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.4);opacity:.85}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
+
+.moon__chip{
+  position:absolute;display:flex;align-items:center;gap:9px;
+  padding:9px 15px;background:rgba(255,255,255,.94);border:1px solid var(--hair);
+  box-shadow:var(--shadow-s);font-size:12.5px;letter-spacing:.08em;color:var(--dai);
+  backdrop-filter:blur(6px);animation:float 7s ease-in-out infinite;
+}
+.moon__chip u{
+  text-decoration:none;font-family:var(--num);color:var(--cinnabar);font-size:14px;
+}
+.moon__chip--a{top:9%;left:-6%;animation-delay:0s}
+.moon__chip--b{bottom:16%;left:-11%;animation-delay:1.4s}
+.moon__chip--c{bottom:5%;right:4%;animation-delay:2.6s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ============ 信任条 ============ */
+.trust{border-top:1px solid var(--hair-2);border-bottom:1px solid var(--hair-2);background:rgba(255,255,255,.55)}
+.trust__in{display:grid;grid-template-columns:repeat(4,1fr)}
+.trust__cell{
+  padding:34px 26px;display:flex;align-items:center;gap:16px;position:relative;
+}
+.trust__cell + .trust__cell::before{
+  content:"";position:absolute;left:0;top:26px;bottom:26px;width:1px;background:var(--hair-2)
+}
+.trust__ic{
+  width:42px;height:42px;flex-shrink:0;display:grid;place-items:center;
+  border:1px solid var(--hair-gold);color:var(--gold);
+  background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(246,242,234,.8));
+}
+.trust__cell strong{display:block;font-family:var(--serif);font-size:15.5px;color:var(--ink);letter-spacing:.1em;font-weight:500}
+.trust__cell span{display:block;font-size:12px;color:var(--muted);letter-spacing:.04em;margin-top:2px}
+
+/* ============ 热销产品 ============ */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch}
+.plan{
+  position:relative;background:var(--white);border:1px solid var(--hair);
+  padding:42px 34px 36px;display:flex;flex-direction:column;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1),box-shadow .45s ease,border-color .45s ease;
+}
+.plan::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--hair-gold),transparent);
+  opacity:0;transition:opacity .45s ease;
+}
+.plan:hover{transform:translateY(-8px);box-shadow:var(--shadow-m);border-color:rgba(176,141,87,.34)}
+.plan:hover::before{opacity:1}
+.plan--star{border-color:rgba(180,57,43,.28);box-shadow:var(--shadow-m)}
+.plan--star::before{opacity:1;background:linear-gradient(90deg,transparent,var(--cinnabar),transparent)}
+.plan__badge{
+  position:absolute;top:-1px;right:26px;padding:7px 14px;background:var(--cinnabar);color:#fff;
+  font-size:11px;letter-spacing:.2em;
+}
+.plan__badge--gold{background:linear-gradient(135deg,var(--gold),#96784a)}
+.plan__cn{font-family:var(--serif);font-size:20px;color:var(--ink);letter-spacing:.1em;font-weight:600;min-height:30px}
+.plan__en{font-family:var(--num);font-size:11px;letter-spacing:.28em;color:var(--faint);text-transform:uppercase;margin-top:7px}
+.plan__price{display:flex;align-items:flex-end;gap:6px;margin:26px 0 6px}
+.plan__price s{color:var(--faint);font-size:13px;margin-left:8px;margin-bottom:9px;font-family:var(--num)}
+.plan__price em{font-style:normal;font-size:20px;color:var(--cinnabar);font-family:var(--num);margin-bottom:9px}
+.plan__price b{
+  font-family:var(--num);font-size:56px;line-height:1;font-weight:400;color:var(--ink);letter-spacing:-.01em;
+}
+.plan__price span{font-size:13px;color:var(--muted);margin-bottom:10px;letter-spacing:.1em}
+.plan__cycle{font-size:12.5px;color:var(--muted);letter-spacing:.1em}
+.plan__cycle b{color:var(--cinnabar);font-weight:400}
+.plan__specs{list-style:none;margin:28px 0 30px;padding-top:24px;border-top:1px dashed var(--hair)}
+.plan__cycle{min-height:24px}
+.plan__specs li{
+  display:flex;align-items:center;gap:12px;padding:8px 0;font-size:14px;color:var(--dai);letter-spacing:.05em;
+}
+.plan__specs li::before{
+  content:"";width:5px;height:5px;transform:rotate(45deg);flex-shrink:0;
+  border:1px solid var(--gold);background:rgba(176,141,87,.16);
+}
+.plan__specs li b{font-family:var(--num);font-weight:400;color:var(--ink);font-size:15px}
+.plan__go{
+  margin-top:auto;height:48px;display:flex;align-items:center;justify-content:center;gap:9px;
+  border:1px solid var(--dai);color:var(--dai);font-size:14px;letter-spacing:.18em;transition:all .36s ease;
+}
+.plan__go:hover{background:var(--dai);color:#fbf9f5}
+.plan--star .plan__go{background:linear-gradient(135deg,var(--cinnabar),#9c2e22);border-color:transparent;color:#fff8f2}
+.plan--star .plan__go:hover{box-shadow:0 12px 30px rgba(180,57,43,.28);transform:translateY(-1px)}
+.plans__note{
+  margin-top:36px;text-align:center;font-size:13.5px;color:var(--muted);letter-spacing:.08em;
+}
+.plans__note a{color:var(--azure);border-bottom:1px solid rgba(47,93,140,.3);padding-bottom:2px;transition:.3s}
+.plans__note a:hover{color:var(--cinnabar);border-color:var(--cinnabar)}
+
+/* ============ 全球节点 ============ */
+.nodes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair-2);border:1px solid var(--hair-2)}
+.node{
+  background:var(--paper);padding:34px 30px 30px;position:relative;
+  display:flex;flex-direction:column;
+  transition:background .4s ease,transform .4s ease;
+}
+.node:hover{background:var(--white);z-index:2;box-shadow:var(--shadow-m)}
+.node__top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.node__cn{font-family:var(--serif);font-size:19px;color:var(--ink);letter-spacing:.14em;font-weight:600}
+.node__en{font-family:var(--num);font-size:10.5px;letter-spacing:.26em;color:var(--faint);text-transform:uppercase;margin-top:5px}
+.node__idx{font-family:var(--num);font-size:30px;color:rgba(35,35,58,.09);line-height:1}
+.node__tags{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 16px}
+.node__tags span{
+  font-size:11.5px;letter-spacing:.06em;padding:4px 10px;color:var(--azure);
+  background:var(--azure-w);border:1px solid rgba(47,93,140,.13);
+}
+.node__tags span.is-hot{color:var(--cinnabar);background:rgba(180,57,43,.06);border-color:rgba(180,57,43,.16)}
+.node__tags span.is-gold{color:#8e7038;background:rgba(176,141,87,.1);border-color:rgba(176,141,87,.24)}
+.node__desc{font-size:13.5px;color:var(--muted);line-height:1.95;letter-spacing:.03em}
+.node__go{
+  margin-top:auto;padding-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;
+  letter-spacing:.16em;color:var(--dai);transition:.34s;
+}
+.node__go i{font-style:normal;transition:transform .34s ease}
+.node:hover .node__go{color:var(--cinnabar)}
+.node:hover .node__go i{transform:translateX(5px)}
+
+/* ============ 为什么选择 ============ */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.pillar{
+  background:var(--white);border:1px solid var(--hair);padding:46px 38px 42px;position:relative;overflow:hidden;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1),box-shadow .45s ease;
+}
+.pillar:hover{transform:translateY(-6px);box-shadow:var(--shadow-m)}
+.pillar__num{
+  position:absolute;right:22px;top:14px;font-family:var(--serif);font-size:74px;
+  color:rgba(72,72,107,.055);line-height:1;pointer-events:none;
+}
+.pillar__ic{width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--hair-gold);color:var(--gold);margin-bottom:26px}
+.pillar h3{font-family:var(--serif);font-size:21px;color:var(--ink);letter-spacing:.14em;font-weight:600}
+.pillar__en{font-family:var(--num);font-size:10.5px;letter-spacing:.26em;color:var(--faint);text-transform:uppercase;margin:8px 0 18px}
+.pillar p{font-size:14px;color:var(--muted);line-height:2.05;letter-spacing:.03em}
+.pillar__line{margin-top:26px;height:1px;background:var(--hair-2);position:relative;overflow:hidden}
+.pillar__line::after{
+  content:"";position:absolute;left:0;top:0;height:100%;width:34%;
+  background:linear-gradient(90deg,var(--gold),transparent);transition:width .7s ease;
+}
+.pillar:hover .pillar__line::after{width:100%}
+
+/* ============ 应用场景 ============ */
+.scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scene{
+  border:1px solid var(--hair);background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(246,242,234,.55));
+  padding:30px 28px;display:flex;gap:18px;align-items:flex-start;transition:all .42s ease;
+}
+.scene:hover{border-color:rgba(176,141,87,.34);background:var(--white);transform:translateY(-4px);box-shadow:var(--shadow-s)}
+.scene__k{
+  font-family:var(--serif);font-size:22px;color:var(--cinnabar);flex-shrink:0;
+  width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(180,57,43,.22);
+  background:rgba(180,57,43,.04);
+}
+.scene h4{font-family:var(--serif);font-size:16.5px;color:var(--ink);letter-spacing:.1em;font-weight:600;margin-bottom:8px}
+.scene p{font-size:13px;color:var(--muted);line-height:1.9;letter-spacing:.02em}
+
+/* ============ 公告 ============ */
+.news{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+.news__list{border-top:1px solid var(--hair-2)}
+.news__item{
+  display:flex;gap:22px;padding:22px 4px;border-bottom:1px solid var(--hair-2);
+  transition:background .35s ease,padding .35s ease;
+}
+.news__item:hover{background:rgba(255,255,255,.7);padding-left:14px;padding-right:14px}
+.news__tag{
+  flex-shrink:0;font-size:11.5px;letter-spacing:.12em;color:var(--gold);border:1px solid var(--hair-gold);
+  height:26px;padding:0 10px;display:inline-flex;align-items:center;margin-top:3px;
+}
+.news__tag.is-new{color:var(--cinnabar);border-color:rgba(180,57,43,.28);background:rgba(180,57,43,.04)}
+.news__item p{font-size:14px;color:var(--dai);line-height:1.95;letter-spacing:.03em}
+.news__item p b{font-weight:400;color:var(--ink);font-family:var(--serif)}
+.news__side{
+  background:linear-gradient(165deg,#ffffff,#f7f3ec);border:1px solid var(--hair);padding:42px 36px;position:relative;
+}
+.news__side h3{font-family:var(--serif);font-size:22px;color:var(--ink);letter-spacing:.16em;font-weight:600;margin-bottom:8px}
+.news__side .en{font-family:var(--num);font-size:10.5px;letter-spacing:.28em;color:var(--faint);text-transform:uppercase;margin-bottom:24px}
+.news__side p{font-size:13.5px;color:var(--muted);line-height:2.05;letter-spacing:.03em}
+.news__links{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.news__links a{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 18px;border:1px solid var(--hair);background:rgba(255,255,255,.75);
+  font-size:13.5px;letter-spacing:.08em;color:var(--dai);transition:all .36s ease;
+}
+.news__links a:hover{border-color:var(--gold);color:var(--ink);transform:translateX(4px);background:#fff}
+.news__links i{font-style:normal;color:var(--gold)}
+
+/* ============ 收尾 CTA ============ */
+.cta{position:relative;overflow:hidden;background:linear-gradient(120deg,#2b2b46,#3b3b5c 48%,#4a4a70);padding:104px 0}
+.cta__lat{position:absolute;inset:0;width:100%;height:100%;opacity:.28}
+.cta__glow{
+  position:absolute;width:760px;height:760px;right:-160px;top:-320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(216,184,126,.2),transparent 66%);
+}
+.cta__in{position:relative;z-index:2;text-align:center}
+.cta__seal{
+  width:56px;height:56px;margin:0 auto 26px;border:1.4px solid rgba(216,184,126,.55);
+  display:grid;place-items:center;color:var(--gold-l);font-family:var(--serif);font-size:19px;
+}
+.cta h2{
+  font-family:var(--serif);font-size:clamp(28px,4vw,44px);color:#fdfbf7;
+  letter-spacing:.18em;font-weight:600;line-height:1.5;
+}
+.cta p{margin:20px auto 40px;max-width:600px;color:rgba(253,251,247,.62);font-size:14.5px;letter-spacing:.06em;font-weight:300}
+.cta__acts{display:flex;justify-content:center;flex-wrap:wrap;gap:16px}
+.cta .btn--ghost{border-color:rgba(253,251,247,.3);color:#fdfbf7;background:transparent}
+.cta .btn--ghost:hover{border-color:var(--gold-l);background:rgba(253,251,247,.06);color:#fff}
+
+/* ============ 页脚 ============ */
+.foot{background:var(--paper-3);padding:76px 0 0;border-top:1px solid var(--hair-2)}
+.foot__top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.25fr;gap:48px;padding-bottom:54px}
+.foot__about p{font-size:13px;color:var(--muted);line-height:2.1;letter-spacing:.03em;margin-top:20px;max-width:360px}
+.foot h5{font-family:var(--serif);font-size:15px;color:var(--ink);letter-spacing:.18em;font-weight:600;margin-bottom:22px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.foot ul a{font-size:13.5px;color:var(--muted);letter-spacing:.05em;transition:.3s;display:inline-flex;align-items:center;gap:8px}
+.foot ul a:hover{color:var(--cinnabar)}
+.foot__addr{font-size:13px;color:var(--muted);line-height:2;letter-spacing:.03em}
+.foot__tg{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.foot__tg a{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid var(--hair);
+  font-size:12.5px;color:var(--dai);background:rgba(255,255,255,.6);transition:.34s;letter-spacing:.05em;
+}
+.foot__tg a:hover{border-color:var(--azure);color:var(--azure);background:#fff}
+.foot__bar{
+  border-top:1px solid var(--hair-2);padding:26px 0;display:flex;justify-content:space-between;
+  align-items:center;gap:20px;flex-wrap:wrap;
+}
+.foot__bar p{font-size:12.5px;color:var(--faint);letter-spacing:.08em;font-family:var(--num)}
+.foot__bar span{font-size:12.5px;color:var(--faint);letter-spacing:.16em;font-family:var(--serif)}
+
+/* ============ 动效 ============ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1)}
+.rv.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ============ 响应式 ============ */
+@media (max-width:1080px){
+  .hero__in{grid-template-columns:1fr;gap:64px}
+  .moon{margin:0 auto;max-width:440px}
+  .hero__vert{display:none}
+  .nodes,.plans,.pillars,.scenes{grid-template-columns:repeat(2,1fr)}
+  .news{grid-template-columns:1fr;gap:44px}
+  .foot__top{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media (max-width:860px){
+  .nav__links{
+    position:absolute;top:82px;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(252,250,246,.98);border-bottom:1px solid var(--hair);
+    padding:10px 0;display:none;box-shadow:var(--shadow-m);
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:var(--sans);font-weight:300;color:var(--text);line-height:1.9;
-    background:var(--night-1);overflow-x:hidden;-webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none}
-  h1,h2,h3{font-family:var(--serif);color:var(--moon);text-wrap:balance}
-  .wrap{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
-  section{position:relative}
-
-  /* ============ shared ============ */
-  .eyebrow{display:inline-flex;align-items:center;gap:16px;font-size:.74rem;font-weight:400;
-    letter-spacing:.52em;text-indent:.52em;color:var(--gold);text-transform:uppercase}
-  .eyebrow::before,.eyebrow::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
-  .eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent)}
-  .sec-head{max-width:660px;margin:0 auto 84px;text-align:center}
-  .sec-head h2{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:500;line-height:1.35;letter-spacing:.08em;margin:24px 0 20px}
-  .sec-head h2 em{font-style:normal;background:linear-gradient(180deg,#f7f0dc,var(--gold));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
-  .sec-head p{color:var(--muted);font-size:1.04rem}
-
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
-    font-family:var(--sans);font-weight:400;font-size:.98rem;letter-spacing:.24em;text-indent:.24em;
-    padding:16px 40px;border:1px solid transparent;border-radius:2px;
-    transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,background .4s,color .4s,border-color .4s}
-  .btn-gold{background:linear-gradient(135deg,var(--gold-b),var(--gold) 55%,var(--gold-d));color:#1d1608;
-    box-shadow:0 14px 40px rgba(207,164,86,.26)}
-  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 56px rgba(207,164,86,.42)}
-  .btn-line{background:rgba(244,240,228,.03);border-color:var(--hair);color:var(--moon)}
-  .btn-line:hover{border-color:var(--gold);color:var(--gold-b);transform:translateY(-3px)}
-
-  /* ============ nav ============ */
-  .nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .5s,border-color .5s,backdrop-filter .5s;
-    border-bottom:1px solid transparent}
-  .nav.solid{background:rgba(5,8,14,.82);backdrop-filter:blur(14px);border-bottom-color:var(--hair2)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px;
-    max-width:var(--maxw);margin:0 auto;padding:0 32px}
-  .brand{display:flex;align-items:center;gap:14px}
-  .brand .mk{width:42px;height:42px;display:grid;place-items:center;flex-shrink:0;
-    border:1px solid var(--gold);color:var(--gold-b);font-family:var(--brush);font-size:1.4rem}
-  .brand .nm{font-family:var(--serif);font-weight:500;font-size:1.4rem;letter-spacing:.3em;color:var(--moon)}
-  .brand .sb{display:block;font-size:.56rem;letter-spacing:.44em;color:var(--faint);margin-top:3px}
-  .nav-links{display:flex;gap:48px}
-  .nav-links a{position:relative;color:var(--muted);font-size:.94rem;letter-spacing:.24em;transition:color .3s}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:1px;background:var(--gold);transition:width .4s}
-  .nav-links a:hover{color:var(--moon)}
-  .nav-links a:hover::after{width:100%}
-  .nav-cta{display:flex;align-items:center;gap:18px}
-  .nav-cta .btn{padding:12px 28px;font-size:.9rem}
-  .burger{display:none;background:none;border:0;color:var(--moon);font-size:1.4rem;cursor:pointer}
-
-  /* ============ HERO ============ */
-  .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
-    overflow:hidden;text-align:center;padding:120px 0 90px}
-  .sky{position:absolute;inset:0;z-index:1;
-    background:
-      radial-gradient(940px 520px at 50% 77%,rgba(226,176,92,.30),transparent 62%),
-      radial-gradient(1400px 700px at 50% 78%,rgba(207,164,86,.12),transparent 70%),
-      linear-gradient(180deg,#04070d 0%,#060b15 28%,#0a1120 50%,#101a2b 68%,#0a111c 100%);
-    animation:skyIn 2.2s ease both}
-  @keyframes skyIn{from{opacity:0}to{opacity:1}}
-
-  .rays{position:absolute;left:50%;top:74%;z-index:2;width:1900px;height:1900px;
-    transform:translate(-50%,-50%);opacity:0;
-    background:repeating-conic-gradient(from 0deg,rgba(244,220,166,.06) 0deg 2.5deg,transparent 2.5deg 13deg);
-    -webkit-mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 32%,transparent 58%);
-    mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 32%,transparent 58%);
-    animation:raysIn 3s ease 1s both,spin 120s linear infinite}
-  @keyframes raysIn{to{opacity:.6}}
-  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-
-  .sun{position:absolute;left:50%;top:78%;z-index:3;width:340px;height:340px;border-radius:50%;
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle at 50% 50%,rgba(250,233,192,.96) 0%,rgba(233,190,110,.62) 30%,rgba(200,150,70,.24) 52%,transparent 72%);
-    animation:sunRise 2.6s cubic-bezier(.16,.8,.3,1) .3s both}
-  .sun::after{content:"";position:absolute;left:50%;top:50%;width:92px;height:92px;border-radius:50%;
-    transform:translate(-50%,-50%);background:radial-gradient(circle,#fdf3dc,#f0d191 62%,rgba(240,209,145,0) 78%);
-    animation:pulse 7s ease-in-out infinite}
-  @keyframes sunRise{from{opacity:0;transform:translate(-50%,calc(-50% + 130px)) scale(.86)}
-    to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
-  @keyframes pulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.09)}}
-
-  .cloud{position:absolute;z-index:4;border-radius:50%;filter:blur(30px);pointer-events:none}
-  .cloud.a{width:520px;height:120px;top:38%;left:-30%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(214,226,240,.20),transparent 70%);animation:drift 46s linear infinite}
-  .cloud.b{width:420px;height:96px;top:50%;left:-26%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(240,214,180,.18),transparent 70%);animation:drift 62s linear infinite 8s}
-  .cloud.c{width:600px;height:140px;top:57%;left:-34%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(200,214,235,.14),transparent 70%);animation:drift 78s linear infinite 20s}
-  @keyframes drift{to{transform:translateX(160vw)}}
-
-  .rg{position:absolute;left:0;right:0;z-index:5;width:100%;will-change:transform;opacity:0;
-    animation:rgIn 1.5s cubic-bezier(.16,.8,.3,1) forwards}
-  .rg svg{display:block;width:100%;height:auto}
-  .rg1{bottom:19%;animation-delay:.55s}
-  .rg2{bottom:15%;animation-delay:.75s;z-index:6}
-  .rg3{bottom:11%;animation-delay:.95s;z-index:7}
-  .rg4{bottom:7%;animation-delay:1.15s;z-index:8}
-  .rg5{bottom:2.5%;animation-delay:1.35s;z-index:9}
-  .rg6{bottom:-1%;animation-delay:1.5s;z-index:10}
-  @keyframes rgIn{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:translateY(0)}}
-
-  .bird{position:absolute;z-index:11;opacity:0;stroke:#0b1220;stroke-width:1.6;fill:none;stroke-linecap:round}
-  .bird.b1{top:34%;width:26px;animation:fly 34s linear 3s infinite}
-  .bird.b2{top:38%;width:18px;animation:fly 44s linear 8s infinite}
-  .bird.b3{top:31%;width:14px;animation:fly 54s linear 16s infinite}
-  @keyframes fly{0%{opacity:0;transform:translate(-8vw,0)}8%{opacity:.55}92%{opacity:.55}100%{opacity:0;transform:translate(112vw,-70px)}}
-
-  .dust{position:absolute;inset:0;z-index:12;pointer-events:none;overflow:hidden}
-  .dust i{position:absolute;bottom:-14px;border-radius:50%;
-    background:radial-gradient(circle,var(--gold-b),rgba(244,220,166,0) 70%);animation:rise linear infinite}
-  @keyframes rise{0%{transform:translate3d(0,0,0);opacity:0}12%{opacity:.9}100%{transform:translate3d(46px,-104vh,0);opacity:0}}
-
-  .hero-in{position:relative;z-index:20}
-  .hero-in::before{content:"";position:absolute;inset:-70px -90px;z-index:-1;pointer-events:none;
-    background:radial-gradient(ellipse 58% 62% at 50% 54%,rgba(4,7,13,.62),rgba(4,7,13,.28) 55%,transparent 74%)}
-  .hero .eyebrow{animation:up 1.2s ease 1.5s both}
-  .title{font-family:var(--serif);font-weight:900;line-height:1;margin:34px 0 14px;
-    font-size:clamp(3.4rem,13.5vw,11rem);letter-spacing:.1em;display:flex;justify-content:center}
-  .title span{display:inline-block;
-    background:linear-gradient(175deg,#fffaef 4%,#f4e6c4 32%,var(--gold) 76%,var(--gold-d) 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold-b);
-    filter:drop-shadow(0 10px 32px rgba(207,164,86,.28));
-    animation:charIn 1.5s cubic-bezier(.16,.8,.3,1) both}
-  .title span:nth-child(1){animation-delay:1.62s}
-  .title span:nth-child(2){animation-delay:1.76s}
-  .title span:nth-child(3){animation-delay:1.90s}
-  .title span:nth-child(4){animation-delay:2.04s}
-  @keyframes charIn{from{opacity:0;transform:translateY(38px) scale(1.16);filter:blur(16px)}
-    to{opacity:1;transform:none;filter:blur(0)}}
-
-  .en{font-family:var(--num);font-size:1.16rem;letter-spacing:.72em;text-indent:.72em;color:var(--gold);
-    animation:up 1.3s ease 2.2s both}
-  .lead{max-width:620px;margin:36px auto 0;font-size:1.1rem;color:var(--text);line-height:2.05;
-    animation:up 1.3s ease 2.35s both}
-  .hero-cta{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:48px;animation:up 1.3s ease 2.5s both}
-  .hero-note{margin-top:24px;font-size:.87rem;color:var(--muted);letter-spacing:.08em;animation:up 1.3s ease 2.65s both}
-  .hero-note b{color:var(--gold-b);font-weight:400}
-  @keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
-  .seal{position:absolute;z-index:21;right:max(32px,calc(50% - 540px));top:26%;
-    width:74px;height:74px;display:grid;place-items:center;text-align:center;border-radius:5px;
-    background:var(--cinnabar);color:#fdf1e4;font-family:var(--brush);font-size:1.5rem;line-height:1.06;
-    box-shadow:inset 0 0 0 2px rgba(253,241,228,.5),0 12px 30px rgba(140,30,34,.34);
-    animation:stamp .8s cubic-bezier(.2,1.6,.4,1) 2.5s both}
-  @keyframes stamp{0%{opacity:0;transform:rotate(-9deg) scale(2)}62%{opacity:1;transform:rotate(-9deg) scale(.9)}
-    100%{opacity:1;transform:rotate(-9deg) scale(1)}}
-
-  .vside{position:absolute;z-index:21;left:max(32px,calc(50% - 552px));top:50%;transform:translateY(-50%);
-    writing-mode:vertical-rl;white-space:nowrap;font-family:var(--serif);font-size:.94rem;letter-spacing:.58em;color:#6b7488;
-    animation:up 1.3s ease 2.8s both}
-
-  .scroll{position:absolute;left:50%;bottom:34px;z-index:21;transform:translateX(-50%);
-    display:flex;flex-direction:column;align-items:center;gap:12px;animation:up 1.3s ease 2.95s both}
-  .scroll .tx{font-family:var(--num);font-size:.72rem;letter-spacing:.42em;color:var(--faint)}
-  .scroll .ln{position:relative;width:1px;height:52px;background:linear-gradient(180deg,var(--hair),transparent)}
-  .scroll .ln::after{content:"";position:absolute;left:50%;top:0;width:4px;height:4px;border-radius:50%;
-    background:var(--gold-b);transform:translateX(-50%);animation:fall 2.4s ease-in-out infinite}
-  @keyframes fall{0%{top:0;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:48px;opacity:0}}
-
-  /* ============ generic band ============ */
-  .band{padding:140px 0;position:relative;z-index:2}
-  .band.alt{background:linear-gradient(180deg,var(--night-1),var(--night-2) 48%,var(--night-1))}
-  .ridge{position:absolute;left:0;right:0;width:100%;line-height:0;z-index:1;pointer-events:none}
-  .ridge svg{display:block;width:100%;height:auto}
-  .ridge.top{top:-1px}
-  .ridge.bot{bottom:-1px}
-
-  /* ============ features ============ */
-  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--hair2)}
-  .feat{position:relative;padding:52px 40px 46px;background:var(--night-1);overflow:hidden;
-    transition:background .5s}
-  .feat::before{content:"";position:absolute;left:0;top:0;width:100%;height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-  .feat:hover{background:var(--night-3)}
-  .feat:hover::before{transform:scaleX(1)}
-  .feat .no{font-family:var(--num);font-size:2.7rem;color:var(--hair);line-height:1;transition:color .5s}
-  .feat:hover .no{color:var(--gold)}
-  .feat .ic{width:32px;height:32px;color:var(--gold-b);margin:22px 0 20px}
-  .feat .ic svg{width:100%;height:100%}
-  .feat h3{font-size:1.32rem;font-weight:500;letter-spacing:.1em;margin-bottom:14px}
-  .feat p{color:var(--muted);font-size:.96rem}
-
-  /* ============ stats ============ */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:2}
-  .st{text-align:center;padding:16px;position:relative}
-  .st+.st::before{content:"";position:absolute;left:0;top:22%;height:56%;width:1px;background:var(--hair2)}
-  .st .n{font-family:var(--num);font-weight:500;font-size:clamp(3rem,6vw,4.8rem);line-height:1;
-    font-variant-numeric:tabular-nums;
-    background:linear-gradient(180deg,#fbf6e8,var(--gold));-webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;color:var(--gold)}
-  .st .l{margin-top:18px;color:var(--muted);font-size:.92rem;letter-spacing:.26em;text-indent:.26em}
-
-  /* ============ nodes ============ */
-  .nodes{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:940px;margin:0 auto}
-  .nd{display:inline-flex;align-items:center;gap:13px;padding:14px 30px;border:1px solid var(--hair2);
-    background:rgba(16,24,40,.5);border-radius:2px;font-size:.99rem;letter-spacing:.14em;color:var(--text);
-    transition:border-color .4s,transform .4s,color .4s}
-  .nd:hover{border-color:var(--hair);color:var(--moon);transform:translateY(-4px)}
-  .nd .p{width:7px;height:7px;border-radius:50%;background:var(--jade);
-    box-shadow:0 0 0 0 rgba(63,149,131,.55);animation:pl 2.6s ease-out infinite}
-  @keyframes pl{0%{box-shadow:0 0 0 0 rgba(63,149,131,.55)}70%{box-shadow:0 0 0 9px rgba(63,149,131,0)}100%{box-shadow:0 0 0 0 rgba(63,149,131,0)}}
-  .nd .e{font-family:var(--num);font-size:.86rem;color:var(--faint)}
-
-  /* ============ pricing ============ */
-  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch}
-  .pl{position:relative;display:flex;flex-direction:column;padding:52px 40px;border-radius:3px;
-    background:linear-gradient(180deg,var(--night-3),var(--night-2));border:1px solid var(--hair2);
-    transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s,box-shadow .45s}
-  .pl:hover{transform:translateY(-10px);border-color:var(--hair);box-shadow:0 40px 80px rgba(0,0,0,.5)}
-  .pl.hot{border-color:var(--gold);background:linear-gradient(180deg,rgba(207,164,86,.10),var(--night-2) 60%);
-    box-shadow:0 30px 70px rgba(207,164,86,.12)}
-  .pl .tag{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);padding:7px 22px;border-radius:2px;
-    background:linear-gradient(135deg,var(--gold-b),var(--gold));color:#1d1608;font-size:.72rem;letter-spacing:.32em;text-indent:.32em}
-  .pl .nm{font-family:var(--serif);font-weight:700;font-size:2rem;letter-spacing:.24em;text-indent:.24em;color:var(--moon);margin-bottom:12px}
-  .pl .ds{color:var(--faint);font-size:.9rem;margin-bottom:30px;min-height:48px;line-height:1.8}
-  .pr{display:flex;align-items:baseline;gap:6px}
-  .pr .c{font-family:var(--num);font-size:1.5rem;color:var(--gold)}
-  .pr .v{font-family:var(--num);font-weight:600;font-size:3.8rem;line-height:1;color:var(--moon)}
-  .pr .u{color:var(--faint);font-size:.92rem}
-  .pl .hr{height:1px;background:var(--hair2);margin:32px 0}
-  .pl ul{list-style:none;display:flex;flex-direction:column;gap:17px;margin-bottom:36px;flex:1}
-  .pl li{display:flex;gap:14px;font-size:.96rem;color:var(--text)}
-  .pl li i{font-style:normal;color:var(--jade);flex-shrink:0}
-  .pl .btn{width:100%}
-
-  /* ============ CTA ============ */
-  .cta{position:relative;padding:170px 0 150px;overflow:hidden;text-align:center;
-    background:radial-gradient(900px 460px at 50% 108%,rgba(226,176,92,.20),transparent 66%),var(--night-0)}
-  .cta h2{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.24;
-    letter-spacing:.14em;margin-bottom:24px}
-  .cta h2 em{font-style:normal;background:linear-gradient(180deg,#fffaef,var(--gold));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
-  .cta p{color:var(--muted);max-width:540px;margin:0 auto 44px;font-size:1.06rem}
-
-  /* ============ footer ============ */
-  footer{position:relative;z-index:2;background:var(--night-0);border-top:1px solid var(--hair2);padding:90px 0 48px}
-  .fgrid2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:60px}
-  .fb p{color:var(--muted);font-size:.94rem;margin-top:24px;max-width:300px;line-height:1.95}
-  .fc h4{font-family:var(--serif);font-weight:500;font-size:1rem;letter-spacing:.22em;color:var(--moon);margin-bottom:24px}
-  .fc a{display:block;color:var(--faint);font-size:.92rem;margin-bottom:15px;transition:color .3s}
-  .fc a:hover{color:var(--gold-b)}
-  .fbot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
-    padding-top:32px;border-top:1px solid var(--hair2);color:var(--faint);font-size:.84rem;letter-spacing:.08em}
-
-  /* ============ reveal ============ */
-  .rv{opacity:0;transform:translateY(38px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
-  .rv.in{opacity:1;transform:none}
-
-  /* ============ responsive ============ */
-  @media(max-width:1000px){
-    .nav-links{display:none}.burger{display:block}
-    .fgrid{grid-template-columns:repeat(2,1fr)}
-    .plans{grid-template-columns:1fr;max-width:460px;margin:0 auto}
-    .fgrid2{grid-template-columns:1fr 1fr}
-    .seal,.vside{display:none}
-  }
-  @media(max-width:640px){
-    .band{padding:96px 0}
-    .fgrid{grid-template-columns:1fr}
-    .stats{grid-template-columns:1fr 1fr;gap:44px 0}
-    .st+.st::before{display:none}
-    .fgrid2{grid-template-columns:1fr}
-    .nav-cta .btn-line{display:none}
-    .title{letter-spacing:.04em}
-    .hero{padding:110px 0 80px}
-  }
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important;scroll-behavior:auto}
-    .rv{opacity:1;transform:none}
-    .sky,.rays,.sun,.rg,.hero .eyebrow,.title span,.en,.lead,.hero-cta,.hero-note,.seal,.vside,.scroll{opacity:1!important;transform:none!important;filter:none!important}
-    .seal{transform:rotate(-9deg)!important}
-    .rays{opacity:.5!important}
-  }
+  .nav.is-open .nav__links{display:flex}
+  .nav__links a{width:100%;padding:15px 32px;border-bottom:1px solid var(--hair-2)}
+  .nav__links a::after{display:none}
+  .nav__burger{display:block;margin-left:auto}
+  .nav__cta .nav__lang{display:none}
+  .trust__in{grid-template-columns:repeat(2,1fr)}
+  .trust__cell + .trust__cell::before{display:none}
+  .trust__cell{border-top:1px solid var(--hair-2)}
+}
+@media (max-width:820px){
+  .hero__meta{grid-template-columns:repeat(2,1fr);row-gap:20px}
+  .hero__meta div{padding:0 0 0 18px}
+  .hero__meta div:nth-child(odd){padding-left:0}
+  .hero__meta div::before{display:none!important}
+  .hero__meta div:nth-child(even)::before{display:block!important}
+}
+@media (max-width:680px){
+  .wrap{padding:0 20px}
+  .hero__meta b{font-size:21px}
+  .moon__chip{font-size:11.5px;padding:7px 12px}
+  .section{padding:78px 0}
+  .plans,.nodes,.pillars,.scenes{grid-template-columns:1fr}
+  .foot__top{grid-template-columns:1fr;gap:36px}
+  .hero{padding:60px 0 76px}
+  .hero__acts .btn{flex:1 1 100%}
+  .moon__chip--a{left:0}.moon__chip--b{left:-2%}
+  .plan{padding:34px 26px 30px}
+  .ticker__tag span{display:none}
+}
 </style>
 </head>
 <body>
 
+<!-- ================= 隐藏图形定义 ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- 冰裂纹窗棂 -->
+    <pattern id="lattice" width="160" height="160" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="square">
+        <path d="M0 46 L58 22 L118 54 L160 30"/>
+        <path d="M0 118 L44 96 L92 128 L160 104"/>
+        <path d="M58 22 L44 96"/>
+        <path d="M118 54 L92 128"/>
+        <path d="M58 22 L74 0"/>
+        <path d="M92 128 L104 160"/>
+        <path d="M44 96 L0 88"/>
+        <path d="M118 54 L160 66"/>
+        <path d="M0 46 L14 0"/>
+        <path d="M44 96 L18 160"/>
+      </g>
+    </pattern>
+    <!-- 祥云 -->
+    <symbol id="cloud" viewBox="0 0 132 60">
+      <path d="M12 52 q-10 -12 6 -16 q-2 -20 18 -18 q6 -16 24 -10 q10 -16 26 -4 q18 -4 20 14 q16 6 8 20 q-6 14 -22 14 z"
+            fill="currentColor"/>
+      <path d="M30 40 q8 -10 18 -4" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M60 34 q10 -8 18 -2" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.4" stroke-linecap="round"/>
+    </symbol>
+    <linearGradient id="gGlobe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5b8fbf"/>
+      <stop offset="52%" stop-color="#3f6f9e"/>
+      <stop offset="100%" stop-color="#48486b"/>
+    </linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d8b87e"/>
+      <stop offset="100%" stop-color="#b08d57"/>
+    </linearGradient>
+    <radialGradient id="gSheen" cx="34%" cy="26%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity=".9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
+
+<!-- ================= 顶部公告 ================= -->
+<div class="ticker">
+  <div class="ticker__tag">公告 <span>NOTICE</span></div>
+  <div class="ticker__view">
+    <div class="ticker__track">
+      <div class="ticker__item"><b>双ISP住宅IP</b>美国全解锁双ISP家宽住宅原生 IP VPS 上架开售，三网大陆优化线路，IP 纯净，TikTok 数据好，支持月付。</div>
+      <div class="ticker__item"><b>新加坡原生IP</b>支持 TikTok、Shopee 运营，流媒体全解锁，全新 IP 段。</div>
+      <div class="ticker__item"><b>台湾原生IP</b>解锁动画疯、Netflix、Disney+ 等流媒体，支持电商运营。</div>
+      <div class="ticker__item"><b>德国法兰克福</b>原生 IPv4 + IPv6 双栈精品优化线路已上线，AI 全家桶 / TikTok 解锁优秀。</div>
+      <div class="ticker__item"><b>双ISP住宅IP</b>美国全解锁双ISP家宽住宅原生 IP VPS 上架开售，三网大陆优化线路，IP 纯净，TikTok 数据好，支持月付。</div>
+      <div class="ticker__item"><b>新加坡原生IP</b>支持 TikTok、Shopee 运营，流媒体全解锁，全新 IP 段。</div>
+      <div class="ticker__item"><b>台湾原生IP</b>解锁动画疯、Netflix、Disney+ 等流媒体，支持电商运营。</div>
+      <div class="ticker__item"><b>德国法兰克福</b>原生 IPv4 + IPv6 双栈精品优化线路已上线，AI 全家桶 / TikTok 解锁优秀。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 导航 ================= -->
 <header class="nav" id="nav">
-  <div class="nav-in">
-    <a href="#" class="brand">
-      <span class="mk">云</span>
-      <span><span class="nm">青云</span><span class="sb">QINGYUN CLOUD</span></span>
+  <div class="wrap nav__in">
+    <a class="brand" href="https://lisahost.com/">
+      <span class="brand__seal">丽</span>
+      <span class="brand__txt">
+        <strong>丽萨主机</strong>
+        <span>LisaHost</span>
+      </span>
     </a>
-    <nav class="nav-links">
-      <a href="#feat">特性</a><a href="#node">节点</a><a href="#price">价格</a><a href="#cta">关于</a>
+    <nav class="nav__links" id="navLinks">
+      <a href="https://lisahost.com/">首页</a>
+      <a href="https://lisahost.com/cart.php">产品中心</a>
+      <a href="https://lisahost.com/knowledgebase.php">帮助中心</a>
+      <a href="https://lisahost.com/affiliates.php">推广赚钱</a>
+      <a href="https://lisahost.com/contact.php">申请加盟代理</a>
     </nav>
-    <div class="nav-cta">
-      <a href="#" class="btn btn-line">登录</a>
-      <a href="#price" class="btn btn-gold">立即部署</a>
-      <button class="burger" aria-label="菜单">☰</button>
+    <div class="nav__cta">
+      <a class="nav__lang" href="javascript:void(0)">简体中文 / 繁體</a>
+      <a class="nav__btn" href="https://lisahost.com/clientarea.php">用户中心 <i>→</i></a>
+      <button class="nav__burger" id="burger" aria-label="展开菜单"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<!-- ========== HERO ========== -->
+<!-- ================= 主视觉 ================= -->
 <section class="hero">
-  <div class="sky"></div>
-  <div class="rays"></div>
-  <div class="sun"></div>
-  <div class="cloud a"></div>
-  <div class="cloud b"></div>
-  <div class="cloud c"></div>
-
-  <div class="rg rg1" data-d="0.05">
-    <svg viewBox="0 0 1440 300" preserveAspectRatio="none"><path fill="#5c6f92" d="M0,300 L0,175 L0,148 L87,216 Q97,223 109,210 L218,92 L316,201 Q327,213 338,206 L436,138 L564,206 Q578,214 594,198 L738,58 L788,197 Q794,212 805,203 L906,126 L1074,195 Q1093,203 1104,193 L1204,104 L1286,228 Q1295,242 1310,233 L1440,150 L1440,196 L1440,300 Z"/></svg>
-  </div>
-  <div class="rg rg2" data-d="0.09">
-    <svg viewBox="0 0 1440 300" preserveAspectRatio="none"><path fill="#45577a" d="M0,300 L0,224 L0,176 L169,242 Q188,249 204,237 L351,132 L485,190 Q500,197 514,188 L643,104 L738,218 Q748,231 765,224 L922,158 L980,224 Q986,231 996,220 L1089,118 L1186,221 Q1197,232 1221,226 L1440,168 L1440,211 L1440,300 Z"/></svg>
-  </div>
-  <div class="rg rg3" data-d="0.14">
-    <svg viewBox="0 0 1440 290" preserveAspectRatio="none"><path fill="#313f5c" d="M0,290 L0,236 L0,206 L129,265 Q143,272 156,262 L270,168 L394,246 Q408,255 421,249 L535,196 L683,253 Q699,259 710,247 L813,142 L1033,242 Q1057,253 1073,246 L1213,188 L1343,262 Q1357,270 1365,264 L1440,210 L1440,242 L1440,290 Z"/></svg>
-  </div>
-  <div class="rg rg4" data-d="0.19">
-    <svg viewBox="0 0 1440 270" preserveAspectRatio="none"><path fill="#1f2c45" d="M0,270 L0,265 L0,222 L86,260 Q95,264 116,256 L308,186 L567,236 Q596,241 616,234 L800,166 L899,252 Q910,262 935,256 L1163,204 L1276,256 Q1288,262 1303,255 L1440,192 L1440,229 L1440,270 Z"/>
-      <g fill="#101a2c" transform="translate(528,189) scale(0.95)">
-        <rect x="31" y="0" width="2" height="9"/><circle cx="32" cy="1.5" r="2.4"/>
-        <path d="M32,8 C40,14 55,23 64,29 C56,26 49,27 44,29 L20,29 C15,27 8,26 0,29 C9,23 24,14 32,8 Z"/>
-        <rect x="15" y="29" width="3" height="15"/><rect x="25" y="29" width="3" height="15"/>
-        <rect x="36" y="29" width="3" height="15"/><rect x="46" y="29" width="3" height="15"/>
-        <rect x="11" y="44" width="42" height="3.4"/>
-      </g></svg>
-  </div>
-  <div class="rg rg5" data-d="0.25">
-    <svg viewBox="0 0 1440 240" preserveAspectRatio="none"><path fill="#131c30" d="M0,240 L0,235 L0,196 L104,230 Q116,234 134,228 L293,172 L423,205 Q437,209 462,204 L691,158 L802,226 Q814,233 834,228 L1016,186 L1205,218 Q1226,222 1247,218 L1440,178 L1440,221 L1440,240 Z"/></svg>
-  </div>
-  <div class="rg rg6" data-d="0.32">
-    <svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path fill="#070c16" d="M0,200 L0,200 L0,168 L189,191 Q210,194 230,190 L408,150 L507,186 Q518,190 538,187 L722,162 L866,182 Q882,184 911,180 L1173,142 L1253,186 Q1262,191 1280,188 L1440,166 L1440,195 L1440,200 Z"/></svg>
+  <div class="hero__bg">
+    <div class="hero__wash"></div>
+    <svg class="hero__lattice" style="color:rgba(72,72,107,.05)" aria-hidden="true">
+      <rect width="100%" height="100%" fill="url(#lattice)"/>
+    </svg>
   </div>
 
-  <svg class="bird b1" viewBox="0 0 40 12"><path d="M2,8 Q9,1 16,8 Q23,1 30,8"/></svg>
-  <svg class="bird b2" viewBox="0 0 40 12"><path d="M2,8 Q9,1 16,8 Q23,1 30,8"/></svg>
-  <svg class="bird b3" viewBox="0 0 40 12"><path d="M2,8 Q9,1 16,8 Q23,1 30,8"/></svg>
-
-  <div class="dust" id="dust"></div>
-
-  <div class="seal" aria-hidden="true">青云<br />万里</div>
-  <div class="vside" aria-hidden="true">江山万里 · 云起东方</div>
-
-  <div class="wrap hero-in">
-    <span class="eyebrow">云端基础设施</span>
-    <h1 class="title"><span>青</span><span>云</span><span>万</span><span>里</span></h1>
-    <div class="en">QINGYUN&nbsp;&nbsp;CLOUD</div>
-    <p class="lead">于山河之上，安放你的每一次计算。<br />三十余处全球节点，NVMe 全闪存储，扶摇直上，仅需 55 秒。</p>
-    <div class="hero-cta">
-      <a href="#price" class="btn btn-gold">立即部署</a>
-      <a href="#feat" class="btn btn-line">了解特性</a>
-    </div>
-    <p class="hero-note">无需绑卡 · 新用户礼赠 <b>¥100 体验金</b></p>
-  </div>
-
-  <div class="scroll" aria-hidden="true"><span class="tx">SCROLL</span><span class="ln"></span></div>
-</section>
-
-<!-- ========== FEATURES ========== -->
-<section class="band" id="feat">
   <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">何以青云</span>
-      <h2>为极致而生的<em>云端基座</em></h2>
-      <p>企业级硬件，秒级响应。稳如山岳，快似御风。</p>
-    </div>
-    <div class="fgrid">
-      <div class="feat rv"><div class="no">01</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div>
-        <h3>极速部署</h3><p>一杯茶未凉，服务器已就绪。快照、克隆、重建皆在弹指之间，55 秒直达。</p></div>
-      <div class="feat rv"><div class="no">02</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="4" rx="1"/><rect x="3" y="11" width="18" height="4" rx="1"/><rect x="3" y="17" width="18" height="2" rx="1"/></svg></div>
-        <h3>NVMe 全闪存储</h3><p>本地 NVMe Gen4，随机读写高达百万 IOPS。数据库与构建，从此畅快呼吸。</p></div>
-      <div class="feat rv"><div class="no">03</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>DDoS 智能防护</h3><p>多 Tbps 边缘清洗，自动拦截海量攻击。全线套餐标配，分文不取。</p></div>
-      <div class="feat rv"><div class="no">04</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg></div>
-        <h3>全球节点</h3><p>横跨六大洲的私有 10 Gbps 骨干网，让服务贴近每一位用户，触手可及。</p></div>
-      <div class="feat rv"><div class="no">05</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
-        <h3>完整 root 权限</h3><p>KVM 虚拟化，资源独享。自选系统、自定内核，随心所欲，尽在掌控。</p></div>
-      <div class="feat rv"><div class="no">06</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg></div>
-        <h3>实时监控</h3><p>秒级 CPU、内存、磁盘与带宽曲线，附 REST API 与 Terraform Provider。</p></div>
-    </div>
-  </div>
-</section>
+    <div class="hero__vert"><p>让每个人都可以轻松上云</p></div>
 
-<!-- ========== STATS ========== -->
-<section class="band alt">
-  <div class="ridge top"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0b1220" d="M0,60 Q180,26 360,54 Q540,20 720,50 Q900,22 1080,52 Q1260,28 1440,56 L1440,0 L0,0 Z"/></svg></div>
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">磐石之基</span>
-      <h2>数字为证，<em>稳如山岳</em></h2>
-      <p>可用性 SLA，白纸黑字，郑重承诺。</p>
-    </div>
-    <div class="stats">
-      <div class="st rv"><div class="n" data-t="99.99" data-s="%">0</div><div class="l">可用性 SLA</div></div>
-      <div class="st rv"><div class="n" data-t="30" data-s="+">0</div><div class="l">全球节点</div></div>
-      <div class="st rv"><div class="n" data-t="55" data-s="秒">0</div><div class="l">平均部署</div></div>
-      <div class="st rv"><div class="n" data-t="240" data-s="k+">0</div><div class="l">运行实例</div></div>
-    </div>
-  </div>
-  <div class="ridge bot"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#070c16" d="M0,34 Q180,66 360,38 Q540,70 720,42 Q900,68 1080,40 Q1260,64 1440,36 L1440,90 L0,90 Z"/></svg></div>
-</section>
+    <div class="hero__in">
+      <!-- 左：文案 -->
+      <div class="hero__copy rv">
+        <div class="hero__label"><b>香港总部</b> 全球自有机柜 · 多年用心经营</div>
+        <h1><span class="l1">优质网络</span><span class="l2">专业服务</span></h1>
+        <p class="hero__sub">
+          化繁为简，简约而不简单，「云」理应如此。<br />
+          三网 CN2 GIA 精品直连、双 ISP 家宽住宅原生 IP、全球九大地区节点，
+          <em>即时自动开通</em>，48 小时不满意无条件退款。
+        </p>
+        <div class="hero__acts">
+          <a class="btn btn--primary" href="https://lisahost.com/cart.php">立刻选购 <i>→</i></a>
+          <a class="btn btn--ghost" href="https://lisahost.com/register.php">注册账户 <i>→</i></a>
+        </div>
+        <div class="hero__meta">
+          <div><b>9<i>地区</i></b><span>全球节点</span></div>
+          <div><b>T3<i>+</i></b><span>数据中心标准</span></div>
+          <div><b>48<i>小时</i></b><span>无条件退款</span></div>
+          <div><b>24<i>小时</i></b><span>人工守护</span></div>
+        </div>
+      </div>
 
-<!-- ========== NODES ========== -->
-<section class="band" id="node">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">四海通达</span>
-      <h2>节点遍布，<em>三网优化</em></h2>
-      <p>中国大陆 BGP 多线直连，海外骨干低延迟互联，就近接入。</p>
-    </div>
-    <div class="nodes rv">
-      <span class="nd"><span class="p"></span>上海 <span class="e">Shanghai</span></span>
-      <span class="nd"><span class="p"></span>北京 <span class="e">Beijing</span></span>
-      <span class="nd"><span class="p"></span>广州 <span class="e">Guangzhou</span></span>
-      <span class="nd"><span class="p"></span>香港 <span class="e">Hong Kong</span></span>
-      <span class="nd"><span class="p"></span>新加坡 <span class="e">Singapore</span></span>
-      <span class="nd"><span class="p"></span>东京 <span class="e">Tokyo</span></span>
-      <span class="nd"><span class="p"></span>法兰克福 <span class="e">Frankfurt</span></span>
-      <span class="nd"><span class="p"></span>硅谷 <span class="e">Silicon Valley</span></span>
+      <!-- 右：月洞门 -->
+      <div class="moon rv">
+        <div class="moon__halo"></div>
+        <div class="moon__tick"></div>
+        <div class="moon__ring">
+          <svg viewBox="0 0 520 520" aria-label="全球节点示意">
+            <!-- 窗棂底纹 -->
+            <g style="color:rgba(72,72,107,.05)">
+              <rect width="520" height="520" fill="url(#lattice)"/>
+            </g>
+            <!-- 远山薄雾（淡） -->
+            <path d="M0 392 Q92 340 176 380 Q250 414 322 372 Q404 326 520 380 L520 520 L0 520 Z"
+                  fill="rgba(111,156,142,.10)"/>
+            <path d="M0 432 Q120 392 214 424 Q310 456 392 424 Q460 398 520 420 L520 520 L0 520 Z"
+                  fill="rgba(47,93,140,.09)"/>
+            <!-- 祥云 -->
+            <g style="color:rgba(125,168,206,.30)">
+              <use href="#cloud" x="34" y="96" width="132" height="60"/>
+              <use href="#cloud" x="330" y="140" width="108" height="49" opacity=".8"/>
+              <use href="#cloud" x="252" y="66" width="80" height="36" opacity=".55"/>
+            </g>
+            <!-- 地球 -->
+            <g transform="translate(260 262)">
+              <circle r="118" fill="url(#gGlobe)" opacity=".92"/>
+              <circle r="118" fill="url(#gSheen)"/>
+              <g fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1">
+                <ellipse rx="118" ry="42"/>
+                <ellipse rx="118" ry="82"/>
+                <ellipse rx="42"  ry="118"/>
+                <ellipse rx="82"  ry="118"/>
+                <circle r="118" stroke="rgba(255,255,255,.5)"/>
+              </g>
+              <!-- 节点 -->
+              <g fill="#f6dfae">
+                <circle cx="-62" cy="-42" r="3.4"/><circle cx="-62" cy="-42" r="3.4" class="pulse" opacity=".5"/>
+                <circle cx="18"  cy="-70" r="3.4"/><circle cx="18"  cy="-70" r="3.4" class="pulse" opacity=".5" style="animation-delay:.7s"/>
+                <circle cx="72"  cy="6"   r="3.4"/><circle cx="72"  cy="6"   r="3.4" class="pulse" opacity=".5" style="animation-delay:1.4s"/>
+                <circle cx="-24" cy="58"  r="3.4"/><circle cx="-24" cy="58"  r="3.4" class="pulse" opacity=".5" style="animation-delay:2.1s"/>
+                <circle cx="44"  cy="76"  r="3"/>
+                <circle cx="-88" cy="22"  r="3"/>
+              </g>
+              <!-- 连线 -->
+              <g fill="none" stroke="rgba(246,223,174,.5)" stroke-width="1" stroke-dasharray="3 5">
+                <path d="M-62 -42 Q-10 -84 18 -70"/>
+                <path d="M18 -70 Q66 -44 72 6"/>
+                <path d="M72 6 Q34 52 -24 58"/>
+                <path d="M-24 58 Q-84 40 -88 22"/>
+              </g>
+            </g>
+            <!-- 描金弧 -->
+            <g fill="none" stroke="url(#gGold)" stroke-width="1" opacity=".6">
+              <circle cx="260" cy="262" r="156" stroke-dasharray="1 7"/>
+              <circle cx="260" cy="262" r="184" stroke-dasharray="24 220" transform="rotate(-40 260 262)" stroke-width="1.6"/>
+            </g>
+          </svg>
+        </div>
+        <div class="moon__chip moon__chip--a"><u>CN2 GIA</u> 三网精品直连</div>
+        <div class="moon__chip moon__chip--b"><u>双 ISP</u> 家宽住宅原生 IP</div>
+        <div class="moon__chip moon__chip--c"><u>NVMe</u> 全闪高性能存储</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== PRICING ========== -->
-<section class="band alt" id="price">
-  <div class="ridge top"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0b1220" d="M0,58 Q180,24 360,52 Q540,18 720,48 Q900,20 1080,50 Q1260,26 1440,54 L1440,0 L0,0 Z"/></svg></div>
+<!-- ================= 信任条 ================= -->
+<section class="trust">
+  <div class="wrap"><div class="trust__in">
+    <div class="trust__cell rv">
+      <div class="trust__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+      <div><strong>即时自动开通</strong><span>下单后系统秒级交付</span></div>
+    </div>
+    <div class="trust__cell rv">
+      <div class="trust__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div><strong>48 小时退款</strong><span>不满意无条件退</span></div>
+    </div>
+    <div class="trust__cell rv">
+      <div class="trust__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></div>
+      <div><strong>T3+ 机房标准</strong><span>BGP 多线冗余接入</span></div>
+    </div>
+    <div class="trust__cell rv">
+      <div class="trust__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div><strong>专业在线客服</strong><span>中文技术支持团队</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= 热销产品 ================= -->
+<section class="section" id="products">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">明码标价</span>
-      <h2>只为性能付费，<em>绝无冗余</em></h2>
-      <p>月付固定资费，按秒计费，随时升降配置，进退自如。</p>
+      <div class="sec-eyebrow">Hot Products</div>
+      <h2>热销<em>·</em>推荐</h2>
+      <p>中国大陆优化线路，三网 CN2 GIA 国际精品网络，低延迟、高连接性，月付无压力。</p>
+      <div class="sec-rule"></div>
     </div>
+
     <div class="plans">
-      <div class="pl rv">
-        <div class="nm">微云</div>
-        <p class="ds">个人项目、测试环境与小型应用的理想之选。</p>
-        <div class="pr"><span class="c">¥</span><span class="v">29</span><span class="u">/月</span></div>
-        <div class="hr"></div>
-        <ul><li><i>—</i>2 核 vCPU</li><li><i>—</i>4 GB 内存</li><li><i>—</i>80 GB NVMe 存储</li><li><i>—</i>4 TB 流量</li><li><i>—</i>BGP 多线 · DDoS 防护</li></ul>
-        <a href="#" class="btn btn-line">选择微云</a>
-      </div>
-      <div class="pl hot rv">
-        <span class="tag">最受欢迎</span>
-        <div class="nm">凌霄</div>
-        <p class="ds">生产应用与繁忙团队的黄金档位，性价俱佳。</p>
-        <div class="pr"><span class="c">¥</span><span class="v">68</span><span class="u">/月</span></div>
-        <div class="hr"></div>
-        <ul><li><i>—</i>4 核 vCPU</li><li><i>—</i>16 GB 内存</li><li><i>—</i>200 GB NVMe 存储</li><li><i>—</i>8 TB 流量</li><li><i>—</i>每日自动快照</li><li><i>—</i>7×24 优先支持 · 备案协助</li></ul>
-        <a href="#" class="btn btn-gold">选择凌霄</a>
-      </div>
-      <div class="pl rv">
-        <div class="nm">鲲鹏</div>
-        <p class="ds">高并发、大流量业务的旗舰算力，一飞冲天。</p>
-        <div class="pr"><span class="c">¥</span><span class="v">168</span><span class="u">/月</span></div>
-        <div class="hr"></div>
-        <ul><li><i>—</i>8 核 vCPU</li><li><i>—</i>32 GB 内存</li><li><i>—</i>500 GB NVMe 存储</li><li><i>—</i>16 TB 流量</li><li><i>—</i>可选独享 CPU</li><li><i>—</i>99.99% SLA · 专属客户经理</li></ul>
-        <a href="#" class="btn btn-line">选择鲲鹏</a>
-      </div>
+      <article class="plan rv">
+        <div class="plan__badge plan__badge--gold">限时试用</div>
+        <h3 class="plan__cn">美国 CN2 GIA · 试用</h3>
+        <div class="plan__en">US CN2 GIA · Trial</div>
+        <div class="plan__price"><em>￥</em><b>2</b><span>元起</span></div>
+        <div class="plan__cycle">1 天试用 · 体验真实线路质量</div>
+        <ul class="plan__specs">
+          <li><b>1</b> 核 CPU</li>
+          <li><b>1</b> GB 内存</li>
+          <li><b>10</b> GB SSD 硬盘</li>
+          <li><b>1</b> GB 流量</li>
+          <li>独立公网 IP</li>
+        </ul>
+        <a class="plan__go" href="https://lisahost.com/cart.php">立刻选购 <i>→</i></a>
+      </article>
+
+      <article class="plan plan--star rv">
+        <div class="plan__badge">最受欢迎</div>
+        <h3 class="plan__cn">美国 CN2 GIA · 基础版</h3>
+        <div class="plan__en">US CN2 GIA · Basic</div>
+        <div class="plan__price"><em>￥</em><b>35</b><span>元起</span><s>原价 ￥50</s></div>
+        <div class="plan__cycle">月付 · <b>限时特价</b></div>
+        <ul class="plan__specs">
+          <li><b>1</b> 核 CPU</li>
+          <li><b>1</b> GB 内存</li>
+          <li><b>20</b> GB SSD 硬盘</li>
+          <li><b>500</b> GB 流量</li>
+          <li>独立公网 IP</li>
+        </ul>
+        <a class="plan__go" href="https://lisahost.com/cart.php">立刻选购 <i>→</i></a>
+      </article>
+
+      <article class="plan rv">
+        <div class="plan__badge plan__badge--gold">自由配置</div>
+        <h3 class="plan__cn">更多选择 · 全球线路</h3>
+        <div class="plan__en">More Options · Global</div>
+        <div class="plan__price"><em>￥</em><b>25</b><span>元起</span></div>
+        <div class="plan__cycle">月付 · 按需定制配置</div>
+        <ul class="plan__specs">
+          <li>自选 CPU 核心</li>
+          <li>自选内存容量</li>
+          <li>自选硬盘空间</li>
+          <li>自选流量额度</li>
+          <li>九大地区任选</li>
+        </ul>
+        <a class="plan__go" href="https://lisahost.com/cart.php">立刻选购 <i>→</i></a>
+      </article>
     </div>
+
+    <p class="plans__note rv">没有适合您的线路和套餐？<a href="https://lisahost.com/contact.php">联系我们定制 →</a></p>
   </div>
-  <div class="ridge bot"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#04070d" d="M0,32 Q180,64 360,36 Q540,68 720,40 Q900,66 1080,38 Q1260,62 1440,34 L1440,90 L0,90 Z"/></svg></div>
 </section>
 
-<!-- ========== CTA ========== -->
-<section class="cta" id="cta">
+<!-- ================= 全球节点 ================= -->
+<section class="section section--paper" id="nodes">
   <div class="wrap">
-    <span class="eyebrow rv">御风而行</span>
-    <h2 class="rv">扶摇直上，<em>青云可期</em></h2>
-    <p class="rv">已有 40,000+ 开发者在青云之上构建。领取 ¥100 体验金，即刻启程。</p>
-    <div class="rv"><a href="#price" class="btn btn-gold">免费开始 · 无需绑卡</a></div>
+    <div class="sec-head rv">
+      <div class="sec-eyebrow">Global Network</div>
+      <h2>九州<em>·</em>四海</h2>
+      <p>自有机柜与带宽资源遍布全球核心机房，原生 IP、双 ISP 家宽住宅 IP、大带宽不限流量，按需取用。</p>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="nodes">
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">美国 · 9929 / 4837</div><div class="node__en">United States</div></div>
+          <div class="node__idx">01</div>
+        </div>
+        <div class="node__tags"><span class="is-hot">双ISP 住宅IP</span><span>顶级精品网</span><span>不限流量</span></div>
+        <p class="node__desc">默认分配双 ISP 家宽住宅美国原生 IP，IP 纯净，宿主机超大带宽，NVMe 高性能固态，TikTok 运营数据优秀。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">美国 · CERA 高防</div><div class="node__en">CERA · CN2 GIA</div></div>
+          <div class="node__idx">02</div>
+        </div>
+        <div class="node__tags"><span>CN2 GIA</span><span class="is-gold">高防</span><span>原生 IP</span></div>
+        <p class="node__desc">CERA 机房高防 CN2 GIA 线路原生 IP 云主机（172 段 / 23 段），三网直连低延迟，适合建站与业务承载。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">美国 · 纽约 / 芝加哥</div><div class="node__en">NYC · Chicago</div></div>
+          <div class="node__idx">03</div>
+        </div>
+        <div class="node__tags"><span class="is-hot">大带宽</span><span>住宅原生 IP</span><span>不限流量</span></div>
+        <p class="node__desc">纽约、芝加哥双 ISP 家宽住宅原生 IP，大带宽不限流量，另有真实民房住宅托管 VDS，IP 质量极高。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">香港 · CMI 三网直连</div><div class="node__en">Hong Kong</div></div>
+          <div class="node__idx">04</div>
+        </div>
+        <div class="node__tags"><span class="is-hot">CMI / CU2 / CN2</span><span>iCable</span><span>HGC</span></div>
+        <p class="node__desc">三网直连精品线路，延迟低、带宽大、IP 纯净；另有 iCable 与 HGC 双 ISP 住宅静态 IP 家宽，可看 TVB 及全部港区流媒体。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">新加坡 · 台湾</div><div class="node__en">Singapore · Taiwan</div></div>
+          <div class="node__idx">05</div>
+        </div>
+        <div class="node__tags"><span>原生 IP</span><span>中华电信 hinet</span><span class="is-gold">大带宽</span></div>
+        <p class="node__desc">新加坡原生 IP 支持 TikTok、Shopee 运营；台湾中华电信 hinet 双 ISP 住宅 IP，解锁动画疯、Netflix、Disney+。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">日本 · 韩国</div><div class="node__en">Japan · Korea</div></div>
+          <div class="node__idx">06</div>
+        </div>
+        <div class="node__tags"><span>IIJ 双ISP</span><span>三网优化</span><span class="is-hot">低延迟</span></div>
+        <p class="node__desc">日本 IIJ 本土宽带运营商双 ISP 家宽住宅 IP；韩国双 ISP 住宅静态 IP，三网优化低延迟，解锁全部韩区服务。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">德国 · 法兰克福</div><div class="node__en">Frankfurt</div></div>
+          <div class="node__idx">07</div>
+        </div>
+        <div class="node__tags"><span class="is-gold">IPv4 + IPv6 双栈</span><span>9929 优化</span><span>AI 全家桶</span></div>
+        <p class="node__desc">原生 IPv4 + 原生 IPv6 双栈，三网 9929 精品优化线路，AI 全家桶与 TikTok 解锁表现优秀；另有双 ISP 家宽住宅 VDS。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">英国 · 越南</div><div class="node__en">UK · Vietnam</div></div>
+          <div class="node__idx">08</div>
+        </div>
+        <div class="node__tags"><span>全新 A 段</span><span>小众纯净 IP</span><span class="is-hot">TikTok</span></div>
+        <p class="node__desc">英国双 ISP 住宅原生 IP 大带宽；越南小众西贡邮电运营商 IP 段双 ISP 家宽住宅 IP，TikTok 运营数据表现好。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+
+      <article class="node rv">
+        <div class="node__top">
+          <div><div class="node__cn">年付特价 · 住宅 IP 物理机</div><div class="node__en">Yearly · Dedicated</div></div>
+          <div class="node__idx">09</div>
+        </div>
+        <div class="node__tags"><span class="is-gold">月 16 元起</span><span>252 个住宅 IP</span><span>LisaPacketTransit</span></div>
+        <p class="node__desc">年付特价 VPS 低至月付 16 元；双 ISP 住宅 IP 物理机可用 252 个住宅 IP，适合大规模营销与矩阵业务。</p>
+        <a class="node__go" href="https://lisahost.com/cart.php">查看方案 <i>→</i></a>
+      </article>
+    </div>
   </div>
-  <div class="ridge bot"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#04070d" d="M0,72 Q160,44 320,68 Q480,36 640,64 Q800,34 960,62 Q1120,38 1280,66 Q1360,54 1440,64 L1440,120 L0,120 Z"/></svg></div>
 </section>
 
-<footer>
+<!-- ================= 为什么选择 ================= -->
+<section class="section" id="why">
   <div class="wrap">
-    <div class="fgrid2">
-      <div class="fb">
-        <a href="#" class="brand"><span class="mk">云</span><span><span class="nm">青云</span><span class="sb">QINGYUN CLOUD</span></span></a>
-        <p>下一代云端基础设施，为敏于构建、疾于交付的开发者而生。</p>
-      </div>
-      <div class="fc"><h4>产品</h4><a href="#feat">特性</a><a href="#price">价格</a><a href="#node">节点</a><a href="#">API 文档</a></div>
-      <div class="fc"><h4>公司</h4><a href="#">关于我们</a><a href="#">博客</a><a href="#">加入我们</a><a href="#">服务状态</a></div>
-      <div class="fc"><h4>帮助</h4><a href="#">帮助中心</a><a href="#">备案协助</a><a href="#">服务协议</a><a href="#">隐私政策</a></div>
+    <div class="sec-head rv">
+      <div class="sec-eyebrow">Why LisaHost</div>
+      <h2>为何<em>·</em>选择丽萨主机</h2>
+      <p>优质的网络、高性能的服务器、专业的技术及客服团队，以及完善的帮助文档，带给您最佳的云端服务体验。</p>
+      <div class="sec-rule"></div>
     </div>
-    <div class="fbot">
-      <span>© 2026 青云科技 · 保留所有权利　沪ICP备 2026000000 号（示例）</span>
-      <span style="letter-spacing:.28em;color:var(--muted)">江山万里 · 云起东方</span>
+
+    <div class="pillars">
+      <article class="pillar rv">
+        <div class="pillar__num">壹</div>
+        <div class="pillar__ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/>
+          </svg>
+        </div>
+        <h3>平台运维</h3>
+        <div class="pillar__en">Operations</div>
+        <p>运维专家团队与标准化运维体系，规避运维风险；24 小时人工守护，突发事件快速响应与处理。</p>
+        <div class="pillar__line"></div>
+      </article>
+
+      <article class="pillar rv">
+        <div class="pillar__num">貳</div>
+        <div class="pillar__ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="3" y="3" width="18" height="7" rx="1"/><rect x="3" y="14" width="18" height="7" rx="1"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/>
+          </svg>
+        </div>
+        <h3>平台基建</h3>
+        <div class="pillar__en">Infrastructure</div>
+        <p>数据中心采用 T3+ 建设标准；网络采用 BGP 多线接入，具备单一线路故障的容灾能力，稳定可依。</p>
+        <div class="pillar__line"></div>
+      </article>
+
+      <article class="pillar rv">
+        <div class="pillar__num">叄</div>
+        <div class="pillar__ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M12 7.2v4.3M12 11.5L6.4 17M12 11.5L17.6 17"/>
+          </svg>
+        </div>
+        <h3>平台架构</h3>
+        <div class="pillar__en">Architecture</div>
+        <p>产品基础架构采用分布式冗余方案，保障平台本身及对外服务具有超高可用性，业务稳定不掉线。</p>
+        <div class="pillar__line"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 应用场景 ================= -->
+<section class="section section--paper" id="scenes">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-eyebrow">Use Cases</div>
+      <h2>百业<em>·</em>可用</h2>
+      <p>纯净 IP、稳定线路与全解锁能力，覆盖跨境电商、内容运营、流媒体与 AI 工具的日常所需。</p>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="scenes">
+      <article class="scene rv"><div class="scene__k">播</div><div><h4>TikTok 运营</h4><p>双 ISP 家宽住宅原生 IP，IP 纯净、归属真实，账号数据表现稳定。</p></div></article>
+      <article class="scene rv"><div class="scene__k">贸</div><div><h4>跨境电商</h4><p>Shopee、亚马逊、TEMU、ETSY 多平台运营，一店一 IP 干净隔离。</p></div></article>
+      <article class="scene rv"><div class="scene__k">影</div><div><h4>流媒体解锁</h4><p>Netflix、Disney+、HBO Max、Prime Video、动画疯、TVB 全解锁。</p></div></article>
+      <article class="scene rv"><div class="scene__k">智</div><div><h4>AI 全家桶</h4><p>ChatGPT 等 AI 服务解锁良好，德国双栈原生 IP 表现尤为优秀。</p></div></article>
+      <article class="scene rv"><div class="scene__k">建</div><div><h4>建站与外贸</h4><p>CN2 GIA 精品回国线路，高防加持，访问快、抗打，适合长期业务。</p></div></article>
+      <article class="scene rv"><div class="scene__k">矩</div><div><h4>营销矩阵</h4><p>住宅 IP 物理机可用 252 个住宅 IP，支撑大规模账号矩阵与自动化。</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 公告 & 关于 ================= -->
+<section class="section" id="news">
+  <div class="wrap">
+    <div class="news">
+      <div class="rv">
+        <div class="sec-head" style="text-align:left;margin-bottom:34px">
+          <div class="sec-eyebrow" style="margin-bottom:14px">Announcements</div>
+          <h2 style="font-size:30px">最新公告</h2>
+        </div>
+        <div class="news__list">
+          <div class="news__item"><span class="news__tag is-new">NEW</span><p><b>【双 ISP 住宅 IP】</b>美国全解锁双 ISP 家宽住宅原生 IP VPS 上架开售，三网大陆优化线路，IP 纯净，全解锁美国本土服务，TikTok 数据好，支持月付。</p></div>
+          <div class="news__item"><span class="news__tag is-new">NEW</span><p><b>【德国法兰克福】</b>精品优化线路双栈原生 IP VPS 已上线，原生 IPv4 + IPv6，三网优化线路，AI 全家桶 / TikTok 解锁优秀，欢迎下单试用。</p></div>
+          <div class="news__item"><span class="news__tag">上架</span><p><b>【新加坡原生 IP VPS】</b>新加坡原生 IP，支持 TikTok、Shopee 运营，流媒体全解锁，全新 IP 段，IP 纯净。</p></div>
+          <div class="news__item"><span class="news__tag">上架</span><p><b>【台湾原生 IP VPS】</b>台湾原生 IP，解锁动画疯、Netflix、Disney+ 等流媒体，全新 IP 段，支持运营电商。</p></div>
+          <div class="news__item"><span class="news__tag">线路</span><p><b>【香港三网 CMI】</b>香港三网 CMI 精品线路，延迟低、带宽大、IP 纯净，ISP IP，解锁 Netflix / Disney 等各种流媒体。</p></div>
+          <div class="news__item"><span class="news__tag">进展</span><p><b>【ISP cogent 38/154/209 IP 段故障】</b>目前网络已恢复正常，我们仍在等待运营商官方通告。</p></div>
+        </div>
+      </div>
+
+      <aside class="news__side rv">
+        <h3>关于丽萨主机</h3>
+        <div class="en">About LisaHost</div>
+        <p>丽萨主机公司总部位于香港新界，经过多年的用心经营，已在全球多个数据中心机房拥有专属机柜和带宽资源，拥有多名资深网络技术与运维工程师，旨在以优质的贴身服务，为用户提供一流的云计算服务。</p>
+        <p style="margin-top:14px;color:var(--dai)">企业愿景 —— <b style="font-family:var(--serif);font-weight:600;color:var(--ink)">让每个人都可以轻松上云。</b></p>
+        <div class="news__links">
+          <a href="https://t.me/lisahost_chat">Telegram 交流群 <i>→</i></a>
+          <a href="https://t.me/lisahost_channel">Telegram 公告栏频道 <i>→</i></a>
+          <a href="https://lisahost.com/knowledgebase.php">帮助中心 · 使用文档 <i>→</i></a>
+          <a href="https://lisahost.com/submitticket.php">提交工单 · 售后服务 <i>→</i></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 收尾 CTA ================= -->
+<section class="cta">
+  <svg class="cta__lat" style="color:rgba(255,252,246,.17)" aria-hidden="true"><rect width="100%" height="100%" fill="url(#lattice)"/></svg>
+  <div class="cta__glow"></div>
+  <div class="wrap cta__in">
+    <div class="cta__seal rv">丽</div>
+    <h2 class="rv">立即拥有自己的云服务器</h2>
+    <p class="rv">注册即可选购，系统即时自动开通；48 小时内不满意，无条件退款。</p>
+    <div class="cta__acts rv">
+      <a class="btn btn--primary" href="https://lisahost.com/register.php">注册账户 <i>→</i></a>
+      <a class="btn btn--ghost" href="https://lisahost.com/cart.php">浏览全部产品 <i>→</i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 页脚 ================= -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__about">
+        <a class="brand" href="https://lisahost.com/">
+          <span class="brand__seal">丽</span>
+          <span class="brand__txt"><strong>丽萨主机</strong><span>LisaHost</span></span>
+        </a>
+        <p>优质网络，专业服务。总部位于香港新界，全球多个数据中心拥有专属机柜与带宽资源，为用户提供一流的云计算服务。</p>
+      </div>
+
+      <div>
+        <h5>网站导航</h5>
+        <ul>
+          <li><a href="https://lisahost.com/clientarea.php">用户中心</a></li>
+          <li><a href="https://lisahost.com/cart.php">产品中心</a></li>
+          <li><a href="https://lisahost.com/knowledgebase.php">帮助中心</a></li>
+          <li><a href="https://lisahost.com/affiliates.php">推广赚钱</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>服务支持</h5>
+        <ul>
+          <li><a href="https://lisahost.com/contact.php">售前咨询</a></li>
+          <li><a href="https://lisahost.com/submitticket.php">售后服务</a></li>
+          <li><a href="https://lisahost.com/login.php">登录 / 注册</a></li>
+          <li><a href="https://lisahost.com/contact.php">申请加盟代理</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>联系我们</h5>
+        <p class="foot__addr">2F, Hoi Kam Building, 27-33,<br />Wai Yan Street, Tai Po,<br />New Territories, Hong Kong</p>
+        <div class="foot__tg">
+          <a href="https://t.me/lisahost_chat">Telegram 交流群</a>
+          <a href="https://t.me/lisahost_channel">公告频道</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot__bar">
+      <p>Copyright © LisaHost. All Rights Reserved.</p>
+      <span>优质网络 · 专业服务</span>
     </div>
   </div>
 </footer>
 
 <script>
-(function () {
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- gold dust ---- */
-  var dust = document.getElementById('dust');
-  if (dust && !reduce) {
-    for (var i = 0; i < 38; i++) {
-      var s = document.createElement('i');
-      var sz = (Math.random() * 3 + 1.2).toFixed(1);
-      s.style.width = s.style.height = sz + 'px';
-      s.style.left = (Math.random() * 100).toFixed(2) + '%';
-      s.style.animationDuration = (Math.random() * 16 + 16).toFixed(1) + 's';
-      s.style.animationDelay = (-Math.random() * 26).toFixed(1) + 's';
-      s.style.opacity = (Math.random() * .5 + .3).toFixed(2);
-      dust.appendChild(s);
-    }
-  }
-
-  /* ---- nav solid on scroll + hero parallax ---- */
+(function(){
   var nav = document.getElementById('nav');
-  var rgs = Array.prototype.slice.call(document.querySelectorAll('.rg'));
-  var sun = document.querySelector('.sun');
-  var tick = false;
-  function onScroll() {
-    if (tick) return; tick = true;
-    requestAnimationFrame(function () {
-      var y = window.scrollY;
-      if (nav) nav.classList.toggle('solid', y > 60);
-      if (!reduce) {
-        for (var i = 0; i < rgs.length; i++) {
-          var d = parseFloat(rgs[i].getAttribute('data-d')) || .1;
-          rgs[i].style.transform = 'translateY(' + (y * d) + 'px)';
-        }
-        if (sun) sun.style.transform = 'translate(-50%,calc(-50% + ' + (y * 0.16) + 'px))';
-      }
-      tick = false;
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
+  var burger = document.getElementById('burger');
+
+  burger.addEventListener('click', function(){ nav.classList.toggle('is-open'); });
+  document.querySelectorAll('#navLinks a').forEach(function(a){
+    a.addEventListener('click', function(){ nav.classList.remove('is-open'); });
+  });
+
+  var onScroll = function(){
+    if (window.scrollY > 12) nav.classList.add('is-stuck');
+    else nav.classList.remove('is-stuck');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  /* ---- reveal ---- */
-  var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: .14 });
-  document.querySelectorAll('.rv').forEach(function (el, i) {
-    el.style.transitionDelay = (i % 6) * 0.09 + 's';
-    io.observe(el);
-  });
-
-  /* ---- count up ---- */
-  var cio = new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
+  var items = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e, i){
       if (!e.isIntersecting) return;
-      var el = e.target, t = parseFloat(el.dataset.t), sfx = el.dataset.s || '';
-      var dec = (el.dataset.t.split('.')[1] || '').length, dur = 1800, st = performance.now();
-      (function step(now) {
-        var p = Math.min((now - st) / dur, 1), k = 1 - Math.pow(1 - p, 3);
-        el.textContent = (t * k).toFixed(dec) + sfx;
-        if (p < 1) requestAnimationFrame(step);
-      })(performance.now());
-      cio.unobserve(el);
+      var el = e.target;
+      var group = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+      setTimeout(function(){ el.classList.add('is-in'); }, Math.min(group, 6) * 80);
+      io.unobserve(el);
     });
-  }, { threshold: .6 });
-  document.querySelectorAll('.st .n').forEach(function (n) { cio.observe(n); });
-
-  var b = document.querySelector('.burger');
-  if (b) b.addEventListener('click', function () {
-    document.getElementById('price').scrollIntoView({ behavior: 'smooth' });
-  });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  items.forEach(function(el){ io.observe(el); });
 })();
 </script>
+
 </body>
 </html>

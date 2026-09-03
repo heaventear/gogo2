@@ -3,19 +3,27 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>青云万里 · 云端基础设施</title>
-<meta name="description" content="青云 QingYun —— 于山河之上，安放你的每一次计算。三十余处全球节点，NVMe 全闪存储，BGP 多线直连，55 秒扶摇直上。" />
+<meta name="theme-color" content="#080c1a" />
+<title>丽萨主机 LisaHost · 优质网络 专业服务 | CN2 GIA 原生IP VPS</title>
+<meta name="description" content="丽萨主机 LisaHost —— 优质网络，专业服务。美国 CN2 GIA、原生住宅 IP、香港 CMI、新加坡 / 台湾原生 IP、德国法兰克福，T3+ 顶级机房，即时开通，48 小时无理由退款。" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;500;700;900&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --night-0:#04070d; --night-1:#070c16; --night-2:#0b1220; --night-3:#101828;
-    --m1:#46597a; --m2:#38496a; --m3:#2a3a56; --m4:#1d2942; --m5:#121b2d; --m6:#080d18;
-    --gold:#cfa456; --gold-b:#f4dca6; --gold-d:#8a6a2f; --ember:#e2b05c;
-    --jade:#3f9583; --cinnabar:#c0392b;
-    --moon:#f4f0e4; --text:#c2c8d4; --muted:#848d9e; --faint:#5a6373;
-    --hair:rgba(207,164,86,.24); --hair2:rgba(244,240,228,.08);
+    /* —— 夜色 · 底 —— */
+    --night-0:#05070f; --night-1:#080c1a; --night-2:#0c1226; --night-3:#111a34;
+    /* —— 石青山水 · 山峦层次 —— */
+    --m1:#4a72c0; --m2:#3a5ba6; --m3:#2c4884; --m4:#1e3462; --m5:#142344; --m6:#0a1226;
+    /* —— 品牌 · 靛蓝 / 石青 —— */
+    --brand:#3854bf; --brand-l:#6d8ee8; --brand-d:#28409a;
+    --azure:#4a8fe0; --azure-b:#9fc6ff; --azure-d:#2b5ca8;
+    /* —— 点缀 —— */
+    --jade:#2f9e8f; --cinnabar:#c0392b;
+    /* —— 月白 · 银辉（替金） —— */
+    --moon:#f3f6fd; --silver:#eef3fc; --silver-b:#dbe6fa; --silver-d:#9fb2d6;
+    --text:#c3ccdf; --muted:#8794b0; --faint:#5a6684;
+    --hair:rgba(122,150,220,.28); --hair2:rgba(200,214,244,.08);
     --maxw:1200px;
     --serif:'Noto Serif SC','Songti SC',serif;
     --sans:'Noto Sans SC',system-ui,sans-serif;
@@ -35,39 +43,40 @@
 
   /* ============ shared ============ */
   .eyebrow{display:inline-flex;align-items:center;gap:16px;font-size:.74rem;font-weight:400;
-    letter-spacing:.52em;text-indent:.52em;color:var(--gold);text-transform:uppercase}
-  .eyebrow::before,.eyebrow::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
-  .eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent)}
-  .sec-head{max-width:660px;margin:0 auto 84px;text-align:center}
+    letter-spacing:.52em;text-indent:.52em;color:var(--azure-b);text-transform:uppercase}
+  .eyebrow::before,.eyebrow::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--azure))}
+  .eyebrow::after{background:linear-gradient(90deg,var(--azure),transparent)}
+  .sec-head{max-width:680px;margin:0 auto 84px;text-align:center}
   .sec-head h2{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:500;line-height:1.35;letter-spacing:.08em;margin:24px 0 20px}
-  .sec-head h2 em{font-style:normal;background:linear-gradient(180deg,#f7f0dc,var(--gold));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .sec-head h2 em{font-style:normal;background:linear-gradient(180deg,#eef4ff,var(--azure));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--azure)}
   .sec-head p{color:var(--muted);font-size:1.04rem}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
     font-family:var(--sans);font-weight:400;font-size:.98rem;letter-spacing:.24em;text-indent:.24em;
     padding:16px 40px;border:1px solid transparent;border-radius:2px;
     transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,background .4s,color .4s,border-color .4s}
-  .btn-gold{background:linear-gradient(135deg,var(--gold-b),var(--gold) 55%,var(--gold-d));color:#1d1608;
-    box-shadow:0 14px 40px rgba(207,164,86,.26)}
-  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 56px rgba(207,164,86,.42)}
-  .btn-line{background:rgba(244,240,228,.03);border-color:var(--hair);color:var(--moon)}
-  .btn-line:hover{border-color:var(--gold);color:var(--gold-b);transform:translateY(-3px)}
+  .btn-gold{background:linear-gradient(135deg,var(--brand-l),var(--brand) 55%,var(--brand-d));color:#f4f7ff;
+    box-shadow:0 14px 40px rgba(56,84,191,.36)}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 56px rgba(56,84,191,.52)}
+  .btn-line{background:rgba(159,198,255,.04);border-color:var(--hair);color:var(--moon)}
+  .btn-line:hover{border-color:var(--azure);color:var(--azure-b);transform:translateY(-3px)}
 
   /* ============ nav ============ */
   .nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .5s,border-color .5s,backdrop-filter .5s;
     border-bottom:1px solid transparent}
-  .nav.solid{background:rgba(5,8,14,.82);backdrop-filter:blur(14px);border-bottom-color:var(--hair2)}
+  .nav.solid{background:rgba(6,9,18,.82);backdrop-filter:blur(14px);border-bottom-color:var(--hair2)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px;
     max-width:var(--maxw);margin:0 auto;padding:0 32px}
   .brand{display:flex;align-items:center;gap:14px}
   .brand .mk{width:42px;height:42px;display:grid;place-items:center;flex-shrink:0;
-    border:1px solid var(--gold);color:var(--gold-b);font-family:var(--brush);font-size:1.4rem}
-  .brand .nm{font-family:var(--serif);font-weight:500;font-size:1.4rem;letter-spacing:.3em;color:var(--moon)}
-  .brand .sb{display:block;font-size:.56rem;letter-spacing:.44em;color:var(--faint);margin-top:3px}
-  .nav-links{display:flex;gap:48px}
-  .nav-links a{position:relative;color:var(--muted);font-size:.94rem;letter-spacing:.24em;transition:color .3s}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:1px;background:var(--gold);transition:width .4s}
+    border:1px solid var(--azure);color:var(--azure-b);font-family:var(--brush);font-size:1.4rem;
+    box-shadow:inset 0 0 18px rgba(74,143,224,.22)}
+  .brand .nm{font-family:var(--serif);font-weight:500;font-size:1.32rem;letter-spacing:.24em;color:var(--moon)}
+  .brand .sb{display:block;font-size:.56rem;letter-spacing:.42em;color:var(--faint);margin-top:3px}
+  .nav-links{display:flex;gap:44px}
+  .nav-links a{position:relative;color:var(--muted);font-size:.94rem;letter-spacing:.22em;transition:color .3s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:1px;background:var(--azure);transition:width .4s}
   .nav-links a:hover{color:var(--moon)}
   .nav-links a:hover::after{width:100%}
   .nav-cta{display:flex;align-items:center;gap:18px}
@@ -79,36 +88,37 @@
     overflow:hidden;text-align:center;padding:120px 0 90px}
   .sky{position:absolute;inset:0;z-index:1;
     background:
-      radial-gradient(940px 520px at 50% 77%,rgba(226,176,92,.30),transparent 62%),
-      radial-gradient(1400px 700px at 50% 78%,rgba(207,164,86,.12),transparent 70%),
-      linear-gradient(180deg,#04070d 0%,#060b15 28%,#0a1120 50%,#101a2b 68%,#0a111c 100%);
+      radial-gradient(940px 520px at 50% 76%,rgba(120,170,255,.26),transparent 62%),
+      radial-gradient(1400px 700px at 50% 78%,rgba(74,143,224,.14),transparent 70%),
+      linear-gradient(180deg,#05070f 0%,#070c18 28%,#0b1428 50%,#132148 68%,#0a1220 100%);
     animation:skyIn 2.2s ease both}
   @keyframes skyIn{from{opacity:0}to{opacity:1}}
 
-  .rays{position:absolute;left:50%;top:74%;z-index:2;width:1900px;height:1900px;
+  .rays{position:absolute;left:50%;top:73%;z-index:2;width:1900px;height:1900px;
     transform:translate(-50%,-50%);opacity:0;
-    background:repeating-conic-gradient(from 0deg,rgba(244,220,166,.06) 0deg 2.5deg,transparent 2.5deg 13deg);
+    background:repeating-conic-gradient(from 0deg,rgba(180,210,255,.06) 0deg 2.5deg,transparent 2.5deg 13deg);
     -webkit-mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 32%,transparent 58%);
     mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 32%,transparent 58%);
     animation:raysIn 3s ease 1s both,spin 120s linear infinite}
-  @keyframes raysIn{to{opacity:.6}}
+  @keyframes raysIn{to{opacity:.55}}
   @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
 
-  .sun{position:absolute;left:50%;top:78%;z-index:3;width:340px;height:340px;border-radius:50%;
+  /* 月 —— 银辉，替旧版金日 */
+  .sun{position:absolute;left:50%;top:78%;z-index:3;width:330px;height:330px;border-radius:50%;
     transform:translate(-50%,-50%);
-    background:radial-gradient(circle at 50% 50%,rgba(250,233,192,.96) 0%,rgba(233,190,110,.62) 30%,rgba(200,150,70,.24) 52%,transparent 72%);
+    background:radial-gradient(circle at 50% 50%,rgba(244,248,255,.97) 0%,rgba(190,214,255,.6) 30%,rgba(120,160,230,.22) 52%,transparent 72%);
     animation:sunRise 2.6s cubic-bezier(.16,.8,.3,1) .3s both}
-  .sun::after{content:"";position:absolute;left:50%;top:50%;width:92px;height:92px;border-radius:50%;
-    transform:translate(-50%,-50%);background:radial-gradient(circle,#fdf3dc,#f0d191 62%,rgba(240,209,145,0) 78%);
+  .sun::after{content:"";position:absolute;left:50%;top:50%;width:90px;height:90px;border-radius:50%;
+    transform:translate(-50%,-50%);background:radial-gradient(circle,#ffffff,#cfe0ff 62%,rgba(207,224,255,0) 78%);
     animation:pulse 7s ease-in-out infinite}
   @keyframes sunRise{from{opacity:0;transform:translate(-50%,calc(-50% + 130px)) scale(.86)}
     to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
   @keyframes pulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.09)}}
 
   .cloud{position:absolute;z-index:4;border-radius:50%;filter:blur(30px);pointer-events:none}
-  .cloud.a{width:520px;height:120px;top:38%;left:-30%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(214,226,240,.20),transparent 70%);animation:drift 46s linear infinite}
-  .cloud.b{width:420px;height:96px;top:50%;left:-26%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(240,214,180,.18),transparent 70%);animation:drift 62s linear infinite 8s}
-  .cloud.c{width:600px;height:140px;top:57%;left:-34%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(200,214,235,.14),transparent 70%);animation:drift 78s linear infinite 20s}
+  .cloud.a{width:520px;height:120px;top:38%;left:-30%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(200,220,255,.18),transparent 70%);animation:drift 46s linear infinite}
+  .cloud.b{width:420px;height:96px;top:50%;left:-26%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(160,196,255,.16),transparent 70%);animation:drift 62s linear infinite 8s}
+  .cloud.c{width:600px;height:140px;top:57%;left:-34%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(190,210,245,.13),transparent 70%);animation:drift 78s linear infinite 20s}
   @keyframes drift{to{transform:translateX(160vw)}}
 
   .rg{position:absolute;left:0;right:0;z-index:5;width:100%;will-change:transform;opacity:0;
@@ -122,7 +132,7 @@
   .rg6{bottom:-1%;animation-delay:1.5s;z-index:10}
   @keyframes rgIn{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:translateY(0)}}
 
-  .bird{position:absolute;z-index:11;opacity:0;stroke:#0b1220;stroke-width:1.6;fill:none;stroke-linecap:round}
+  .bird{position:absolute;z-index:11;opacity:0;stroke:#0b1428;stroke-width:1.6;fill:none;stroke-linecap:round}
   .bird.b1{top:34%;width:26px;animation:fly 34s linear 3s infinite}
   .bird.b2{top:38%;width:18px;animation:fly 44s linear 8s infinite}
   .bird.b3{top:31%;width:14px;animation:fly 54s linear 16s infinite}
@@ -130,19 +140,19 @@
 
   .dust{position:absolute;inset:0;z-index:12;pointer-events:none;overflow:hidden}
   .dust i{position:absolute;bottom:-14px;border-radius:50%;
-    background:radial-gradient(circle,var(--gold-b),rgba(244,220,166,0) 70%);animation:rise linear infinite}
+    background:radial-gradient(circle,var(--azure-b),rgba(159,198,255,0) 70%);animation:rise linear infinite}
   @keyframes rise{0%{transform:translate3d(0,0,0);opacity:0}12%{opacity:.9}100%{transform:translate3d(46px,-104vh,0);opacity:0}}
 
   .hero-in{position:relative;z-index:20}
   .hero-in::before{content:"";position:absolute;inset:-70px -90px;z-index:-1;pointer-events:none;
-    background:radial-gradient(ellipse 58% 62% at 50% 54%,rgba(4,7,13,.62),rgba(4,7,13,.28) 55%,transparent 74%)}
+    background:radial-gradient(ellipse 58% 62% at 50% 54%,rgba(5,7,15,.62),rgba(5,7,15,.28) 55%,transparent 74%)}
   .hero .eyebrow{animation:up 1.2s ease 1.5s both}
   .title{font-family:var(--serif);font-weight:900;line-height:1;margin:34px 0 14px;
-    font-size:clamp(3.4rem,13.5vw,11rem);letter-spacing:.1em;display:flex;justify-content:center}
+    font-size:clamp(3.2rem,13vw,10.5rem);letter-spacing:.1em;display:flex;justify-content:center}
   .title span{display:inline-block;
-    background:linear-gradient(175deg,#fffaef 4%,#f4e6c4 32%,var(--gold) 76%,var(--gold-d) 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold-b);
-    filter:drop-shadow(0 10px 32px rgba(207,164,86,.28));
+    background:linear-gradient(175deg,#ffffff 4%,#dbe8ff 32%,var(--azure) 78%,var(--brand-d) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--azure-b);
+    filter:drop-shadow(0 10px 32px rgba(74,143,224,.32));
     animation:charIn 1.5s cubic-bezier(.16,.8,.3,1) both}
   .title span:nth-child(1){animation-delay:1.62s}
   .title span:nth-child(2){animation-delay:1.76s}
@@ -151,13 +161,13 @@
   @keyframes charIn{from{opacity:0;transform:translateY(38px) scale(1.16);filter:blur(16px)}
     to{opacity:1;transform:none;filter:blur(0)}}
 
-  .en{font-family:var(--num);font-size:1.16rem;letter-spacing:.72em;text-indent:.72em;color:var(--gold);
+  .en{font-family:var(--num);font-size:1.16rem;letter-spacing:.7em;text-indent:.7em;color:var(--azure);
     animation:up 1.3s ease 2.2s both}
-  .lead{max-width:620px;margin:36px auto 0;font-size:1.1rem;color:var(--text);line-height:2.05;
+  .lead{max-width:640px;margin:36px auto 0;font-size:1.1rem;color:var(--text);line-height:2.05;
     animation:up 1.3s ease 2.35s both}
   .hero-cta{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:48px;animation:up 1.3s ease 2.5s both}
-  .hero-note{margin-top:24px;font-size:.87rem;color:var(--muted);letter-spacing:.08em;animation:up 1.3s ease 2.65s both}
-  .hero-note b{color:var(--gold-b);font-weight:400}
+  .hero-note{margin-top:24px;font-size:.87rem;color:var(--muted);letter-spacing:.06em;animation:up 1.3s ease 2.65s both}
+  .hero-note b{color:var(--azure-b);font-weight:400}
   @keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 
   .seal{position:absolute;z-index:21;right:max(32px,calc(50% - 540px));top:26%;
@@ -169,7 +179,7 @@
     100%{opacity:1;transform:rotate(-9deg) scale(1)}}
 
   .vside{position:absolute;z-index:21;left:max(32px,calc(50% - 552px));top:50%;transform:translateY(-50%);
-    writing-mode:vertical-rl;white-space:nowrap;font-family:var(--serif);font-size:.94rem;letter-spacing:.58em;color:#6b7488;
+    writing-mode:vertical-rl;white-space:nowrap;font-family:var(--serif);font-size:.94rem;letter-spacing:.56em;color:#7a86a4;
     animation:up 1.3s ease 2.8s both}
 
   .scroll{position:absolute;left:50%;bottom:34px;z-index:21;transform:translateX(-50%);
@@ -177,7 +187,7 @@
   .scroll .tx{font-family:var(--num);font-size:.72rem;letter-spacing:.42em;color:var(--faint)}
   .scroll .ln{position:relative;width:1px;height:52px;background:linear-gradient(180deg,var(--hair),transparent)}
   .scroll .ln::after{content:"";position:absolute;left:50%;top:0;width:4px;height:4px;border-radius:50%;
-    background:var(--gold-b);transform:translateX(-50%);animation:fall 2.4s ease-in-out infinite}
+    background:var(--azure-b);transform:translateX(-50%);animation:fall 2.4s ease-in-out infinite}
   @keyframes fall{0%{top:0;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:48px;opacity:0}}
 
   /* ============ generic band ============ */
@@ -193,12 +203,12 @@
   .feat{position:relative;padding:52px 40px 46px;background:var(--night-1);overflow:hidden;
     transition:background .5s}
   .feat::before{content:"";position:absolute;left:0;top:0;width:100%;height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+    background:linear-gradient(90deg,transparent,var(--azure),transparent);transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
   .feat:hover{background:var(--night-3)}
   .feat:hover::before{transform:scaleX(1)}
   .feat .no{font-family:var(--num);font-size:2.7rem;color:var(--hair);line-height:1;transition:color .5s}
-  .feat:hover .no{color:var(--gold)}
-  .feat .ic{width:32px;height:32px;color:var(--gold-b);margin:22px 0 20px}
+  .feat:hover .no{color:var(--azure)}
+  .feat .ic{width:32px;height:32px;color:var(--azure-b);margin:22px 0 20px}
   .feat .ic svg{width:100%;height:100%}
   .feat h3{font-size:1.32rem;font-weight:500;letter-spacing:.1em;margin-bottom:14px}
   .feat p{color:var(--muted);font-size:.96rem}
@@ -209,20 +219,22 @@
   .st+.st::before{content:"";position:absolute;left:0;top:22%;height:56%;width:1px;background:var(--hair2)}
   .st .n{font-family:var(--num);font-weight:500;font-size:clamp(3rem,6vw,4.8rem);line-height:1;
     font-variant-numeric:tabular-nums;
-    background:linear-gradient(180deg,#fbf6e8,var(--gold));-webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;color:var(--gold)}
-  .st .l{margin-top:18px;color:var(--muted);font-size:.92rem;letter-spacing:.26em;text-indent:.26em}
+    background:linear-gradient(180deg,#f2f7ff,var(--azure));-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:var(--azure)}
+  .st .l{margin-top:18px;color:var(--muted);font-size:.92rem;letter-spacing:.24em;text-indent:.24em}
 
   /* ============ nodes ============ */
-  .nodes{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:940px;margin:0 auto}
+  .nodes{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:960px;margin:0 auto}
   .nd{display:inline-flex;align-items:center;gap:13px;padding:14px 30px;border:1px solid var(--hair2);
-    background:rgba(16,24,40,.5);border-radius:2px;font-size:.99rem;letter-spacing:.14em;color:var(--text);
+    background:rgba(17,26,52,.5);border-radius:2px;font-size:.99rem;letter-spacing:.12em;color:var(--text);
     transition:border-color .4s,transform .4s,color .4s}
   .nd:hover{border-color:var(--hair);color:var(--moon);transform:translateY(-4px)}
   .nd .p{width:7px;height:7px;border-radius:50%;background:var(--jade);
-    box-shadow:0 0 0 0 rgba(63,149,131,.55);animation:pl 2.6s ease-out infinite}
-  @keyframes pl{0%{box-shadow:0 0 0 0 rgba(63,149,131,.55)}70%{box-shadow:0 0 0 9px rgba(63,149,131,0)}100%{box-shadow:0 0 0 0 rgba(63,149,131,0)}}
+    box-shadow:0 0 0 0 rgba(47,158,143,.55);animation:pl 2.6s ease-out infinite}
+  @keyframes pl{0%{box-shadow:0 0 0 0 rgba(47,158,143,.55)}70%{box-shadow:0 0 0 9px rgba(47,158,143,0)}100%{box-shadow:0 0 0 0 rgba(47,158,143,0)}}
   .nd .e{font-family:var(--num);font-size:.86rem;color:var(--faint)}
+  .nd.more{color:var(--faint);border-style:dashed}
+  .nd.more .p{background:var(--faint);animation:none;box-shadow:none}
 
   /* ============ pricing ============ */
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch}
@@ -230,14 +242,14 @@
     background:linear-gradient(180deg,var(--night-3),var(--night-2));border:1px solid var(--hair2);
     transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s,box-shadow .45s}
   .pl:hover{transform:translateY(-10px);border-color:var(--hair);box-shadow:0 40px 80px rgba(0,0,0,.5)}
-  .pl.hot{border-color:var(--gold);background:linear-gradient(180deg,rgba(207,164,86,.10),var(--night-2) 60%);
-    box-shadow:0 30px 70px rgba(207,164,86,.12)}
+  .pl.hot{border-color:var(--brand);background:linear-gradient(180deg,rgba(56,84,191,.14),var(--night-2) 60%);
+    box-shadow:0 30px 70px rgba(56,84,191,.18)}
   .pl .tag{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);padding:7px 22px;border-radius:2px;
-    background:linear-gradient(135deg,var(--gold-b),var(--gold));color:#1d1608;font-size:.72rem;letter-spacing:.32em;text-indent:.32em}
-  .pl .nm{font-family:var(--serif);font-weight:700;font-size:2rem;letter-spacing:.24em;text-indent:.24em;color:var(--moon);margin-bottom:12px}
+    background:linear-gradient(135deg,var(--brand-l),var(--brand));color:#f4f7ff;font-size:.72rem;letter-spacing:.32em;text-indent:.32em}
+  .pl .nm{font-family:var(--serif);font-weight:700;font-size:2rem;letter-spacing:.22em;text-indent:.22em;color:var(--moon);margin-bottom:12px}
   .pl .ds{color:var(--faint);font-size:.9rem;margin-bottom:30px;min-height:48px;line-height:1.8}
   .pr{display:flex;align-items:baseline;gap:6px}
-  .pr .c{font-family:var(--num);font-size:1.5rem;color:var(--gold)}
+  .pr .c{font-family:var(--num);font-size:1.5rem;color:var(--azure)}
   .pr .v{font-family:var(--num);font-weight:600;font-size:3.8rem;line-height:1;color:var(--moon)}
   .pr .u{color:var(--faint);font-size:.92rem}
   .pl .hr{height:1px;background:var(--hair2);margin:32px 0}
@@ -245,25 +257,29 @@
   .pl li{display:flex;gap:14px;font-size:.96rem;color:var(--text)}
   .pl li i{font-style:normal;color:var(--jade);flex-shrink:0}
   .pl .btn{width:100%}
+  .price-note{text-align:center;margin-top:34px;font-size:.84rem;color:var(--faint);letter-spacing:.08em}
 
   /* ============ CTA ============ */
   .cta{position:relative;padding:170px 0 150px;overflow:hidden;text-align:center;
-    background:radial-gradient(900px 460px at 50% 108%,rgba(226,176,92,.20),transparent 66%),var(--night-0)}
+    background:radial-gradient(900px 460px at 50% 108%,rgba(74,143,224,.20),transparent 66%),var(--night-0)}
   .cta h2{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.24;
-    letter-spacing:.14em;margin-bottom:24px}
-  .cta h2 em{font-style:normal;background:linear-gradient(180deg,#fffaef,var(--gold));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
-  .cta p{color:var(--muted);max-width:540px;margin:0 auto 44px;font-size:1.06rem}
+    letter-spacing:.12em;margin-bottom:24px}
+  .cta h2 em{font-style:normal;background:linear-gradient(180deg,#ffffff,var(--azure));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--azure)}
+  .cta p{color:var(--muted);max-width:560px;margin:0 auto 44px;font-size:1.06rem}
+  .cta-alt{margin-top:22px;font-size:.9rem;color:var(--faint);letter-spacing:.06em}
+  .cta-alt a{color:var(--azure-b);border-bottom:1px solid var(--hair);padding-bottom:2px;transition:color .3s,border-color .3s}
+  .cta-alt a:hover{color:var(--moon);border-color:var(--azure)}
 
   /* ============ footer ============ */
   footer{position:relative;z-index:2;background:var(--night-0);border-top:1px solid var(--hair2);padding:90px 0 48px}
   .fgrid2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:60px}
-  .fb p{color:var(--muted);font-size:.94rem;margin-top:24px;max-width:300px;line-height:1.95}
+  .fb p{color:var(--muted);font-size:.94rem;margin-top:24px;max-width:320px;line-height:1.95}
   .fc h4{font-family:var(--serif);font-weight:500;font-size:1rem;letter-spacing:.22em;color:var(--moon);margin-bottom:24px}
   .fc a{display:block;color:var(--faint);font-size:.92rem;margin-bottom:15px;transition:color .3s}
-  .fc a:hover{color:var(--gold-b)}
+  .fc a:hover{color:var(--azure-b)}
   .fbot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
-    padding-top:32px;border-top:1px solid var(--hair2);color:var(--faint);font-size:.84rem;letter-spacing:.08em}
+    padding-top:32px;border-top:1px solid var(--hair2);color:var(--faint);font-size:.84rem;letter-spacing:.06em}
 
   /* ============ reveal ============ */
   .rv{opacity:0;transform:translateY(38px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
@@ -301,15 +317,15 @@
 <header class="nav" id="nav">
   <div class="nav-in">
     <a href="#" class="brand">
-      <span class="mk">云</span>
-      <span><span class="nm">青云</span><span class="sb">QINGYUN CLOUD</span></span>
+      <span class="mk">丽</span>
+      <span><span class="nm">丽萨主机</span><span class="sb">LISAHOST · 优质网络 专业服务</span></span>
     </a>
     <nav class="nav-links">
-      <a href="#feat">特性</a><a href="#node">节点</a><a href="#price">价格</a><a href="#cta">关于</a>
+      <a href="#feat">产品优势</a><a href="#node">全球线路</a><a href="#price">价格方案</a><a href="#cta">关于我们</a>
     </nav>
     <div class="nav-cta">
-      <a href="#" class="btn btn-line">登录</a>
-      <a href="#price" class="btn btn-gold">立即部署</a>
+      <a href="https://lisahost.com/clientarea.php" class="btn btn-line">控制台</a>
+      <a href="https://lisahost.com/cart.php" class="btn btn-gold">立即选购</a>
       <button class="burger" aria-label="菜单">☰</button>
     </div>
   </div>
@@ -325,17 +341,17 @@
   <div class="cloud c"></div>
 
   <div class="rg rg1" data-d="0.05">
-    <svg viewBox="0 0 1440 300" preserveAspectRatio="none"><path fill="#5c6f92" d="M0,300 L0,175 L0,148 L87,216 Q97,223 109,210 L218,92 L316,201 Q327,213 338,206 L436,138 L564,206 Q578,214 594,198 L738,58 L788,197 Q794,212 805,203 L906,126 L1074,195 Q1093,203 1104,193 L1204,104 L1286,228 Q1295,242 1310,233 L1440,150 L1440,196 L1440,300 Z"/></svg>
+    <svg viewBox="0 0 1440 300" preserveAspectRatio="none"><path fill="#4a72c0" d="M0,300 L0,175 L0,148 L87,216 Q97,223 109,210 L218,92 L316,201 Q327,213 338,206 L436,138 L564,206 Q578,214 594,198 L738,58 L788,197 Q794,212 805,203 L906,126 L1074,195 Q1093,203 1104,193 L1204,104 L1286,228 Q1295,242 1310,233 L1440,150 L1440,196 L1440,300 Z"/></svg>
   </div>
   <div class="rg rg2" data-d="0.09">
-    <svg viewBox="0 0 1440 300" preserveAspectRatio="none"><path fill="#45577a" d="M0,300 L0,224 L0,176 L169,242 Q188,249 204,237 L351,132 L485,190 Q500,197 514,188 L643,104 L738,218 Q748,231 765,224 L922,158 L980,224 Q986,231 996,220 L1089,118 L1186,221 Q1197,232 1221,226 L1440,168 L1440,211 L1440,300 Z"/></svg>
+    <svg viewBox="0 0 1440 300" preserveAspectRatio="none"><path fill="#3a5ba6" d="M0,300 L0,224 L0,176 L169,242 Q188,249 204,237 L351,132 L485,190 Q500,197 514,188 L643,104 L738,218 Q748,231 765,224 L922,158 L980,224 Q986,231 996,220 L1089,118 L1186,221 Q1197,232 1221,226 L1440,168 L1440,211 L1440,300 Z"/></svg>
   </div>
   <div class="rg rg3" data-d="0.14">
-    <svg viewBox="0 0 1440 290" preserveAspectRatio="none"><path fill="#313f5c" d="M0,290 L0,236 L0,206 L129,265 Q143,272 156,262 L270,168 L394,246 Q408,255 421,249 L535,196 L683,253 Q699,259 710,247 L813,142 L1033,242 Q1057,253 1073,246 L1213,188 L1343,262 Q1357,270 1365,264 L1440,210 L1440,242 L1440,290 Z"/></svg>
+    <svg viewBox="0 0 1440 290" preserveAspectRatio="none"><path fill="#2c4884" d="M0,290 L0,236 L0,206 L129,265 Q143,272 156,262 L270,168 L394,246 Q408,255 421,249 L535,196 L683,253 Q699,259 710,247 L813,142 L1033,242 Q1057,253 1073,246 L1213,188 L1343,262 Q1357,270 1365,264 L1440,210 L1440,242 L1440,290 Z"/></svg>
   </div>
   <div class="rg rg4" data-d="0.19">
-    <svg viewBox="0 0 1440 270" preserveAspectRatio="none"><path fill="#1f2c45" d="M0,270 L0,265 L0,222 L86,260 Q95,264 116,256 L308,186 L567,236 Q596,241 616,234 L800,166 L899,252 Q910,262 935,256 L1163,204 L1276,256 Q1288,262 1303,255 L1440,192 L1440,229 L1440,270 Z"/>
-      <g fill="#101a2c" transform="translate(528,189) scale(0.95)">
+    <svg viewBox="0 0 1440 270" preserveAspectRatio="none"><path fill="#1e3462" d="M0,270 L0,265 L0,222 L86,260 Q95,264 116,256 L308,186 L567,236 Q596,241 616,234 L800,166 L899,252 Q910,262 935,256 L1163,204 L1276,256 Q1288,262 1303,255 L1440,192 L1440,229 L1440,270 Z"/>
+      <g fill="#0d1a34" transform="translate(528,189) scale(0.95)">
         <rect x="31" y="0" width="2" height="9"/><circle cx="32" cy="1.5" r="2.4"/>
         <path d="M32,8 C40,14 55,23 64,29 C56,26 49,27 44,29 L20,29 C15,27 8,26 0,29 C9,23 24,14 32,8 Z"/>
         <rect x="15" y="29" width="3" height="15"/><rect x="25" y="29" width="3" height="15"/>
@@ -344,10 +360,10 @@
       </g></svg>
   </div>
   <div class="rg rg5" data-d="0.25">
-    <svg viewBox="0 0 1440 240" preserveAspectRatio="none"><path fill="#131c30" d="M0,240 L0,235 L0,196 L104,230 Q116,234 134,228 L293,172 L423,205 Q437,209 462,204 L691,158 L802,226 Q814,233 834,228 L1016,186 L1205,218 Q1226,222 1247,218 L1440,178 L1440,221 L1440,240 Z"/></svg>
+    <svg viewBox="0 0 1440 240" preserveAspectRatio="none"><path fill="#142344" d="M0,240 L0,235 L0,196 L104,230 Q116,234 134,228 L293,172 L423,205 Q437,209 462,204 L691,158 L802,226 Q814,233 834,228 L1016,186 L1205,218 Q1226,222 1247,218 L1440,178 L1440,221 L1440,240 Z"/></svg>
   </div>
   <div class="rg rg6" data-d="0.32">
-    <svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path fill="#070c16" d="M0,200 L0,200 L0,168 L189,191 Q210,194 230,190 L408,150 L507,186 Q518,190 538,187 L722,162 L866,182 Q882,184 911,180 L1173,142 L1253,186 Q1262,191 1280,188 L1440,166 L1440,195 L1440,200 Z"/></svg>
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path fill="#0a1226" d="M0,200 L0,200 L0,168 L189,191 Q210,194 230,190 L408,150 L507,186 Q518,190 538,187 L722,162 L866,182 Q882,184 911,180 L1173,142 L1253,186 Q1262,191 1280,188 L1440,166 L1440,195 L1440,200 Z"/></svg>
   </div>
 
   <svg class="bird b1" viewBox="0 0 40 12"><path d="M2,8 Q9,1 16,8 Q23,1 30,8"/></svg>
@@ -356,19 +372,19 @@
 
   <div class="dust" id="dust"></div>
 
-  <div class="seal" aria-hidden="true">青云<br />万里</div>
-  <div class="vside" aria-hidden="true">江山万里 · 云起东方</div>
+  <div class="seal" aria-hidden="true">丽萨<br />臻选</div>
+  <div class="vside" aria-hidden="true">优质网络 · 专业服务</div>
 
   <div class="wrap hero-in">
-    <span class="eyebrow">云端基础设施</span>
-    <h1 class="title"><span>青</span><span>云</span><span>万</span><span>里</span></h1>
-    <div class="en">QINGYUN&nbsp;&nbsp;CLOUD</div>
-    <p class="lead">于山河之上，安放你的每一次计算。<br />三十余处全球节点，NVMe 全闪存储，扶摇直上，仅需 55 秒。</p>
+    <span class="eyebrow">全球高速云端 · LISAHOST</span>
+    <h1 class="title"><span>山</span><span>海</span><span>无</span><span>界</span></h1>
+    <div class="en">LISAHOST&nbsp;&nbsp;CLOUD</div>
+    <p class="lead">以精品线路，连通山海之间。<br />美国 CN2 GIA、原生住宅 IP、香港 CMI 三网直连，即时开通，回国无阻。</p>
     <div class="hero-cta">
-      <a href="#price" class="btn btn-gold">立即部署</a>
-      <a href="#feat" class="btn btn-line">了解特性</a>
+      <a href="https://lisahost.com/cart.php" class="btn btn-gold">立即选购</a>
+      <a href="#node" class="btn btn-line">查看线路</a>
     </div>
-    <p class="hero-note">无需绑卡 · 新用户礼赠 <b>¥100 体验金</b></p>
+    <p class="hero-note">新用户 <b>¥2 试用</b> · <b>48 小时</b>无理由退款 · 即时自动开通</p>
   </div>
 
   <div class="scroll" aria-hidden="true"><span class="tx">SCROLL</span><span class="ln"></span></div>
@@ -378,50 +394,50 @@
 <section class="band" id="feat">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">何以青云</span>
-      <h2>为极致而生的<em>云端基座</em></h2>
-      <p>企业级硬件，秒级响应。稳如山岳，快似御风。</p>
+      <span class="eyebrow">何以丽萨</span>
+      <h2>化繁为简，<em>云理应如此</em></h2>
+      <p>精品线路，企业级硬件，专业客服。简约而不简单，稳定又从容。</p>
     </div>
     <div class="fgrid">
       <div class="feat rv"><div class="no">01</div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div>
-        <h3>极速部署</h3><p>一杯茶未凉，服务器已就绪。快照、克隆、重建皆在弹指之间，55 秒直达。</p></div>
+        <h3>即时自动开通</h3><p>下单即达，系统自动化交付，最快数分钟内上线。无需等待人工审核，一杯茶的功夫，服务器已就绪。</p></div>
       <div class="feat rv"><div class="no">02</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="4" rx="1"/><rect x="3" y="11" width="18" height="4" rx="1"/><rect x="3" y="17" width="18" height="2" rx="1"/></svg></div>
-        <h3>NVMe 全闪存储</h3><p>本地 NVMe Gen4，随机读写高达百万 IOPS。数据库与构建，从此畅快呼吸。</p></div>
-      <div class="feat rv"><div class="no">03</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>DDoS 智能防护</h3><p>多 Tbps 边缘清洗，自动拦截海量攻击。全线套餐标配，分文不取。</p></div>
-      <div class="feat rv"><div class="no">04</div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg></div>
-        <h3>全球节点</h3><p>横跨六大洲的私有 10 Gbps 骨干网，让服务贴近每一位用户，触手可及。</p></div>
+        <h3>CN2 GIA 三网直连</h3><p>电信 CN2 GIA、联通 9929、移动 CMI 精品线路直连，回国低延迟，晚高峰不卡顿，访问如在国内。</p></div>
+      <div class="feat rv"><div class="no">03</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H4z"/><path d="M2 20h20M9 9l2 2 4-4"/></svg></div>
+        <h3>原生 IP · 流媒体解锁</h3><p>美国双 ISP 原生住宅 IP，新加坡、台湾原生 IP，畅解 Netflix、TikTok、ChatGPT 等区域限制。</p></div>
+      <div class="feat rv"><div class="no">04</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="4" rx="1"/><rect x="3" y="11" width="18" height="4" rx="1"/><rect x="3" y="17" width="18" height="2" rx="1"/></svg></div>
+        <h3>T3+ 顶级机房</h3><p>全球 T3+ 等级数据中心，BGP 多线接入，分布式冗余架构，多重备份，稳如山岳，常年在线。</p></div>
       <div class="feat rv"><div class="no">05</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
-        <h3>完整 root 权限</h3><p>KVM 虚拟化，资源独享。自选系统、自定内核，随心所欲，尽在掌控。</p></div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>企业级 DDoS 防护</h3><p>边缘流量清洗，智能识别并拦截海量攻击流量。多套餐标配防护，业务常在线，安心又省心。</p></div>
       <div class="feat rv"><div class="no">06</div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg></div>
-        <h3>实时监控</h3><p>秒级 CPU、内存、磁盘与带宽曲线，附 REST API 与 Terraform Provider。</p></div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>48 小时无理由退款</h3><p>不满意随时退，48 小时内无条件退款。专业客服 7×24 随时响应，工单、Telegram 一触即达。</p></div>
     </div>
   </div>
 </section>
 
 <!-- ========== STATS ========== -->
 <section class="band alt">
-  <div class="ridge top"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0b1220" d="M0,60 Q180,26 360,54 Q540,20 720,50 Q900,22 1080,52 Q1260,28 1440,56 L1440,0 L0,0 Z"/></svg></div>
+  <div class="ridge top"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0c1226" d="M0,60 Q180,26 360,54 Q540,20 720,50 Q900,22 1080,52 Q1260,28 1440,56 L1440,0 L0,0 Z"/></svg></div>
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">磐石之基</span>
       <h2>数字为证，<em>稳如山岳</em></h2>
-      <p>可用性 SLA，白纸黑字，郑重承诺。</p>
+      <p>白纸黑字，郑重承诺。选丽萨，选安心。</p>
     </div>
     <div class="stats">
-      <div class="st rv"><div class="n" data-t="99.99" data-s="%">0</div><div class="l">可用性 SLA</div></div>
-      <div class="st rv"><div class="n" data-t="30" data-s="+">0</div><div class="l">全球节点</div></div>
-      <div class="st rv"><div class="n" data-t="55" data-s="秒">0</div><div class="l">平均部署</div></div>
-      <div class="st rv"><div class="n" data-t="240" data-s="k+">0</div><div class="l">运行实例</div></div>
+      <div class="st rv"><div class="n" data-t="99.9" data-s="%">0</div><div class="l">在线率 SLA</div></div>
+      <div class="st rv"><div class="n" data-t="6" data-s="+">0</div><div class="l">全球优选地区</div></div>
+      <div class="st rv"><div class="n" data-t="48" data-s="h">0</div><div class="l">无理由退款</div></div>
+      <div class="st rv"><div class="n" data-t="3" data-s="网">0</div><div class="l">精品线路直连</div></div>
     </div>
   </div>
-  <div class="ridge bot"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#070c16" d="M0,34 Q180,66 360,38 Q540,70 720,42 Q900,68 1080,40 Q1260,64 1440,36 L1440,90 L0,90 Z"/></svg></div>
+  <div class="ridge bot"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0a1226" d="M0,34 Q180,66 360,38 Q540,70 720,42 Q900,68 1080,40 Q1260,64 1440,36 L1440,90 L0,90 Z"/></svg></div>
 </section>
 
 <!-- ========== NODES ========== -->
@@ -429,87 +445,88 @@
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">四海通达</span>
-      <h2>节点遍布，<em>三网优化</em></h2>
-      <p>中国大陆 BGP 多线直连，海外骨干低延迟互联，就近接入。</p>
+      <h2>全球线路，<em>就近接入</em></h2>
+      <p>中国大陆三网优选直连，海外骨干低延迟互联，一线通达全球。</p>
     </div>
     <div class="nodes rv">
-      <span class="nd"><span class="p"></span>上海 <span class="e">Shanghai</span></span>
-      <span class="nd"><span class="p"></span>北京 <span class="e">Beijing</span></span>
-      <span class="nd"><span class="p"></span>广州 <span class="e">Guangzhou</span></span>
-      <span class="nd"><span class="p"></span>香港 <span class="e">Hong Kong</span></span>
-      <span class="nd"><span class="p"></span>新加坡 <span class="e">Singapore</span></span>
-      <span class="nd"><span class="p"></span>东京 <span class="e">Tokyo</span></span>
-      <span class="nd"><span class="p"></span>法兰克福 <span class="e">Frankfurt</span></span>
-      <span class="nd"><span class="p"></span>硅谷 <span class="e">Silicon Valley</span></span>
+      <span class="nd"><span class="p"></span>美国 CN2 GIA <span class="e">US · CN2 GIA</span></span>
+      <span class="nd"><span class="p"></span>美国原生住宅IP <span class="e">US · Residential</span></span>
+      <span class="nd"><span class="p"></span>香港 CMI <span class="e">Hong Kong</span></span>
+      <span class="nd"><span class="p"></span>新加坡原生 <span class="e">Singapore</span></span>
+      <span class="nd"><span class="p"></span>台湾原生 <span class="e">Taiwan</span></span>
+      <span class="nd"><span class="p"></span>德国法兰克福 <span class="e">Frankfurt</span></span>
+      <span class="nd more"><span class="p"></span>更多线路持续上线 <span class="e">More Soon</span></span>
     </div>
   </div>
 </section>
 
 <!-- ========== PRICING ========== -->
 <section class="band alt" id="price">
-  <div class="ridge top"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0b1220" d="M0,58 Q180,24 360,52 Q540,18 720,48 Q900,20 1080,50 Q1260,26 1440,54 L1440,0 L0,0 Z"/></svg></div>
+  <div class="ridge top"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0c1226" d="M0,58 Q180,24 360,52 Q540,18 720,48 Q900,20 1080,50 Q1260,26 1440,54 L1440,0 L0,0 Z"/></svg></div>
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">明码标价</span>
-      <h2>只为性能付费，<em>绝无冗余</em></h2>
-      <p>月付固定资费，按秒计费，随时升降配置，进退自如。</p>
+      <h2>丰俭由人，<em>进退自如</em></h2>
+      <p>低至 ¥25/月，¥2 即可试用。随时升降配置，绝无隐形消费。</p>
     </div>
     <div class="plans">
       <div class="pl rv">
-        <div class="nm">微云</div>
-        <p class="ds">个人项目、测试环境与小型应用的理想之选。</p>
-        <div class="pr"><span class="c">¥</span><span class="v">29</span><span class="u">/月</span></div>
+        <div class="nm">轻享</div>
+        <p class="ds">个人建站、测试环境与轻量应用的理想之选。</p>
+        <div class="pr"><span class="c">¥</span><span class="v">25</span><span class="u">/月起</span></div>
         <div class="hr"></div>
-        <ul><li><i>—</i>2 核 vCPU</li><li><i>—</i>4 GB 内存</li><li><i>—</i>80 GB NVMe 存储</li><li><i>—</i>4 TB 流量</li><li><i>—</i>BGP 多线 · DDoS 防护</li></ul>
-        <a href="#" class="btn btn-line">选择微云</a>
+        <ul><li><i>—</i>1 核 vCPU · 1 GB 内存</li><li><i>—</i>20 GB NVMe 高速存储</li><li><i>—</i>香港 CMI / 新加坡可选</li><li><i>—</i>BGP 多线 · DDoS 防护</li><li><i>—</i>即时自动开通</li></ul>
+        <a href="https://lisahost.com/cart.php" class="btn btn-line">立即选购</a>
       </div>
       <div class="pl hot rv">
         <span class="tag">最受欢迎</span>
-        <div class="nm">凌霄</div>
-        <p class="ds">生产应用与繁忙团队的黄金档位，性价俱佳。</p>
-        <div class="pr"><span class="c">¥</span><span class="v">68</span><span class="u">/月</span></div>
+        <div class="nm">优选</div>
+        <p class="ds">回国建站、跨境业务与团队应用的黄金档位。</p>
+        <div class="pr"><span class="c">¥</span><span class="v">35</span><span class="u">/月起</span></div>
         <div class="hr"></div>
-        <ul><li><i>—</i>4 核 vCPU</li><li><i>—</i>16 GB 内存</li><li><i>—</i>200 GB NVMe 存储</li><li><i>—</i>8 TB 流量</li><li><i>—</i>每日自动快照</li><li><i>—</i>7×24 优先支持 · 备案协助</li></ul>
-        <a href="#" class="btn btn-gold">选择凌霄</a>
+        <ul><li><i>—</i>2 核 vCPU · 2 GB 内存</li><li><i>—</i>40 GB NVMe 高速存储</li><li><i>—</i>CN2 GIA 三网直连</li><li><i>—</i>企业级 DDoS 防护</li><li><i>—</i>7×24 专业客服 · 优先支持</li></ul>
+        <a href="https://lisahost.com/cart.php" class="btn btn-gold">立即选购</a>
       </div>
       <div class="pl rv">
-        <div class="nm">鲲鹏</div>
-        <p class="ds">高并发、大流量业务的旗舰算力，一飞冲天。</p>
-        <div class="pr"><span class="c">¥</span><span class="v">168</span><span class="u">/月</span></div>
+        <div class="nm">臻享</div>
+        <p class="ds">流媒体解锁、高并发与跨境电商的旗舰算力。</p>
+        <div class="pr"><span class="c">¥</span><span class="v">88</span><span class="u">/月起</span></div>
         <div class="hr"></div>
-        <ul><li><i>—</i>8 核 vCPU</li><li><i>—</i>32 GB 内存</li><li><i>—</i>500 GB NVMe 存储</li><li><i>—</i>16 TB 流量</li><li><i>—</i>可选独享 CPU</li><li><i>—</i>99.99% SLA · 专属客户经理</li></ul>
-        <a href="#" class="btn btn-line">选择鲲鹏</a>
+        <ul><li><i>—</i>4 核 vCPU · 4 GB 内存</li><li><i>—</i>80 GB NVMe 高速存储</li><li><i>—</i>原生 IP · 流媒体解锁</li><li><i>—</i>独享优质带宽</li><li><i>—</i>专属客户经理 · 99.9% SLA</li></ul>
+        <a href="https://lisahost.com/cart.php" class="btn btn-line">立即选购</a>
       </div>
     </div>
+    <p class="price-note rv">新用户仅需 ¥2 体验 · 具体配置与资费以商城实际展示为准</p>
   </div>
-  <div class="ridge bot"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#04070d" d="M0,32 Q180,64 360,36 Q540,68 720,40 Q900,66 1080,38 Q1260,62 1440,34 L1440,90 L0,90 Z"/></svg></div>
+  <div class="ridge bot"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#05070f" d="M0,32 Q180,64 360,36 Q540,68 720,40 Q900,66 1080,38 Q1260,62 1440,34 L1440,90 L0,90 Z"/></svg></div>
 </section>
 
 <!-- ========== CTA ========== -->
 <section class="cta" id="cta">
   <div class="wrap">
     <span class="eyebrow rv">御风而行</span>
-    <h2 class="rv">扶摇直上，<em>青云可期</em></h2>
-    <p class="rv">已有 40,000+ 开发者在青云之上构建。领取 ¥100 体验金，即刻启程。</p>
-    <div class="rv"><a href="#price" class="btn btn-gold">免费开始 · 无需绑卡</a></div>
+    <h2 class="rv">山高水长，<em>一线通达</em></h2>
+    <p class="rv">优质网络，专业服务。仅需 ¥2 即可试用，48 小时无理由退款，即刻开启你的全球节点。</p>
+    <div class="rv"><a href="https://lisahost.com/cart.php" class="btn btn-gold">立即选购 · ¥2 试用起</a></div>
+    <p class="cta-alt rv">有疑问？欢迎 <a href="#">Telegram 频道</a> 或 <a href="https://lisahost.com/submitticket.php">提交工单</a>，专业客服随时为你护航。</p>
   </div>
-  <div class="ridge bot"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#04070d" d="M0,72 Q160,44 320,68 Q480,36 640,64 Q800,34 960,62 Q1120,38 1280,66 Q1360,54 1440,64 L1440,120 L0,120 Z"/></svg></div>
+  <div class="ridge bot"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#05070f" d="M0,72 Q160,44 320,68 Q480,36 640,64 Q800,34 960,62 Q1120,38 1280,66 Q1360,54 1440,64 L1440,120 L0,120 Z"/></svg></div>
 </section>
 
 <footer>
   <div class="wrap">
     <div class="fgrid2">
       <div class="fb">
-        <a href="#" class="brand"><span class="mk">云</span><span><span class="nm">青云</span><span class="sb">QINGYUN CLOUD</span></span></a>
-        <p>下一代云端基础设施，为敏于构建、疾于交付的开发者而生。</p>
+        <a href="#" class="brand"><span class="mk">丽</span><span><span class="nm">丽萨主机</span><span class="sb">LISAHOST</span></span></a>
+        <p>优质网络，专业服务。化繁为简，简约而不简单——让每一次连接，都稳定而从容。</p>
       </div>
-      <div class="fc"><h4>产品</h4><a href="#feat">特性</a><a href="#price">价格</a><a href="#node">节点</a><a href="#">API 文档</a></div>
-      <div class="fc"><h4>公司</h4><a href="#">关于我们</a><a href="#">博客</a><a href="#">加入我们</a><a href="#">服务状态</a></div>
-      <div class="fc"><h4>帮助</h4><a href="#">帮助中心</a><a href="#">备案协助</a><a href="#">服务协议</a><a href="#">隐私政策</a></div>
+      <div class="fc"><h4>产品</h4><a href="https://lisahost.com/cart.php">全部产品</a><a href="#node">CN2 GIA</a><a href="#node">原生 IP</a><a href="#node">香港 CMI</a></div>
+      <div class="fc"><h4>公司</h4><a href="#cta">关于我们</a><a href="https://lisahost.com/index.php?rp=/knowledgebase">帮助中心</a><a href="https://lisahost.com/affiliates.php">推广联盟</a><a href="#">合作申请</a></div>
+      <div class="fc"><h4>支持</h4><a href="#">Telegram 频道</a><a href="#">Telegram 群组</a><a href="https://lisahost.com/submitticket.php">提交工单</a><a href="https://lisahost.com/clientarea.php">用户中心</a></div>
     </div>
     <div class="fbot">
-      <span>© 2026 青云科技 · 保留所有权利　沪ICP备 2026000000 号（示例）</span>
-      <span style="letter-spacing:.28em;color:var(--muted)">江山万里 · 云起东方</span>
+      <span>© 2026 丽萨主机 LisaHost · 保留所有权利</span>
+      <span style="letter-spacing:.24em;color:var(--muted)">优质网络 · 专业服务</span>
     </div>
   </div>
 </footer>
@@ -518,7 +535,7 @@
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- gold dust ---- */
+  /* ---- silver dust ---- */
   var dust = document.getElementById('dust');
   if (dust && !reduce) {
     for (var i = 0; i < 38; i++) {

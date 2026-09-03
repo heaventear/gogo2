@@ -3,619 +3,589 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>青云 · 云端基础设施</title>
-<meta name="description" content="青云 QingYun —— 于群山之巅，安放每一次计算。高性能云服务器，NVMe 固态存储，BGP 多线，55 秒扶摇直上。" />
+<title>青云万里 · 云端基础设施</title>
+<meta name="description" content="青云 QingYun —— 于山河之上，安放你的每一次计算。三十余处全球节点，NVMe 全闪存储，BGP 多线直连，55 秒扶摇直上。" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+SC:wght@200;300;400;500&family=Noto+Serif+SC:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;500;700;900&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    /* 墨色夜山 · committed dark world */
-    --ink-0:   #0e1014;   /* deepest */
-    --ink-1:   #12151b;   /* base bg */
-    --ink-2:   #171b23;   /* panel */
-    --ink-3:   #1e232d;   /* raised panel */
-    --hair:    rgba(201,162,75,0.22);   /* gold hairline */
-    --hair-2:  rgba(233,229,216,0.10);  /* faint light hairline */
-    --moon:    #ece7d8;   /* headings / moon-white */
-    --text:    #c3c8d2;   /* body */
-    --muted:   #7f8794;   /* captions */
-    --faint:   #59616e;
-    --gold:    #c9a24b;
-    --gold-s:  #ddc078;
-    --jade:    #5aa38f;
-    --cinnabar:#b23a2e;
-    --maxw:    1180px;
-    --serif:   'Noto Serif SC', 'Songti SC', serif;
-    --sans:    'Noto Sans SC', system-ui, sans-serif;
-    --num:     'Cormorant Garamond', 'Noto Serif SC', serif;
+  :root{
+    --night-0:#04070d; --night-1:#070c16; --night-2:#0b1220; --night-3:#101828;
+    --m1:#46597a; --m2:#38496a; --m3:#2a3a56; --m4:#1d2942; --m5:#121b2d; --m6:#080d18;
+    --gold:#cfa456; --gold-b:#f4dca6; --gold-d:#8a6a2f; --ember:#e2b05c;
+    --jade:#3f9583; --cinnabar:#c0392b;
+    --moon:#f4f0e4; --text:#c2c8d4; --muted:#848d9e; --faint:#5a6373;
+    --hair:rgba(207,164,86,.24); --hair2:rgba(244,240,228,.08);
+    --maxw:1200px;
+    --serif:'Noto Serif SC','Songti SC',serif;
+    --sans:'Noto Sans SC',system-ui,sans-serif;
+    --num:'Cormorant Garamond','Noto Serif SC',serif;
+    --brush:'Ma Shan Zheng',var(--serif);
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.9;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    background: var(--ink-1);
-    background-image:
-      radial-gradient(900px 520px at 68% -4%, rgba(236,231,216,0.10), transparent 60%),
-      radial-gradient(1200px 900px at 50% 120%, rgba(90,163,143,0.05), transparent 60%),
-      linear-gradient(180deg, #1a1f28 0%, #12151b 46%, #0e1014 100%);
-    background-attachment: fixed;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);font-weight:300;color:var(--text);line-height:1.9;
+    background:var(--night-1);overflow-x:hidden;-webkit-font-smoothing:antialiased;
   }
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);color:var(--moon);text-wrap:balance}
+  .wrap{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  section{position:relative}
 
-  a { color: inherit; text-decoration: none; }
-  h1, h2, h3 { font-family: var(--serif); font-weight: 300; letter-spacing: 0.04em; text-wrap: balance; color: var(--moon); }
+  /* ============ shared ============ */
+  .eyebrow{display:inline-flex;align-items:center;gap:16px;font-size:.74rem;font-weight:400;
+    letter-spacing:.52em;text-indent:.52em;color:var(--gold);text-transform:uppercase}
+  .eyebrow::before,.eyebrow::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .sec-head{max-width:660px;margin:0 auto 84px;text-align:center}
+  .sec-head h2{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:500;line-height:1.35;letter-spacing:.08em;margin:24px 0 20px}
+  .sec-head h2 em{font-style:normal;background:linear-gradient(180deg,#f7f0dc,var(--gold));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .sec-head p{color:var(--muted);font-size:1.04rem}
 
-  .wrap { position: relative; z-index: 2; width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
-  section { position: relative; z-index: 2; padding: 130px 0; }
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
+    font-family:var(--sans);font-weight:400;font-size:.98rem;letter-spacing:.24em;text-indent:.24em;
+    padding:16px 40px;border:1px solid transparent;border-radius:2px;
+    transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,background .4s,color .4s,border-color .4s}
+  .btn-gold{background:linear-gradient(135deg,var(--gold-b),var(--gold) 55%,var(--gold-d));color:#1d1608;
+    box-shadow:0 14px 40px rgba(207,164,86,.26)}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 56px rgba(207,164,86,.42)}
+  .btn-line{background:rgba(244,240,228,.03);border-color:var(--hair);color:var(--moon)}
+  .btn-line:hover{border-color:var(--gold);color:var(--gold-b);transform:translateY(-3px)}
 
-  /* ---------- shared ---------- */
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 14px;
-    font-family: var(--sans); font-size: 0.74rem; font-weight: 400;
-    letter-spacing: 0.5em; text-indent: 0.5em; color: var(--gold); text-transform: uppercase;
+  /* ============ nav ============ */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .5s,border-color .5s,backdrop-filter .5s;
+    border-bottom:1px solid transparent}
+  .nav.solid{background:rgba(5,8,14,.82);backdrop-filter:blur(14px);border-bottom-color:var(--hair2)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px;
+    max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .mk{width:42px;height:42px;display:grid;place-items:center;flex-shrink:0;
+    border:1px solid var(--gold);color:var(--gold-b);font-family:var(--brush);font-size:1.4rem}
+  .brand .nm{font-family:var(--serif);font-weight:500;font-size:1.4rem;letter-spacing:.3em;color:var(--moon)}
+  .brand .sb{display:block;font-size:.56rem;letter-spacing:.44em;color:var(--faint);margin-top:3px}
+  .nav-links{display:flex;gap:48px}
+  .nav-links a{position:relative;color:var(--muted);font-size:.94rem;letter-spacing:.24em;transition:color .3s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:1px;background:var(--gold);transition:width .4s}
+  .nav-links a:hover{color:var(--moon)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .nav-cta .btn{padding:12px 28px;font-size:.9rem}
+  .burger{display:none;background:none;border:0;color:var(--moon);font-size:1.4rem;cursor:pointer}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;text-align:center;padding:120px 0 90px}
+  .sky{position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(940px 520px at 50% 77%,rgba(226,176,92,.30),transparent 62%),
+      radial-gradient(1400px 700px at 50% 78%,rgba(207,164,86,.12),transparent 70%),
+      linear-gradient(180deg,#04070d 0%,#060b15 28%,#0a1120 50%,#101a2b 68%,#0a111c 100%);
+    animation:skyIn 2.2s ease both}
+  @keyframes skyIn{from{opacity:0}to{opacity:1}}
+
+  .rays{position:absolute;left:50%;top:74%;z-index:2;width:1900px;height:1900px;
+    transform:translate(-50%,-50%);opacity:0;
+    background:repeating-conic-gradient(from 0deg,rgba(244,220,166,.06) 0deg 2.5deg,transparent 2.5deg 13deg);
+    -webkit-mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 32%,transparent 58%);
+    mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 32%,transparent 58%);
+    animation:raysIn 3s ease 1s both,spin 120s linear infinite}
+  @keyframes raysIn{to{opacity:.6}}
+  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+  .sun{position:absolute;left:50%;top:78%;z-index:3;width:340px;height:340px;border-radius:50%;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle at 50% 50%,rgba(250,233,192,.96) 0%,rgba(233,190,110,.62) 30%,rgba(200,150,70,.24) 52%,transparent 72%);
+    animation:sunRise 2.6s cubic-bezier(.16,.8,.3,1) .3s both}
+  .sun::after{content:"";position:absolute;left:50%;top:50%;width:92px;height:92px;border-radius:50%;
+    transform:translate(-50%,-50%);background:radial-gradient(circle,#fdf3dc,#f0d191 62%,rgba(240,209,145,0) 78%);
+    animation:pulse 7s ease-in-out infinite}
+  @keyframes sunRise{from{opacity:0;transform:translate(-50%,calc(-50% + 130px)) scale(.86)}
+    to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+  @keyframes pulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.09)}}
+
+  .cloud{position:absolute;z-index:4;border-radius:50%;filter:blur(30px);pointer-events:none}
+  .cloud.a{width:520px;height:120px;top:38%;left:-30%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(214,226,240,.20),transparent 70%);animation:drift 46s linear infinite}
+  .cloud.b{width:420px;height:96px;top:50%;left:-26%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(240,214,180,.18),transparent 70%);animation:drift 62s linear infinite 8s}
+  .cloud.c{width:600px;height:140px;top:57%;left:-34%;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(200,214,235,.14),transparent 70%);animation:drift 78s linear infinite 20s}
+  @keyframes drift{to{transform:translateX(160vw)}}
+
+  .rg{position:absolute;left:0;right:0;z-index:5;width:100%;will-change:transform;opacity:0;
+    animation:rgIn 1.5s cubic-bezier(.16,.8,.3,1) forwards}
+  .rg svg{display:block;width:100%;height:auto}
+  .rg1{bottom:19%;animation-delay:.55s}
+  .rg2{bottom:15%;animation-delay:.75s;z-index:6}
+  .rg3{bottom:11%;animation-delay:.95s;z-index:7}
+  .rg4{bottom:7%;animation-delay:1.15s;z-index:8}
+  .rg5{bottom:2.5%;animation-delay:1.35s;z-index:9}
+  .rg6{bottom:-1%;animation-delay:1.5s;z-index:10}
+  @keyframes rgIn{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:translateY(0)}}
+
+  .bird{position:absolute;z-index:11;opacity:0;stroke:#0b1220;stroke-width:1.6;fill:none;stroke-linecap:round}
+  .bird.b1{top:34%;width:26px;animation:fly 34s linear 3s infinite}
+  .bird.b2{top:38%;width:18px;animation:fly 44s linear 8s infinite}
+  .bird.b3{top:31%;width:14px;animation:fly 54s linear 16s infinite}
+  @keyframes fly{0%{opacity:0;transform:translate(-8vw,0)}8%{opacity:.55}92%{opacity:.55}100%{opacity:0;transform:translate(112vw,-70px)}}
+
+  .dust{position:absolute;inset:0;z-index:12;pointer-events:none;overflow:hidden}
+  .dust i{position:absolute;bottom:-14px;border-radius:50%;
+    background:radial-gradient(circle,var(--gold-b),rgba(244,220,166,0) 70%);animation:rise linear infinite}
+  @keyframes rise{0%{transform:translate3d(0,0,0);opacity:0}12%{opacity:.9}100%{transform:translate3d(46px,-104vh,0);opacity:0}}
+
+  .hero-in{position:relative;z-index:20}
+  .hero-in::before{content:"";position:absolute;inset:-70px -90px;z-index:-1;pointer-events:none;
+    background:radial-gradient(ellipse 58% 62% at 50% 54%,rgba(4,7,13,.62),rgba(4,7,13,.28) 55%,transparent 74%)}
+  .hero .eyebrow{animation:up 1.2s ease 1.5s both}
+  .title{font-family:var(--serif);font-weight:900;line-height:1;margin:34px 0 14px;
+    font-size:clamp(3.4rem,13.5vw,11rem);letter-spacing:.1em;display:flex;justify-content:center}
+  .title span{display:inline-block;
+    background:linear-gradient(175deg,#fffaef 4%,#f4e6c4 32%,var(--gold) 76%,var(--gold-d) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold-b);
+    filter:drop-shadow(0 10px 32px rgba(207,164,86,.28));
+    animation:charIn 1.5s cubic-bezier(.16,.8,.3,1) both}
+  .title span:nth-child(1){animation-delay:1.62s}
+  .title span:nth-child(2){animation-delay:1.76s}
+  .title span:nth-child(3){animation-delay:1.90s}
+  .title span:nth-child(4){animation-delay:2.04s}
+  @keyframes charIn{from{opacity:0;transform:translateY(38px) scale(1.16);filter:blur(16px)}
+    to{opacity:1;transform:none;filter:blur(0)}}
+
+  .en{font-family:var(--num);font-size:1.16rem;letter-spacing:.72em;text-indent:.72em;color:var(--gold);
+    animation:up 1.3s ease 2.2s both}
+  .lead{max-width:620px;margin:36px auto 0;font-size:1.1rem;color:var(--text);line-height:2.05;
+    animation:up 1.3s ease 2.35s both}
+  .hero-cta{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:48px;animation:up 1.3s ease 2.5s both}
+  .hero-note{margin-top:24px;font-size:.87rem;color:var(--muted);letter-spacing:.08em;animation:up 1.3s ease 2.65s both}
+  .hero-note b{color:var(--gold-b);font-weight:400}
+  @keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+  .seal{position:absolute;z-index:21;right:max(32px,calc(50% - 540px));top:26%;
+    width:74px;height:74px;display:grid;place-items:center;text-align:center;border-radius:5px;
+    background:var(--cinnabar);color:#fdf1e4;font-family:var(--brush);font-size:1.5rem;line-height:1.06;
+    box-shadow:inset 0 0 0 2px rgba(253,241,228,.5),0 12px 30px rgba(140,30,34,.34);
+    animation:stamp .8s cubic-bezier(.2,1.6,.4,1) 2.5s both}
+  @keyframes stamp{0%{opacity:0;transform:rotate(-9deg) scale(2)}62%{opacity:1;transform:rotate(-9deg) scale(.9)}
+    100%{opacity:1;transform:rotate(-9deg) scale(1)}}
+
+  .vside{position:absolute;z-index:21;left:max(32px,calc(50% - 552px));top:50%;transform:translateY(-50%);
+    writing-mode:vertical-rl;white-space:nowrap;font-family:var(--serif);font-size:.94rem;letter-spacing:.58em;color:#6b7488;
+    animation:up 1.3s ease 2.8s both}
+
+  .scroll{position:absolute;left:50%;bottom:34px;z-index:21;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:12px;animation:up 1.3s ease 2.95s both}
+  .scroll .tx{font-family:var(--num);font-size:.72rem;letter-spacing:.42em;color:var(--faint)}
+  .scroll .ln{position:relative;width:1px;height:52px;background:linear-gradient(180deg,var(--hair),transparent)}
+  .scroll .ln::after{content:"";position:absolute;left:50%;top:0;width:4px;height:4px;border-radius:50%;
+    background:var(--gold-b);transform:translateX(-50%);animation:fall 2.4s ease-in-out infinite}
+  @keyframes fall{0%{top:0;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:48px;opacity:0}}
+
+  /* ============ generic band ============ */
+  .band{padding:140px 0;position:relative;z-index:2}
+  .band.alt{background:linear-gradient(180deg,var(--night-1),var(--night-2) 48%,var(--night-1))}
+  .ridge{position:absolute;left:0;right:0;width:100%;line-height:0;z-index:1;pointer-events:none}
+  .ridge svg{display:block;width:100%;height:auto}
+  .ridge.top{top:-1px}
+  .ridge.bot{bottom:-1px}
+
+  /* ============ features ============ */
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--hair2)}
+  .feat{position:relative;padding:52px 40px 46px;background:var(--night-1);overflow:hidden;
+    transition:background .5s}
+  .feat::before{content:"";position:absolute;left:0;top:0;width:100%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .feat:hover{background:var(--night-3)}
+  .feat:hover::before{transform:scaleX(1)}
+  .feat .no{font-family:var(--num);font-size:2.7rem;color:var(--hair);line-height:1;transition:color .5s}
+  .feat:hover .no{color:var(--gold)}
+  .feat .ic{width:32px;height:32px;color:var(--gold-b);margin:22px 0 20px}
+  .feat .ic svg{width:100%;height:100%}
+  .feat h3{font-size:1.32rem;font-weight:500;letter-spacing:.1em;margin-bottom:14px}
+  .feat p{color:var(--muted);font-size:.96rem}
+
+  /* ============ stats ============ */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:2}
+  .st{text-align:center;padding:16px;position:relative}
+  .st+.st::before{content:"";position:absolute;left:0;top:22%;height:56%;width:1px;background:var(--hair2)}
+  .st .n{font-family:var(--num);font-weight:500;font-size:clamp(3rem,6vw,4.8rem);line-height:1;
+    font-variant-numeric:tabular-nums;
+    background:linear-gradient(180deg,#fbf6e8,var(--gold));-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:var(--gold)}
+  .st .l{margin-top:18px;color:var(--muted);font-size:.92rem;letter-spacing:.26em;text-indent:.26em}
+
+  /* ============ nodes ============ */
+  .nodes{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:940px;margin:0 auto}
+  .nd{display:inline-flex;align-items:center;gap:13px;padding:14px 30px;border:1px solid var(--hair2);
+    background:rgba(16,24,40,.5);border-radius:2px;font-size:.99rem;letter-spacing:.14em;color:var(--text);
+    transition:border-color .4s,transform .4s,color .4s}
+  .nd:hover{border-color:var(--hair);color:var(--moon);transform:translateY(-4px)}
+  .nd .p{width:7px;height:7px;border-radius:50%;background:var(--jade);
+    box-shadow:0 0 0 0 rgba(63,149,131,.55);animation:pl 2.6s ease-out infinite}
+  @keyframes pl{0%{box-shadow:0 0 0 0 rgba(63,149,131,.55)}70%{box-shadow:0 0 0 9px rgba(63,149,131,0)}100%{box-shadow:0 0 0 0 rgba(63,149,131,0)}}
+  .nd .e{font-family:var(--num);font-size:.86rem;color:var(--faint)}
+
+  /* ============ pricing ============ */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch}
+  .pl{position:relative;display:flex;flex-direction:column;padding:52px 40px;border-radius:3px;
+    background:linear-gradient(180deg,var(--night-3),var(--night-2));border:1px solid var(--hair2);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s,box-shadow .45s}
+  .pl:hover{transform:translateY(-10px);border-color:var(--hair);box-shadow:0 40px 80px rgba(0,0,0,.5)}
+  .pl.hot{border-color:var(--gold);background:linear-gradient(180deg,rgba(207,164,86,.10),var(--night-2) 60%);
+    box-shadow:0 30px 70px rgba(207,164,86,.12)}
+  .pl .tag{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);padding:7px 22px;border-radius:2px;
+    background:linear-gradient(135deg,var(--gold-b),var(--gold));color:#1d1608;font-size:.72rem;letter-spacing:.32em;text-indent:.32em}
+  .pl .nm{font-family:var(--serif);font-weight:700;font-size:2rem;letter-spacing:.24em;text-indent:.24em;color:var(--moon);margin-bottom:12px}
+  .pl .ds{color:var(--faint);font-size:.9rem;margin-bottom:30px;min-height:48px;line-height:1.8}
+  .pr{display:flex;align-items:baseline;gap:6px}
+  .pr .c{font-family:var(--num);font-size:1.5rem;color:var(--gold)}
+  .pr .v{font-family:var(--num);font-weight:600;font-size:3.8rem;line-height:1;color:var(--moon)}
+  .pr .u{color:var(--faint);font-size:.92rem}
+  .pl .hr{height:1px;background:var(--hair2);margin:32px 0}
+  .pl ul{list-style:none;display:flex;flex-direction:column;gap:17px;margin-bottom:36px;flex:1}
+  .pl li{display:flex;gap:14px;font-size:.96rem;color:var(--text)}
+  .pl li i{font-style:normal;color:var(--jade);flex-shrink:0}
+  .pl .btn{width:100%}
+
+  /* ============ CTA ============ */
+  .cta{position:relative;padding:170px 0 150px;overflow:hidden;text-align:center;
+    background:radial-gradient(900px 460px at 50% 108%,rgba(226,176,92,.20),transparent 66%),var(--night-0)}
+  .cta h2{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.24;
+    letter-spacing:.14em;margin-bottom:24px}
+  .cta h2 em{font-style:normal;background:linear-gradient(180deg,#fffaef,var(--gold));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .cta p{color:var(--muted);max-width:540px;margin:0 auto 44px;font-size:1.06rem}
+
+  /* ============ footer ============ */
+  footer{position:relative;z-index:2;background:var(--night-0);border-top:1px solid var(--hair2);padding:90px 0 48px}
+  .fgrid2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:60px}
+  .fb p{color:var(--muted);font-size:.94rem;margin-top:24px;max-width:300px;line-height:1.95}
+  .fc h4{font-family:var(--serif);font-weight:500;font-size:1rem;letter-spacing:.22em;color:var(--moon);margin-bottom:24px}
+  .fc a{display:block;color:var(--faint);font-size:.92rem;margin-bottom:15px;transition:color .3s}
+  .fc a:hover{color:var(--gold-b)}
+  .fbot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+    padding-top:32px;border-top:1px solid var(--hair2);color:var(--faint);font-size:.84rem;letter-spacing:.08em}
+
+  /* ============ reveal ============ */
+  .rv{opacity:0;transform:translateY(38px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  /* ============ responsive ============ */
+  @media(max-width:1000px){
+    .nav-links{display:none}.burger{display:block}
+    .fgrid{grid-template-columns:repeat(2,1fr)}
+    .plans{grid-template-columns:1fr;max-width:460px;margin:0 auto}
+    .fgrid2{grid-template-columns:1fr 1fr}
+    .seal,.vside{display:none}
   }
-  .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--gold); opacity: 0.6; }
-
-  .section-head { max-width: 620px; margin: 0 auto 78px; text-align: center; }
-  .section-head h2 { font-size: clamp(2rem, 4.2vw, 2.9rem); line-height: 1.4; margin: 22px 0 18px; font-weight: 200; }
-  .section-head p { color: var(--muted); font-size: 1.02rem; font-weight: 300; }
-  .section-head .zh-accent { color: var(--gold-s); }
-
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    font-family: var(--sans); font-weight: 400; font-size: 0.96rem; letter-spacing: 0.2em; text-indent: 0.2em;
-    padding: 15px 36px; cursor: pointer; white-space: nowrap; border-radius: 1px;
-    border: 1px solid transparent; transition: all .35s cubic-bezier(.2,.7,.2,1);
+  @media(max-width:640px){
+    .band{padding:96px 0}
+    .fgrid{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr;gap:44px 0}
+    .st+.st::before{display:none}
+    .fgrid2{grid-template-columns:1fr}
+    .nav-cta .btn-line{display:none}
+    .title{letter-spacing:.04em}
+    .hero{padding:110px 0 80px}
   }
-  .btn-primary { background: linear-gradient(180deg, var(--gold-s), var(--gold)); color: #1b1710; }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(201,162,75,0.28); }
-  .btn-ghost { background: transparent; border-color: var(--hair); color: var(--moon); }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-s); transform: translateY(-2px); }
-  .btn-lg { padding: 17px 44px; }
-
-  /* ---------- nav ---------- */
-  header.nav {
-    position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(12px);
-    background: rgba(14,16,20,0.55);
-    border-bottom: 1px solid var(--hair-2);
-  }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 84px; }
-  .brand { display: flex; align-items: center; gap: 14px; }
-  .brand .mark {
-    width: 40px; height: 40px; display: grid; place-items: center; flex-shrink: 0;
-    border: 1px solid var(--gold); color: var(--gold-s);
-    font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
-  }
-  .brand .name { font-family: var(--serif); font-weight: 400; font-size: 1.42rem; letter-spacing: 0.28em; color: var(--moon); }
-  .brand .sub { display: block; font-size: 0.58rem; letter-spacing: 0.42em; color: var(--faint); margin-top: 2px; }
-  .nav-links { display: flex; align-items: center; gap: 46px; }
-  .nav-links a { position: relative; color: var(--muted); font-size: 0.94rem; letter-spacing: 0.24em; transition: color .3s; }
-  .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 0; height: 1px; background: var(--gold); transition: width .35s; }
-  .nav-links a:hover { color: var(--moon); }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-cta { display: flex; align-items: center; gap: 20px; }
-  .menu-toggle { display: none; background: none; border: none; color: var(--moon); cursor: pointer; font-size: 1.4rem; }
-
-  /* ---------- hero ---------- */
-  .hero { min-height: 88vh; padding: 40px 0 0; display: flex; flex-direction: column; justify-content: center; overflow: hidden; text-align: center; }
-  .hero-scene { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-
-  .moon {
-    position: absolute; top: 8%; left: 72%; width: 148px; height: 148px; border-radius: 50%;
-    background: radial-gradient(circle at 50% 46%, #f3efe1 0%, #ded8c4 44%, rgba(222,216,196,0.12) 68%, transparent 76%);
-    box-shadow: 0 0 130px 26px rgba(236,231,216,0.09);
-    animation: moonIn 2.4s ease .2s both;
-  }
-  @keyframes moonIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-
-  .range { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; will-change: transform; }
-  .range svg { display: block; width: 100%; height: auto; }
-  .r1 { bottom: 8%;  opacity: 0; animation: rangeIn 2s ease .5s forwards; }
-  .r2 { bottom: 4%;  opacity: 0; animation: rangeIn 2s ease .7s forwards; }
-  .r3 { bottom: 0;   opacity: 0; animation: rangeIn 2s ease .9s forwards; }
-  .r4 { bottom: -2%; opacity: 0; animation: rangeIn 2s ease 1.1s forwards; }
-  @keyframes rangeIn { to { opacity: 1; } }
-
-  .mist { position: absolute; left: -20%; width: 140%; height: 160px; pointer-events: none;
-    background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(226,224,214,0.10), transparent 70%);
-    filter: blur(8px); }
-  .mist.m1 { bottom: 20%; animation: mist 26s ease-in-out infinite; }
-  .mist.m2 { bottom: 9%;  height: 120px; opacity: 0.7; animation: mist 34s ease-in-out infinite reverse; }
-  @keyframes mist { 0%,100% { transform: translateX(-3%); } 50% { transform: translateX(4%); } }
-
-  .hero-inner { position: relative; z-index: 3; }
-  .hero .eyebrow { animation: fadeUp 1.1s ease .3s both; }
-  .hero h1 {
-    font-family: var(--serif); font-weight: 200;
-    font-size: clamp(4.2rem, 13vw, 9.5rem); line-height: 1; letter-spacing: 0.22em; text-indent: 0.22em;
-    margin: 30px 0 6px; color: var(--moon);
-    animation: fadeUp 1.3s ease .45s both;
-  }
-  .hero .sub {
-    font-family: var(--num); font-weight: 400; font-size: 1.28rem;
-    letter-spacing: 0.7em; text-indent: 0.7em; color: var(--gold-s);
-    animation: fadeUp 1.3s ease .6s both;
-  }
-  .hero .lead { max-width: 540px; margin: 34px auto 0; font-size: 1.1rem; font-weight: 300; color: var(--text); line-height: 2;
-    animation: fadeUp 1.3s ease .75s both; }
-  .hero-cta { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 46px;
-    animation: fadeUp 1.3s ease .9s both; }
-  .hero-note { margin-top: 22px; font-size: 0.86rem; color: var(--muted); letter-spacing: 0.08em; animation: fadeUp 1.3s ease 1.05s both; }
-  .hero-note b { color: var(--gold-s); font-weight: 400; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-
-  /* vertical side label 竖排 */
-  .vlabel {
-    position: absolute; z-index: 3; top: 50%; right: max(30px, calc(50% - 560px)); transform: translateY(-50%);
-    writing-mode: vertical-rl; font-family: var(--serif); font-weight: 300;
-    font-size: 0.9rem; letter-spacing: 0.6em; color: var(--faint);
-    animation: fadeUp 1.3s ease 1.2s both;
-  }
-  .vlabel .dot { display: block; width: 5px; height: 5px; background: var(--cinnabar); border-radius: 50%; margin: 14px auto 0; }
-
-  /* ---------- deploy panel ---------- */
-  .deploy { padding-top: 40px; }
-  .panel {
-    max-width: 760px; margin: 0 auto; background: rgba(18,21,27,0.7);
-    border: 1px solid var(--hair); border-radius: 3px; overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-  }
-  .panel-bar { display: flex; align-items: center; gap: 9px; padding: 14px 18px; border-bottom: 1px solid var(--hair-2); }
-  .panel-bar .d { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--faint); }
-  .panel-bar .t { margin-left: 10px; font-family: var(--num); font-size: 0.9rem; letter-spacing: 0.24em; color: var(--muted); }
-  .panel-body { padding: 26px 28px; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.85rem; line-height: 2.1; color: #bcc3cd; }
-  .panel-body .p { color: var(--gold-s); }
-  .panel-body .o { color: var(--faint); }
-  .panel-body .ok { color: var(--jade); }
-  .cursor { display: inline-block; width: 7px; height: 1em; background: var(--gold-s); vertical-align: -2px; animation: blink 1.2s steps(1) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  /* ---------- divider ---------- */
-  .rule { display: flex; align-items: center; justify-content: center; gap: 20px; max-width: 300px; margin: 0 auto 80px; }
-  .rule .l { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--hair)); }
-  .rule .l.r { background: linear-gradient(90deg, var(--hair), transparent); }
-  .rule .k { width: 6px; height: 6px; border: 1px solid var(--gold); transform: rotate(45deg); }
-
-  /* ---------- features ---------- */
-  .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--hair-2); border: 1px solid var(--hair-2); }
-  .feat {
-    position: relative; padding: 44px 38px; background: var(--ink-1);
-    transition: background .4s;
-  }
-  .feat:hover { background: var(--ink-2); }
-  .feat .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 26px; }
-  .feat .ico { width: 30px; height: 30px; color: var(--gold-s); }
-  .feat .ico svg { width: 100%; height: 100%; }
-  .feat .idx { font-family: var(--num); font-size: 1.1rem; letter-spacing: 0.1em; color: var(--faint); }
-  .feat h3 { font-size: 1.28rem; font-weight: 400; margin-bottom: 12px; letter-spacing: 0.08em; }
-  .feat p { color: var(--muted); font-size: 0.95rem; font-weight: 300; }
-  .feat::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 0; background: var(--gold); transition: width .5s cubic-bezier(.2,.7,.2,1); }
-  .feat:hover::after { width: 100%; }
-
-  /* ---------- stats ---------- */
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); }
-  .stat { text-align: center; padding: 10px 14px; position: relative; }
-  .stat + .stat::before { content: ""; position: absolute; left: 0; top: 20%; height: 60%; width: 1px; background: var(--hair-2); }
-  .stat .n { font-family: var(--num); font-weight: 400; font-size: 4rem; line-height: 1; color: var(--gold-s); font-variant-numeric: tabular-nums; }
-  .stat .lab { margin-top: 16px; color: var(--muted); font-size: 0.92rem; letter-spacing: 0.24em; text-indent: 0.24em; }
-
-  /* ---------- nodes ---------- */
-  .nodes { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 18px; max-width: 900px; margin: 0 auto; }
-  .node {
-    display: inline-flex; align-items: center; gap: 12px; padding: 12px 26px;
-    border: 1px solid var(--hair-2); border-radius: 2px; background: rgba(23,27,35,0.5);
-    font-size: 0.98rem; font-weight: 300; letter-spacing: 0.14em; color: var(--text);
-    transition: border-color .35s, color .35s, transform .35s;
-  }
-  .node:hover { border-color: var(--hair); color: var(--moon); transform: translateY(-3px); }
-  .node .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--jade); box-shadow: 0 0 0 0 rgba(90,163,143,0.5); animation: pulse 2.6s ease-out infinite; }
-  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(90,163,143,0.5); } 70% { box-shadow: 0 0 0 8px rgba(90,163,143,0); } 100% { box-shadow: 0 0 0 0 rgba(90,163,143,0); } }
-  .node .en { color: var(--faint); font-family: var(--num); font-size: 0.85rem; letter-spacing: 0.06em; }
-
-  /* ---------- pricing ---------- */
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
-  .plan {
-    position: relative; display: flex; flex-direction: column; padding: 46px 38px;
-    background: var(--ink-2); border: 1px solid var(--hair-2); border-radius: 3px;
-    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s, box-shadow .4s;
-  }
-  .plan:hover { transform: translateY(-8px); border-color: var(--hair); box-shadow: 0 30px 60px rgba(0,0,0,0.45); }
-  .plan.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(201,162,75,0.07), var(--ink-2)); }
-  .plan-badge {
-    position: absolute; top: -1px; left: 50%; transform: translate(-50%, -50%);
-    background: var(--ink-1); color: var(--gold-s); font-size: 0.72rem; letter-spacing: 0.34em; text-indent: 0.34em;
-    padding: 6px 20px; border: 1px solid var(--gold); border-radius: 1px;
-  }
-  .plan .pname { font-family: var(--serif); font-weight: 400; font-size: 1.9rem; letter-spacing: 0.22em; text-indent: 0.22em; color: var(--moon); margin-bottom: 10px; }
-  .plan .pdesc { color: var(--faint); font-size: 0.9rem; font-weight: 300; margin-bottom: 28px; min-height: 46px; line-height: 1.8; }
-  .price { display: flex; align-items: baseline; gap: 5px; margin-bottom: 4px; }
-  .price .cur { color: var(--gold-s); font-family: var(--num); font-size: 1.5rem; }
-  .price .num { font-family: var(--num); font-weight: 500; font-size: 3.6rem; line-height: 1; color: var(--moon); }
-  .price .per { color: var(--faint); font-size: 0.92rem; }
-  .plan .prule { height: 1px; background: var(--hair-2); margin: 30px 0; }
-  .plan ul { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 34px; flex: 1; }
-  .plan li { display: flex; align-items: flex-start; gap: 13px; font-size: 0.96rem; font-weight: 300; color: var(--text); }
-  .plan li .ck { flex-shrink: 0; color: var(--jade); margin-top: 1px; font-size: 0.9rem; }
-  .plan .btn { width: 100%; }
-
-  /* ---------- CTA ---------- */
-  .cta { text-align: center; overflow: hidden; }
-  .cta-inner { position: relative; z-index: 2; }
-  .cta h2 { font-family: var(--serif); font-weight: 200; font-size: clamp(2.4rem, 5.4vw, 3.8rem); line-height: 1.3; letter-spacing: 0.14em; margin-bottom: 20px; }
-  .cta p { color: var(--muted); max-width: 520px; margin: 0 auto 40px; font-size: 1.04rem; font-weight: 300; }
-
-  /* ---------- footer ---------- */
-  footer { position: relative; z-index: 2; border-top: 1px solid var(--hair-2); padding: 80px 0 46px; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
-  .footer-brand p { color: var(--muted); font-size: 0.94rem; font-weight: 300; margin-top: 22px; max-width: 300px; line-height: 1.9; }
-  .footer-col h4 { font-family: var(--serif); font-weight: 400; font-size: 1rem; letter-spacing: 0.2em; color: var(--moon); margin-bottom: 22px; }
-  .footer-col a { display: block; color: var(--faint); font-size: 0.92rem; font-weight: 300; margin-bottom: 14px; transition: color .3s; }
-  .footer-col a:hover { color: var(--gold-s); }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid var(--hair-2); color: var(--faint); font-size: 0.84rem; letter-spacing: 0.08em; flex-wrap: wrap; gap: 12px; }
-
-  /* ---------- reveal ---------- */
-  .reveal { opacity: 0; transform: translateY(34px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
-  .reveal.in { opacity: 1; transform: none; }
-
-  /* ---------- responsive ---------- */
-  @media (max-width: 900px) {
-    .feature-grid { grid-template-columns: 1fr 1fr; }
-    .stats { grid-template-columns: 1fr 1fr; gap: 44px 0; }
-    .stat:nth-child(3)::before, .stat:nth-child(odd)::before { display: none; }
-    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .nav-links, .vlabel { display: none; }
-    .menu-toggle { display: block; }
-  }
-  @media (max-width: 560px) {
-    section { padding: 92px 0; }
-    .feature-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .nav-cta .btn-ghost { display: none; }
-    .hero { min-height: 82vh; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; }
-    .moon, .range, .hero .eyebrow, .hero h1, .hero .sub, .hero .lead, .hero-cta, .hero-note, .vlabel { opacity: 1 !important; transform: none !important; }
-    .r1,.r2,.r3,.r4 { }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto}
+    .rv{opacity:1;transform:none}
+    .sky,.rays,.sun,.rg,.hero .eyebrow,.title span,.en,.lead,.hero-cta,.hero-note,.seal,.vside,.scroll{opacity:1!important;transform:none!important;filter:none!important}
+    .seal{transform:rotate(-9deg)!important}
+    .rays{opacity:.5!important}
   }
 </style>
 </head>
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a href="#" class="brand">
-        <span class="mark">青</span>
-        <span><span class="name">青云</span><span class="sub">QINGYUN CLOUD</span></span>
-      </a>
-      <nav class="nav-links">
-        <a href="#features">特性</a>
-        <a href="#nodes">节点</a>
-        <a href="#pricing">价格</a>
-        <a href="#cta">关于</a>
-      </nav>
-      <div class="nav-cta">
-        <a href="#" class="btn btn-ghost">登录</a>
-        <a href="#pricing" class="btn btn-primary">立即部署</a>
-        <button class="menu-toggle" aria-label="菜单">☰</button>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#" class="brand">
+      <span class="mk">云</span>
+      <span><span class="nm">青云</span><span class="sb">QINGYUN CLOUD</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#feat">特性</a><a href="#node">节点</a><a href="#price">价格</a><a href="#cta">关于</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-line">登录</a>
+      <a href="#price" class="btn btn-gold">立即部署</a>
+      <button class="burger" aria-label="菜单">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="sky"></div>
+  <div class="rays"></div>
+  <div class="sun"></div>
+  <div class="cloud a"></div>
+  <div class="cloud b"></div>
+  <div class="cloud c"></div>
+
+  <div class="rg rg1" data-d="0.05">
+    <svg viewBox="0 0 1440 300" preserveAspectRatio="none"><path fill="#5c6f92" d="M0,300 L0,175 L0,148 L87,216 Q97,223 109,210 L218,92 L316,201 Q327,213 338,206 L436,138 L564,206 Q578,214 594,198 L738,58 L788,197 Q794,212 805,203 L906,126 L1074,195 Q1093,203 1104,193 L1204,104 L1286,228 Q1295,242 1310,233 L1440,150 L1440,196 L1440,300 Z"/></svg>
+  </div>
+  <div class="rg rg2" data-d="0.09">
+    <svg viewBox="0 0 1440 300" preserveAspectRatio="none"><path fill="#45577a" d="M0,300 L0,224 L0,176 L169,242 Q188,249 204,237 L351,132 L485,190 Q500,197 514,188 L643,104 L738,218 Q748,231 765,224 L922,158 L980,224 Q986,231 996,220 L1089,118 L1186,221 Q1197,232 1221,226 L1440,168 L1440,211 L1440,300 Z"/></svg>
+  </div>
+  <div class="rg rg3" data-d="0.14">
+    <svg viewBox="0 0 1440 290" preserveAspectRatio="none"><path fill="#313f5c" d="M0,290 L0,236 L0,206 L129,265 Q143,272 156,262 L270,168 L394,246 Q408,255 421,249 L535,196 L683,253 Q699,259 710,247 L813,142 L1033,242 Q1057,253 1073,246 L1213,188 L1343,262 Q1357,270 1365,264 L1440,210 L1440,242 L1440,290 Z"/></svg>
+  </div>
+  <div class="rg rg4" data-d="0.19">
+    <svg viewBox="0 0 1440 270" preserveAspectRatio="none"><path fill="#1f2c45" d="M0,270 L0,265 L0,222 L86,260 Q95,264 116,256 L308,186 L567,236 Q596,241 616,234 L800,166 L899,252 Q910,262 935,256 L1163,204 L1276,256 Q1288,262 1303,255 L1440,192 L1440,229 L1440,270 Z"/>
+      <g fill="#101a2c" transform="translate(528,189) scale(0.95)">
+        <rect x="31" y="0" width="2" height="9"/><circle cx="32" cy="1.5" r="2.4"/>
+        <path d="M32,8 C40,14 55,23 64,29 C56,26 49,27 44,29 L20,29 C15,27 8,26 0,29 C9,23 24,14 32,8 Z"/>
+        <rect x="15" y="29" width="3" height="15"/><rect x="25" y="29" width="3" height="15"/>
+        <rect x="36" y="29" width="3" height="15"/><rect x="46" y="29" width="3" height="15"/>
+        <rect x="11" y="44" width="42" height="3.4"/>
+      </g></svg>
+  </div>
+  <div class="rg rg5" data-d="0.25">
+    <svg viewBox="0 0 1440 240" preserveAspectRatio="none"><path fill="#131c30" d="M0,240 L0,235 L0,196 L104,230 Q116,234 134,228 L293,172 L423,205 Q437,209 462,204 L691,158 L802,226 Q814,233 834,228 L1016,186 L1205,218 Q1226,222 1247,218 L1440,178 L1440,221 L1440,240 Z"/></svg>
+  </div>
+  <div class="rg rg6" data-d="0.32">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path fill="#070c16" d="M0,200 L0,200 L0,168 L189,191 Q210,194 230,190 L408,150 L507,186 Q518,190 538,187 L722,162 L866,182 Q882,184 911,180 L1173,142 L1253,186 Q1262,191 1280,188 L1440,166 L1440,195 L1440,200 Z"/></svg>
+  </div>
+
+  <svg class="bird b1" viewBox="0 0 40 12"><path d="M2,8 Q9,1 16,8 Q23,1 30,8"/></svg>
+  <svg class="bird b2" viewBox="0 0 40 12"><path d="M2,8 Q9,1 16,8 Q23,1 30,8"/></svg>
+  <svg class="bird b3" viewBox="0 0 40 12"><path d="M2,8 Q9,1 16,8 Q23,1 30,8"/></svg>
+
+  <div class="dust" id="dust"></div>
+
+  <div class="seal" aria-hidden="true">青云<br />万里</div>
+  <div class="vside" aria-hidden="true">江山万里 · 云起东方</div>
+
+  <div class="wrap hero-in">
+    <span class="eyebrow">云端基础设施</span>
+    <h1 class="title"><span>青</span><span>云</span><span>万</span><span>里</span></h1>
+    <div class="en">QINGYUN&nbsp;&nbsp;CLOUD</div>
+    <p class="lead">于山河之上，安放你的每一次计算。<br />三十余处全球节点，NVMe 全闪存储，扶摇直上，仅需 55 秒。</p>
+    <div class="hero-cta">
+      <a href="#price" class="btn btn-gold">立即部署</a>
+      <a href="#feat" class="btn btn-line">了解特性</a>
+    </div>
+    <p class="hero-note">无需绑卡 · 新用户礼赠 <b>¥100 体验金</b></p>
+  </div>
+
+  <div class="scroll" aria-hidden="true"><span class="tx">SCROLL</span><span class="ln"></span></div>
+</section>
+
+<!-- ========== FEATURES ========== -->
+<section class="band" id="feat">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">何以青云</span>
+      <h2>为极致而生的<em>云端基座</em></h2>
+      <p>企业级硬件，秒级响应。稳如山岳，快似御风。</p>
+    </div>
+    <div class="fgrid">
+      <div class="feat rv"><div class="no">01</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <h3>极速部署</h3><p>一杯茶未凉，服务器已就绪。快照、克隆、重建皆在弹指之间，55 秒直达。</p></div>
+      <div class="feat rv"><div class="no">02</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="4" rx="1"/><rect x="3" y="11" width="18" height="4" rx="1"/><rect x="3" y="17" width="18" height="2" rx="1"/></svg></div>
+        <h3>NVMe 全闪存储</h3><p>本地 NVMe Gen4，随机读写高达百万 IOPS。数据库与构建，从此畅快呼吸。</p></div>
+      <div class="feat rv"><div class="no">03</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>DDoS 智能防护</h3><p>多 Tbps 边缘清洗，自动拦截海量攻击。全线套餐标配，分文不取。</p></div>
+      <div class="feat rv"><div class="no">04</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg></div>
+        <h3>全球节点</h3><p>横跨六大洲的私有 10 Gbps 骨干网，让服务贴近每一位用户，触手可及。</p></div>
+      <div class="feat rv"><div class="no">05</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>完整 root 权限</h3><p>KVM 虚拟化，资源独享。自选系统、自定内核，随心所欲，尽在掌控。</p></div>
+      <div class="feat rv"><div class="no">06</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg></div>
+        <h3>实时监控</h3><p>秒级 CPU、内存、磁盘与带宽曲线，附 REST API 与 Terraform Provider。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS ========== -->
+<section class="band alt">
+  <div class="ridge top"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0b1220" d="M0,60 Q180,26 360,54 Q540,20 720,50 Q900,22 1080,52 Q1260,28 1440,56 L1440,0 L0,0 Z"/></svg></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">磐石之基</span>
+      <h2>数字为证，<em>稳如山岳</em></h2>
+      <p>可用性 SLA，白纸黑字，郑重承诺。</p>
+    </div>
+    <div class="stats">
+      <div class="st rv"><div class="n" data-t="99.99" data-s="%">0</div><div class="l">可用性 SLA</div></div>
+      <div class="st rv"><div class="n" data-t="30" data-s="+">0</div><div class="l">全球节点</div></div>
+      <div class="st rv"><div class="n" data-t="55" data-s="秒">0</div><div class="l">平均部署</div></div>
+      <div class="st rv"><div class="n" data-t="240" data-s="k+">0</div><div class="l">运行实例</div></div>
+    </div>
+  </div>
+  <div class="ridge bot"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#070c16" d="M0,34 Q180,66 360,38 Q540,70 720,42 Q900,68 1080,40 Q1260,64 1440,36 L1440,90 L0,90 Z"/></svg></div>
+</section>
+
+<!-- ========== NODES ========== -->
+<section class="band" id="node">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">四海通达</span>
+      <h2>节点遍布，<em>三网优化</em></h2>
+      <p>中国大陆 BGP 多线直连，海外骨干低延迟互联，就近接入。</p>
+    </div>
+    <div class="nodes rv">
+      <span class="nd"><span class="p"></span>上海 <span class="e">Shanghai</span></span>
+      <span class="nd"><span class="p"></span>北京 <span class="e">Beijing</span></span>
+      <span class="nd"><span class="p"></span>广州 <span class="e">Guangzhou</span></span>
+      <span class="nd"><span class="p"></span>香港 <span class="e">Hong Kong</span></span>
+      <span class="nd"><span class="p"></span>新加坡 <span class="e">Singapore</span></span>
+      <span class="nd"><span class="p"></span>东京 <span class="e">Tokyo</span></span>
+      <span class="nd"><span class="p"></span>法兰克福 <span class="e">Frankfurt</span></span>
+      <span class="nd"><span class="p"></span>硅谷 <span class="e">Silicon Valley</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section class="band alt" id="price">
+  <div class="ridge top"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0b1220" d="M0,58 Q180,24 360,52 Q540,18 720,48 Q900,20 1080,50 Q1260,26 1440,54 L1440,0 L0,0 Z"/></svg></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">明码标价</span>
+      <h2>只为性能付费，<em>绝无冗余</em></h2>
+      <p>月付固定资费，按秒计费，随时升降配置，进退自如。</p>
+    </div>
+    <div class="plans">
+      <div class="pl rv">
+        <div class="nm">微云</div>
+        <p class="ds">个人项目、测试环境与小型应用的理想之选。</p>
+        <div class="pr"><span class="c">¥</span><span class="v">29</span><span class="u">/月</span></div>
+        <div class="hr"></div>
+        <ul><li><i>—</i>2 核 vCPU</li><li><i>—</i>4 GB 内存</li><li><i>—</i>80 GB NVMe 存储</li><li><i>—</i>4 TB 流量</li><li><i>—</i>BGP 多线 · DDoS 防护</li></ul>
+        <a href="#" class="btn btn-line">选择微云</a>
+      </div>
+      <div class="pl hot rv">
+        <span class="tag">最受欢迎</span>
+        <div class="nm">凌霄</div>
+        <p class="ds">生产应用与繁忙团队的黄金档位，性价俱佳。</p>
+        <div class="pr"><span class="c">¥</span><span class="v">68</span><span class="u">/月</span></div>
+        <div class="hr"></div>
+        <ul><li><i>—</i>4 核 vCPU</li><li><i>—</i>16 GB 内存</li><li><i>—</i>200 GB NVMe 存储</li><li><i>—</i>8 TB 流量</li><li><i>—</i>每日自动快照</li><li><i>—</i>7×24 优先支持 · 备案协助</li></ul>
+        <a href="#" class="btn btn-gold">选择凌霄</a>
+      </div>
+      <div class="pl rv">
+        <div class="nm">鲲鹏</div>
+        <p class="ds">高并发、大流量业务的旗舰算力，一飞冲天。</p>
+        <div class="pr"><span class="c">¥</span><span class="v">168</span><span class="u">/月</span></div>
+        <div class="hr"></div>
+        <ul><li><i>—</i>8 核 vCPU</li><li><i>—</i>32 GB 内存</li><li><i>—</i>500 GB NVMe 存储</li><li><i>—</i>16 TB 流量</li><li><i>—</i>可选独享 CPU</li><li><i>—</i>99.99% SLA · 专属客户经理</li></ul>
+        <a href="#" class="btn btn-line">选择鲲鹏</a>
       </div>
     </div>
-  </header>
+  </div>
+  <div class="ridge bot"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#04070d" d="M0,32 Q180,64 360,36 Q540,68 720,40 Q900,66 1080,38 Q1260,62 1440,34 L1440,90 L0,90 Z"/></svg></div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-scene" aria-hidden="true">
-      <div class="moon"></div>
-      <div class="mist m1"></div>
-      <div class="mist m2"></div>
-      <div class="range r1" data-depth="0.06">
-        <svg viewBox="0 0 1440 260" preserveAspectRatio="none">
-          <path fill="#3a4152" d="M0,150 C150,90 260,120 400,64 C520,18 620,96 760,58 C900,20 1010,104 1150,66 C1270,34 1360,92 1440,66 L1440,260 L0,260 Z"/>
-        </svg>
+<!-- ========== CTA ========== -->
+<section class="cta" id="cta">
+  <div class="wrap">
+    <span class="eyebrow rv">御风而行</span>
+    <h2 class="rv">扶摇直上，<em>青云可期</em></h2>
+    <p class="rv">已有 40,000+ 开发者在青云之上构建。领取 ¥100 体验金，即刻启程。</p>
+    <div class="rv"><a href="#price" class="btn btn-gold">免费开始 · 无需绑卡</a></div>
+  </div>
+  <div class="ridge bot"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#04070d" d="M0,72 Q160,44 320,68 Q480,36 640,64 Q800,34 960,62 Q1120,38 1280,66 Q1360,54 1440,64 L1440,120 L0,120 Z"/></svg></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid2">
+      <div class="fb">
+        <a href="#" class="brand"><span class="mk">云</span><span><span class="nm">青云</span><span class="sb">QINGYUN CLOUD</span></span></a>
+        <p>下一代云端基础设施，为敏于构建、疾于交付的开发者而生。</p>
       </div>
-      <div class="range r2" data-depth="0.11">
-        <svg viewBox="0 0 1440 260" preserveAspectRatio="none">
-          <path fill="#2f3542" d="M0,180 C130,128 250,160 380,110 C520,56 640,140 780,104 C920,70 1040,150 1180,112 C1290,82 1370,132 1440,110 L1440,260 L0,260 Z"/>
-        </svg>
-      </div>
-      <div class="range r3" data-depth="0.17">
-        <svg viewBox="0 0 1440 260" preserveAspectRatio="none">
-          <path fill="#232935" d="M0,196 C160,156 280,186 430,146 C560,112 700,178 840,150 C980,122 1080,180 1220,152 C1320,132 1380,166 1440,150 L1440,260 L0,260 Z"/>
-        </svg>
-      </div>
-      <div class="range r4" data-depth="0.24">
-        <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
-          <path fill="#161b24" d="M0,150 C180,120 300,146 460,120 C600,98 740,150 900,128 C1040,110 1160,152 1300,132 C1360,124 1410,138 1440,132 L1440,220 L0,220 Z"/>
-        </svg>
-      </div>
+      <div class="fc"><h4>产品</h4><a href="#feat">特性</a><a href="#price">价格</a><a href="#node">节点</a><a href="#">API 文档</a></div>
+      <div class="fc"><h4>公司</h4><a href="#">关于我们</a><a href="#">博客</a><a href="#">加入我们</a><a href="#">服务状态</a></div>
+      <div class="fc"><h4>帮助</h4><a href="#">帮助中心</a><a href="#">备案协助</a><a href="#">服务协议</a><a href="#">隐私政策</a></div>
     </div>
-
-    <div class="vlabel" aria-hidden="true">云生于岫 · 山静于夜<span class="dot"></span></div>
-
-    <div class="wrap hero-inner">
-      <span class="eyebrow">云端基础设施</span>
-      <h1>青云</h1>
-      <div class="sub">RISE&nbsp;&nbsp;ABOVE</div>
-      <p class="lead">于群山之巅，安放你的每一次计算。<br />下一代高性能云服务器，扶摇直上，仅需 55 秒。</p>
-      <div class="hero-cta">
-        <a href="#pricing" class="btn btn-primary btn-lg">立即部署</a>
-        <a href="#features" class="btn btn-ghost btn-lg">了解特性</a>
-      </div>
-      <p class="hero-note">无需绑卡 · 新用户礼赠 <b>¥100 体验金</b></p>
+    <div class="fbot">
+      <span>© 2026 青云科技 · 保留所有权利　沪ICP备 2026000000 号（示例）</span>
+      <span style="letter-spacing:.28em;color:var(--muted)">江山万里 · 云起东方</span>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- DEPLOY -->
-  <section class="deploy">
-    <div class="wrap">
-      <div class="panel reveal" aria-hidden="true">
-        <div class="panel-bar">
-          <span class="d"></span><span class="d"></span><span class="d"></span>
-          <span class="t">qingyun · 极速部署</span>
-        </div>
-        <div class="panel-body">
-          <div><span class="p">➜</span>&nbsp; qingyun deploy --region shanghai --plan lingxiao</div>
-          <div class="o">→ 正在分配 NVMe 存储卷 ············ <span class="ok">完成</span></div>
-          <div class="o">→ 接入 10 Gbps BGP 多线网络 ······· <span class="ok">完成</span></div>
-          <div class="o">→ 启用 DDoS 智能防护 ············· <span class="ok">完成</span></div>
-          <div class="o">→ 引导 Ubuntu 24.04 LTS ·········· <span class="ok">完成</span></div>
-          <div class="ok">✔ 云服务器已就绪 · 上海节点 · 用时 51 秒</div>
-          <div><span class="p">➜</span>&nbsp; <span class="cursor"></span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  <!-- FEATURES -->
-  <section id="features">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">何以青云</span>
-        <h2>为极致而生的<span class="zh-accent">云端基座</span></h2>
-        <p>企业级硬件，秒级响应。稳如磐石，快如御风。</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feat reveal">
-          <div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></span><span class="idx">01</span></div>
-          <h3>极速部署</h3>
-          <p>一杯茶未凉，服务器已就绪。快照、克隆、重建，皆在弹指之间，55 秒直达。</p>
-        </div>
-        <div class="feat reveal">
-          <div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="4" rx="1"/><rect x="3" y="11" width="18" height="4" rx="1"/><rect x="3" y="17" width="18" height="2" rx="1"/><circle cx="7" cy="7" r="0.5" fill="currentColor"/><circle cx="7" cy="13" r="0.5" fill="currentColor"/></svg></span><span class="idx">02</span></div>
-          <h3>NVMe 固态存储</h3>
-          <p>本地 NVMe Gen4，随机读写高达百万 IOPS。数据库与构建，从此畅快呼吸。</p>
-        </div>
-        <div class="feat reveal">
-          <div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="idx">03</span></div>
-          <h3>DDoS 智能防护</h3>
-          <p>多 Tbps 边缘清洗，自动拦截海量攻击。全线套餐标配，分文不取。</p>
-        </div>
-        <div class="feat reveal">
-          <div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg></span><span class="idx">04</span></div>
-          <h3>全球节点</h3>
-          <p>横跨六大洲的私有 10 Gbps 骨干网，让服务贴近每一位用户，触手可及。</p>
-        </div>
-        <div class="feat reveal">
-          <div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span><span class="idx">05</span></div>
-          <h3>完整 root 权限</h3>
-          <p>KVM 虚拟化，资源独享。自选系统、自定内核，随心所欲，尽在掌控。</p>
-        </div>
-        <div class="feat reveal">
-          <div class="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg></span><span class="idx">06</span></div>
-          <h3>实时监控</h3>
-          <p>秒级 CPU、内存、磁盘与带宽曲线，附 REST API 与 Terraform Provider。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section id="stats">
-    <div class="wrap">
-      <div class="rule reveal"><span class="l"></span><span class="k"></span><span class="l r"></span></div>
-      <div class="section-head reveal">
-        <span class="eyebrow">磐石之基</span>
-        <h2>数字为证，<span class="zh-accent">稳如泰山</span></h2>
-        <p>可用性 SLA，白纸黑字，郑重承诺。</p>
-      </div>
-      <div class="stats">
-        <div class="stat reveal"><div class="n" data-target="99.99" data-suffix="%">0</div><div class="lab">可用性 SLA</div></div>
-        <div class="stat reveal"><div class="n" data-target="30" data-suffix="+">0</div><div class="lab">全球节点</div></div>
-        <div class="stat reveal"><div class="n" data-target="55" data-suffix="秒">0</div><div class="lab">平均部署</div></div>
-        <div class="stat reveal"><div class="n" data-target="240" data-suffix="k+">0</div><div class="lab">运行实例</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NODES -->
-  <section id="nodes">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">四海通达</span>
-        <h2>节点遍布，<span class="zh-accent">三网优化</span></h2>
-        <p>中国大陆 BGP 多线直连，海外骨干低延迟互联，就近接入。</p>
-      </div>
-      <div class="nodes reveal">
-        <span class="node"><span class="pulse"></span>上海 <span class="en">Shanghai</span></span>
-        <span class="node"><span class="pulse"></span>北京 <span class="en">Beijing</span></span>
-        <span class="node"><span class="pulse"></span>广州 <span class="en">Guangzhou</span></span>
-        <span class="node"><span class="pulse"></span>香港 <span class="en">Hong Kong</span></span>
-        <span class="node"><span class="pulse"></span>新加坡 <span class="en">Singapore</span></span>
-        <span class="node"><span class="pulse"></span>东京 <span class="en">Tokyo</span></span>
-        <span class="node"><span class="pulse"></span>法兰克福 <span class="en">Frankfurt</span></span>
-        <span class="node"><span class="pulse"></span>硅谷 <span class="en">Silicon Valley</span></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">明码标价</span>
-        <h2>只为性能付费，<span class="zh-accent">绝无冗余</span></h2>
-        <p>月付固定资费，按秒计费，随时升降配置，进退自如。</p>
-      </div>
-      <div class="pricing-grid">
-        <div class="plan reveal">
-          <div class="pname">微云</div>
-          <p class="pdesc">个人项目、测试环境与小型应用的理想之选。</p>
-          <div class="price"><span class="cur">¥</span><span class="num">29</span><span class="per">/月</span></div>
-          <div class="prule"></div>
-          <ul>
-            <li><span class="ck">—</span> 2 核 vCPU</li>
-            <li><span class="ck">—</span> 4 GB 内存</li>
-            <li><span class="ck">—</span> 80 GB NVMe 存储</li>
-            <li><span class="ck">—</span> 4 TB 流量</li>
-            <li><span class="ck">—</span> BGP 多线 · DDoS 防护</li>
-          </ul>
-          <a href="#" class="btn btn-ghost">选择微云</a>
-        </div>
-        <div class="plan featured reveal">
-          <span class="plan-badge">最受欢迎</span>
-          <div class="pname">凌霄</div>
-          <p class="pdesc">生产应用与繁忙团队的黄金档位，性价俱佳。</p>
-          <div class="price"><span class="cur">¥</span><span class="num">68</span><span class="per">/月</span></div>
-          <div class="prule"></div>
-          <ul>
-            <li><span class="ck">—</span> 4 核 vCPU</li>
-            <li><span class="ck">—</span> 16 GB 内存</li>
-            <li><span class="ck">—</span> 200 GB NVMe 存储</li>
-            <li><span class="ck">—</span> 8 TB 流量</li>
-            <li><span class="ck">—</span> 每日自动快照</li>
-            <li><span class="ck">—</span> 7×24 优先支持 · 备案协助</li>
-          </ul>
-          <a href="#" class="btn btn-primary">选择凌霄</a>
-        </div>
-        <div class="plan reveal">
-          <div class="pname">鲲鹏</div>
-          <p class="pdesc">高并发、大流量业务的旗舰算力，一飞冲天。</p>
-          <div class="price"><span class="cur">¥</span><span class="num">168</span><span class="per">/月</span></div>
-          <div class="prule"></div>
-          <ul>
-            <li><span class="ck">—</span> 8 核 vCPU</li>
-            <li><span class="ck">—</span> 32 GB 内存</li>
-            <li><span class="ck">—</span> 500 GB NVMe 存储</li>
-            <li><span class="ck">—</span> 16 TB 流量</li>
-            <li><span class="ck">—</span> 可选独享 CPU</li>
-            <li><span class="ck">—</span> 99.99% SLA · 专属客户经理</li>
-          </ul>
-          <a href="#" class="btn btn-ghost">选择鲲鹏</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="cta" class="cta">
-    <div class="wrap cta-inner">
-      <span class="eyebrow" style="margin-bottom:24px">御风而行</span>
-      <h2>扶摇直上，青云可期</h2>
-      <p>已有 40,000+ 开发者在青云之上构建。领取 ¥100 体验金，即刻启程。</p>
-      <a href="#pricing" class="btn btn-primary btn-lg">免费开始 · 无需绑卡</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="wrap">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="brand">
-            <span class="mark">青</span>
-            <span><span class="name">青云</span><span class="sub">QINGYUN CLOUD</span></span>
-          </a>
-          <p>下一代云端基础设施，为敏于构建、疾于交付的开发者而生。</p>
-        </div>
-        <div class="footer-col">
-          <h4>产品</h4>
-          <a href="#features">特性</a>
-          <a href="#pricing">价格</a>
-          <a href="#nodes">节点</a>
-          <a href="#">API 文档</a>
-        </div>
-        <div class="footer-col">
-          <h4>公司</h4>
-          <a href="#">关于我们</a>
-          <a href="#">博客</a>
-          <a href="#">加入我们</a>
-          <a href="#">服务状态</a>
-        </div>
-        <div class="footer-col">
-          <h4>帮助</h4>
-          <a href="#">帮助中心</a>
-          <a href="#">备案协助</a>
-          <a href="#">服务协议</a>
-          <a href="#">隐私政策</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 青云科技 · 保留所有权利　沪ICP备 2026000000 号（示例）</span>
-        <span style="letter-spacing:.28em; color:var(--muted)">云生于岫 · 青云直上</span>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // gentle parallax on mountain ranges
-    const ranges = Array.from(document.querySelectorAll('.range'));
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduce && ranges.length) {
-      let ticking = false;
-      const onScroll = () => {
-        if (ticking) return; ticking = true;
-        requestAnimationFrame(() => {
-          const y = window.scrollY;
-          ranges.forEach((r) => {
-            const d = parseFloat(r.dataset.depth) || 0.1;
-            r.style.transform = 'translateY(' + (y * d) + 'px)';
-          });
-          ticking = false;
-        });
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
+  /* ---- gold dust ---- */
+  var dust = document.getElementById('dust');
+  if (dust && !reduce) {
+    for (var i = 0; i < 38; i++) {
+      var s = document.createElement('i');
+      var sz = (Math.random() * 3 + 1.2).toFixed(1);
+      s.style.width = s.style.height = sz + 'px';
+      s.style.left = (Math.random() * 100).toFixed(2) + '%';
+      s.style.animationDuration = (Math.random() * 16 + 16).toFixed(1) + 's';
+      s.style.animationDelay = (-Math.random() * 26).toFixed(1) + 's';
+      s.style.opacity = (Math.random() * .5 + .3).toFixed(2);
+      dust.appendChild(s);
     }
+  }
 
-    // scroll reveal
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.14 });
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = (i % 6) * 0.08 + 's';
-      io.observe(el);
+  /* ---- nav solid on scroll + hero parallax ---- */
+  var nav = document.getElementById('nav');
+  var rgs = Array.prototype.slice.call(document.querySelectorAll('.rg'));
+  var sun = document.querySelector('.sun');
+  var tick = false;
+  function onScroll() {
+    if (tick) return; tick = true;
+    requestAnimationFrame(function () {
+      var y = window.scrollY;
+      if (nav) nav.classList.toggle('solid', y > 60);
+      if (!reduce) {
+        for (var i = 0; i < rgs.length; i++) {
+          var d = parseFloat(rgs[i].getAttribute('data-d')) || .1;
+          rgs[i].style.transform = 'translateY(' + (y * d) + 'px)';
+        }
+        if (sun) sun.style.transform = 'translate(-50%,calc(-50% + ' + (y * 0.16) + 'px))';
+      }
+      tick = false;
     });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-    // count-up
-    const cio = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        const el = e.target, target = parseFloat(el.dataset.target), suffix = el.dataset.suffix || '';
-        const decimals = (el.dataset.target.split('.')[1] || '').length, dur = 1700, start = performance.now();
-        (function tick(now){
-          const p = Math.min((now - start) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = (target * eased).toFixed(decimals) + suffix;
-          if (p < 1) requestAnimationFrame(tick);
-        })(performance.now());
-        cio.unobserve(el);
-      });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('.stat .n').forEach((n) => cio.observe(n));
+  /* ---- reveal ---- */
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .14 });
+  document.querySelectorAll('.rv').forEach(function (el, i) {
+    el.style.transitionDelay = (i % 6) * 0.09 + 's';
+    io.observe(el);
+  });
 
-    // mobile menu
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+  /* ---- count up ---- */
+  var cio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target, t = parseFloat(el.dataset.t), sfx = el.dataset.s || '';
+      var dec = (el.dataset.t.split('.')[1] || '').length, dur = 1800, st = performance.now();
+      (function step(now) {
+        var p = Math.min((now - st) / dur, 1), k = 1 - Math.pow(1 - p, 3);
+        el.textContent = (t * k).toFixed(dec) + sfx;
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+      cio.unobserve(el);
     });
-  </script>
+  }, { threshold: .6 });
+  document.querySelectorAll('.st .n').forEach(function (n) { cio.observe(n); });
+
+  var b = document.querySelector('.burger');
+  if (b) b.addEventListener('click', function () {
+    document.getElementById('price').scrollIntoView({ behavior: 'smooth' });
+  });
+})();
+</script>
 </body>
 </html>
